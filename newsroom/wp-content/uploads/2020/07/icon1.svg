@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="About" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="About-page" transform="translate(-205.000000, -1490.000000)">
+            <g id="entry-content" transform="translate(0.000000, 670.000000)">
+                <g id="features" transform="translate(205.000000, 820.000000)">
+                    <g id="item">
+                        <g id="icon">
+                            <circle id="Oval" fill="#2872FA" cx="30" cy="30" r="30"></circle>
+                            <g id="check-circle" transform="translate(19.000000, 19.000000)" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.904173951" stroke-width="2">
+                                <path d="M21.2413793,10.0933223 L21.2413793,11.066335 C21.23869,15.7502125 18.142583,19.8744398 13.6320509,21.2024836 C9.12151886,22.5305274 4.27104519,20.7460256 1.71100054,16.8166983 C-0.84904412,12.887371 -0.508814664,7.74924918 2.54718537,4.18869256 C5.6031854,0.62813595 10.6469661,-0.506671799 14.9433281,1.3996659" id="Path"></path>
+                                <polyline id="Path" points="21.2413793 2.17582418 10.5578453 13.1758242 7.35278515 9.87912088"></polyline>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

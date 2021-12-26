@@ -1,0 +1,55 @@
+html[uip-admin-theme="true"][data-theme="dark"] {
+  .woocommerce-task-card,
+  .woocommerce-inbox-message,
+  .css-1xs3c37-CardUI,
+  .woocommerce-page .woocommerce-dropdown-button,
+  #woocommerce-product-data .panel-wrap,
+  .woocommerce-summary {
+    filter: invert(1) hue-rotate(180deg);
+  }
+
+  #woocommerce-product-data .panel-wrap {
+    filter: invert(1) hue-rotate(180deg);
+    input,
+    button,
+    .button,
+    select,
+    textarea {
+      filter: invert(1) hue-rotate(180deg);
+    }
+  }
+  .woocommerce_page_wc-settings {
+    h1,
+    h2 {
+      color: var(--uip-text-color-emphasis);
+    }
+    p,
+    label {
+      color: var(--uip-text-color-normal);
+    }
+  }
+  .woocommerce-layout__header .woocommerce-layout__header-heading,
+  .woocommerce-layout__activity-panel-tabs .woocommerce-layout__activity-panel-tab,
+  #woocommerce-order-items .inside,
+  #woocommerce-order-items .woocommerce_order_items_wrapper table.woocommerce_order_items,
+  #woocommerce-order-items .woocommerce_order_items_wrapper table.woocommerce_order_items thead th,
+  #woocommerce-order-items .wc-order-data-row,
+  ul.order_notes li .note_content,
+  table.wc_emails tr:nth-child(odd) td,
+  table.wc_gateways tr:nth-child(odd) td,
+  table.wc_shipping tr:nth-child(odd) td,
+  table.wc_status_table tr:nth-child(2n) td,
+  table.wc_status_table tr:nth-child(2n) th {
+    background-color: var(--uip-background-muted);
+    color: var(--uip-text-color-normal);
+  }
+  #woocommerce-order-items {
+    border-color: var(--uip-border-color);
+    * {
+      border-color: var(--uip-border-color);
+    }
+  }
+  svg.components-checkbox-control__checked {
+    display: none;
+  }
+}

@@ -1,0 +1,69 @@
+[
+  {
+    "name": "Site Overview",
+    "desc": "General information about your site",
+    "open": "false",
+    "columns": [
+      { "size": "small", "cards": [{ "name": "Recently Published", "compName": "recent-posts", "size": "xlarge", "id": "000Recently Published" }], "id": "00" },
+      { "size": "small", "cards": [{ "name": "Site Health", "compName": "site-health", "size": "xlarge", "id": "010Site Health" }], "id": "01" },
+      {
+        "size": "small",
+        "cards": [
+          { "name": "Date", "compName": "calendar", "size": "xlarge", "id": "020Date" },
+          { "name": "Recent Comments", "compName": "recent-comments", "size": "xlarge", "id": "021Recent Comments" }
+        ],
+        "id": "02"
+      },
+      { "size": "small", "cards": [{ "name": "System Info", "compName": "system-info", "size": "xlarge", "id": "030System Info" }], "id": "03" }
+    ],
+    "id": 0
+  },
+  {
+    "name": "Analytics",
+    "desc": "Site visitor analytics",
+    "open": "true",
+    "columns": [
+      { "size": "small-medium", "cards": [{ "name": "Visits by Country", "compName": "country-visits", "size": "xlarge", "nobg": "false", "id": "100Visits by Country" }], "id": "10" },
+      {
+        "size": "small-medium",
+        "cards": [
+          { "name": "Bounce Rate", "compName": "bounce-rate", "size": "xlarge", "bgColor": "", "lightDark": false, "nobg": "false", "id": "110Bounce Rate" },
+          { "name": "Page Views", "compName": "page-views", "size": "medium", "nobg": "false", "id": "111Page Views" },
+          { "name": "Site Users", "compName": "site-users", "size": "medium", "chartType": "bar", "nobg": "false", "lightDark": "false", "id": "112Site Users" },
+          { "name": "Traffic Sources", "compName": "traffic-sources", "size": "xlarge", "id": "113Traffic Sources", "optionsOpen": "false" }
+        ],
+        "id": "11"
+      },
+      {
+        "size": "small-medium",
+        "cards": [
+          { "name": "Session Duration", "compName": "session-duration", "size": "xlarge", "bgColor": "", "lightDark": false, "id": "120Session Duration" },
+          { "name": "Page Speed", "compName": "page-speed", "size": "xlarge", "lightDark": "false", "id": "121Page Speed" },
+          { "name": "Site visits by device", "compName": "site-devices", "size": "xlarge", "chartType": "horizontalbar", "id": "122Site visits by device" },
+          { "name": "Visits By Page", "compName": "page-traffic", "size": "xlarge", "id": "123Visits By Page" }
+        ],
+        "id": "12"
+      }
+    ],
+    "id": 1
+  },
+  {
+    "name": "Store",
+    "desc": "Info about your store and sales",
+    "open": "true",
+    "columns": [
+      { "size": "small", "cards": [{ "name": "Total Sales", "compName": "total-sales", "size": "xlarge", "chartType": "line", "id": "200Total Sales" }], "id": "20" },
+      { "size": "small", "cards": [{ "name": "Total Orders", "compName": "total-orders", "size": "xlarge", "chartType": "bar", "id": "210Total Orders" }], "id": "21" },
+      {
+        "size": "small",
+        "cards": [
+          { "name": "Average Order Value", "compName": "average-order-value", "size": "xlarge", "id": "220Average Order Value", "optionsOpen": "true", "lightDark": "true", "bgColor": "#062641" },
+          { "name": "Recent Orders", "compName": "recent-orders", "size": "xlarge", "id": "221Recent Orders" }
+        ],
+        "id": "22"
+      },
+      { "size": "small", "id": "23", "cards": [{ "name": "Popular Products", "compName": "popular-products", "size": "xlarge", "id": "230Popular Products" }] }
+    ],
+    "id": 2
+  }
+]

@@ -1,0 +1,1 @@
+//! RichText.isEmpty( button2Text ) &&

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>epid x - Realtime statistics</title>
+  <link rel="stylesheet" href="css/stats-style.css">
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="manifest" href="manifest.json">
+
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header class="nav-bar">
+            <a href="index.html"> <i class="fas fa-home"></i> &nbsp; epid x Home </a> &nbsp; &nbsp;
+            <a href="statistics.html"> <i class="fas fa-chart-line"></i> &nbsp; Statistics </a> &nbsp; &nbsp;
+            <a href="http://localhost/epidx/shop/"> <i class="fas fa-shopping-cart"></i> &nbsp; Shop </a> &nbsp; &nbsp;
+            <a href="http://localhost/epidx/newsroom/"> <i class="fas fa-newspaper"></i> &nbsp; News Room </a> &nbsp; &nbsp;
+            <a href="information"> <i class="fas fa-file-alt"></i> &nbsp; Information </a> &nbsp; &nbsp;
+            <a href="contact"> <i class="fas fa-phone"></i> &nbsp; Contact </a> &nbsp; &nbsp;
+        </header> <br>
+
+        <h1 style="margin-top:10px;">Realtime Statistics</h1>
+        <h3 id="date">Date Time</h3>
+
+        <form autocomplete="off">
+            <input type="text" name="srch" id="srch" required
+            list="countries" placeholder="Enter a name of country" style="width: 50%; height: 20px;">
+            
+            <datalist id="countries">
+            </datalist>
+            <br> <br>
+            <button>Search</button>
+        </form>
+
+        <h2 id="name-country">The World</h2>
+
+        <div class="content">
+            <div class="box confirmed">
+                <p>Confirmed</p>
+                <h3>0</h3>
+                <i class="fa fa-long-arrow-up">0</i>
+            </div>
+
+            <div class="box deaths">
+                <p>Deaths</p>
+                <h3>0</h3>
+                <i class="fa fa-long-arrow-up">0</i>
+            </div>
+
+            <div class="box recovered">
+                <p>Recovered</p>
+                <h3>0</h3>
+                <i class="fa fa-long-arrow-up">0</i>
+            </div>
+        </div>
+
+        <div class="chart" style="width: 80%; margin-left: 10%;"></div>
+
+        <!--PCR Testing Chart-->
+        <h1 style="margin-top:10%;">Daily PCR Testing in Sri Lanka</h1>
+
+        <div style="width: 95%; margin-left: 2.5%;">
+            <canvas id="PCR_Chart"> </canvas>
+        </div>
+        
+    </div>
+
+
+    <!--for API-->
+    <script>
+        window.addEventListener("load", function() {
+         getData()
+         .then(function(data) {
+             showData(data.data);
+         })
+         .catch(function(e) {
+             console.log(e);
+             window.alert("Sorry!. Something went wrong.");
+         })
+        })
+  
+        function showData(data) {
+  
+        //PCR Testing Chart
+         var labels = [];
+         var counts = [];
+  
+         data.daily_pcr_testing_data.forEach(function(d) {
+             labels.push(d.date);
+             counts.push(d.pcr_count);
+         });
+  
+         labels.reverse()
+         counts.reverse()
+  
+         var PCR_Chart = document.getElementById("PCR_Chart").getContext("2d");
+  
+         var chart = new Chart(PCR_Chart, {
+             type: "line",
+             data: {
+                 labels: labels,
+                 datasets: [
+                     {
+                         label: "Number of PCR Tests",
+                         data: counts,
+                         borderWidth: 1,
+                         backgroundColor: 'rgba(2, 116, 189, 0.5)',
+                         borderColor: 'rgba(0, 63, 171, 0.8)',
+                     }
+                 ]
+             },
+             options: {
+                 scales: {
+                     yAxes: [
+                         {
+                             ticks: {
+                                 beginAtZero: true
+                             }
+                         }
+                     ]
+                 }
+             }
+         })
+         
+        }
+  
+        async function getData() {
+            var response = await fetch("https://hpb.health.gov.lk/api/get-current-statistical");
+            var data = response.json();
+            return data;
+        }
+    </script>
+    <!--end for API-->
+
+    <script src="app.js"></script>
+
+</body>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

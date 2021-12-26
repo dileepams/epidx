@@ -1,0 +1,25 @@
+html[uip-admin-theme="true"][data-theme="dark"] {
+  #contact-form-editor .contact-form-editor-panel {
+    background-color: var(--uip-background-muted);
+    color: var(--uip-text-color-normal);
+    border-color: var(--uip-border-color);
+  }
+  #contact-form-editor h2 {
+    color: var(--uip-text-color-emphasis);
+  }
+  #contact-form-editor-tabs li {
+    background-color: var(--uip-background-default);
+    color: var(--uip-text-color-normal);
+    border-color: var(--uip-border-color);
+    a {
+      color: var(--uip-text-color-normal);
+    }
+  }
+  #contact-form-editor-tabs li.ui-tabs-active {
+    background-color: var(--uip-background-muted);
+    border-bottom-color: var(--uip-background-muted);
+    a {
+      color: var(--uip-text-color-emphasis);
+    }
+  }
+}

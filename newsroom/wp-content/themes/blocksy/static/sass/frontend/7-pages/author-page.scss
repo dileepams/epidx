@@ -1,0 +1,34 @@
+.hero-section {
+
+	.ct-author-name {
+
+		[class*="ct-image-container"] {
+			border-radius: 100%;
+			margin-bottom: 10px;
+		}
+	}
+}
+
+.author-box-social {
+	margin-left: -8px;
+	margin-right: -8px;
+	margin-bottom: -10px;
+
+	a {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 30px;
+		height: 30px;
+		border-radius: 100%;
+		margin: 0 5px 10px 5px;
+		background: var(--paletteColor1);
+
+		--icon-size: 12px;
+		--icon-color: #fff;
+
+		&:hover {
+			background: var(--paletteColor2);
+		}
+	}
+}

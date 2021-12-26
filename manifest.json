@@ -1,0 +1,16 @@
+{
+    "name": "epid x",
+    "short_name": "epid x",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#dcebf5",
+    "description": "COVID-19 Tracker and Personal Assistant",
+    "theme_color": "#0274BD",
+    "icons": [
+      {
+        "src": "/img/icon.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }

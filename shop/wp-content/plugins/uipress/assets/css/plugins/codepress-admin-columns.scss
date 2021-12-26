@@ -1,0 +1,72 @@
+html[uip-admin-theme="true"][data-theme="dark"] {
+  .cpac-admin-nav {
+    background-color: var(--uip-background-muted);
+    color: var(--uip-text-color-normal);
+    border-color: var(--uip-border-color);
+  }
+  .cpac-admin-nav .cpac-nav__item a {
+    color: var(--uip-text-color-normal);
+    border-color: transparent;
+  }
+  .cpac-admin-nav .cpac-nav__item.-active a {
+    color: var(--uip-text-color-emphasis);
+    border-color: var(--uip-color-primary);
+  }
+  .ac-column .ac-column__header {
+    background-color: var(--uip-background-muted);
+    color: var(--uip-text-color-normal);
+    border-color: var(--uip-border-color);
+    .ac-column__header__label__link {
+      color: var(--uip-text-color-emphasis);
+    }
+  }
+  .ac-column-setting td.col-label,
+  .column-footer {
+    background-color: var(--uip-background-muted);
+    color: var(--uip-text-color-normal);
+    border-color: var(--uip-border-color);
+  }
+  .ac-column-setting td.col-label span.label {
+    color: var(--uip-text-color-normal);
+  }
+  .ac-column-setting tr td {
+    background-color: var(--uip-background-muted);
+    color: var(--uip-text-color-normal);
+    border-color: var(--uip-border-color);
+  }
+  .ac-column-setting {
+    border-color: var(--uip-border-color);
+  }
+  .ac-column.opened .ac-column-body {
+    border-color: var(--uip-border-color);
+  }
+  .ac-setting-input-width div.description span {
+    background-color: var(--uip-background-muted);
+    color: var(--uip-text-color-normal);
+    border-color: var(--uip-border-color);
+  }
+  .ac-section {
+    background-color: var(--uip-background-muted);
+    color: var(--uip-text-color-normal);
+    border-color: var(--uip-border-color);
+  }
+  .ac-section__header,
+  .ac-setbox__row__th,
+  .ac-setbox__row {
+    background-color: var(--uip-background-muted);
+    color: var(--uip-text-color-normal);
+    border-color: var(--uip-border-color);
+  }
+  .ac-settings {
+    color: var(--uip-text-color-normal);
+    .ac-lined-header {
+      color: var(--uip-text-color-emphasis);
+    }
+    label {
+      color: var(--uip-text-color-normal);
+    }
+    .ac-pro-list__item__label {
+      color: var(--uip-text-color-emphasis);
+    }
+  }
+}

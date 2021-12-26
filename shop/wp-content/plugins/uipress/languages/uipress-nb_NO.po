@@ -1,0 +1,3362 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Admin 2020\n"
+"POT-Creation-Date: 2021-11-11 18:58+0000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin/apps/content/content.php:81
+#, fuzzy
+#| msgid "Content"
+msgid "Content Page"
+msgstr "Innhold"
+
+#: admin/apps/content/content.php:82
+#, fuzzy
+#| msgid "Creates new admin menu."
+msgid "Creates content page"
+msgstr "Oppretter en ny admin meny"
+
+#: admin/apps/content/content.php:86
+msgid "Disable Content Page?"
+msgstr ""
+
+#: admin/apps/content/content.php:87
+msgid "If disabled, the content page will not be available to any users."
+msgstr ""
+
+#: admin/apps/content/content.php:94
+#, fuzzy
+#| msgid "Admin Pages Disabled for"
+msgid "Content Page Disabled for"
+msgstr "Admin Sider Deaktivert for"
+
+#: admin/apps/content/content.php:95
+msgid ""
+"When the content page module is disabled, the content page will not be "
+"accesible for the users / roles"
+msgstr ""
+
+#: admin/apps/content/content.php:103
+#, fuzzy
+#| msgid "Post Types available in Search"
+msgid "Post types available in content page"
+msgstr "Innleggstyper tilgjengelig i Søk"
+
+#: admin/apps/content/content.php:104
+#, fuzzy
+#| msgid "Only the selected post types will show up in the create dropdown."
+msgid "Only the selected post types will be available in the content page."
+msgstr "Bare de valgte posttypene vises i rullegardinmenyen Opprett."
+
+#: admin/apps/content/content.php:112
+msgid "Enable private library mode"
+msgstr ""
+
+#: admin/apps/content/content.php:113
+msgid ""
+"When enabled, the content page will only show content created by or uploaded "
+"by the currently logged in user. This also includes folders"
+msgstr ""
+
+#: admin/apps/content/content.php:169
+#, fuzzy
+#| msgid "Original Filename"
+msgid "Original Title / Value"
+msgstr "Original filnavn"
+
+#: admin/apps/content/content.php:173
+msgid "Text"
+msgstr "Tekst"
+
+#: admin/apps/content/content.php:177 admin/apps/content/content.php:2015
+#, fuzzy
+#| msgid "Create"
+msgid "Date Created"
+msgstr "Opprett"
+
+#: admin/apps/content/content.php:181
+msgid "File Extension (attachments only)"
+msgstr ""
+
+#: admin/apps/content/content.php:185
+msgid "Sequence Number"
+msgstr "Sekvensnummer"
+
+#: admin/apps/content/content.php:189
+msgid "Meta Value"
+msgstr "Metaverdi"
+
+#: admin/apps/content/content.php:193
+msgid "Find and Replace"
+msgstr ""
+
+#: admin/apps/content/content.php:251 admin/classes/uipress-app.php:1203
+#: admin/classes/uipress-app.php:1527
+msgid "No preferences supplied to save"
+msgstr "Ingen preferanser endret for å lagre"
+
+#: admin/apps/content/content.php:273 admin/classes/uipress-app.php:1214
+#: admin/classes/uipress-app.php:1549
+msgid "Preferences saved"
+msgstr "Preferanser lagret"
+
+#: admin/apps/content/content.php:276 admin/classes/uipress-app.php:1218
+#: admin/classes/uipress-app.php:1552
+msgid "Unable to save user preferences"
+msgstr "Ikke mulig å lagre bruker preferanser"
+
+#: admin/apps/content/content.php:305 admin/apps/content/content.php:313
+#: admin/apps/content/content.php:942
+msgid "Unable to save attachment"
+msgstr "Kan ikke lagre vedlegget"
+
+#: admin/apps/content/content.php:322
+msgid "Image Saved"
+msgstr "Bilde lagret"
+
+#: admin/apps/content/content.php:355
+msgid "Failed to upload file"
+msgstr "Kunne ikke laste opp filen"
+
+#: admin/apps/content/content.php:385
+#, fuzzy
+#| msgid "Date Uploaded"
+msgid "Items uploaded"
+msgstr "Opplastningsdato"
+
+#: admin/apps/content/content.php:408
+#, fuzzy
+#| msgid "Item Updated"
+msgid "Views updated"
+msgstr "Vare oppdatert"
+
+#: admin/apps/content/content.php:440 admin/apps/content/content.php:502
+#: admin/apps/content/content.php:564 admin/apps/content/content.php:754
+#: admin/apps/menu-creator/menu-creator.php:310
+#: admin/apps/menu-creator/menu-creator.php:332
+#: admin/apps/menu-creator/menu-creator.php:366
+#: admin/apps/menu-creator/menu-creator.php:419
+#: admin/apps/menu-creator/menu-creator.php:485 admin/classes/folders.php:452
+#: admin/classes/settings.php:259 admin/classes/uipress-app.php:808
+msgid "Something went wrong"
+msgstr "Noe gikk galt"
+
+#: admin/apps/content/content.php:445
+msgid "Items duplicated succesffuly"
+msgstr ""
+
+#: admin/apps/content/content.php:448
+#, fuzzy
+#| msgid "Post duplicated"
+msgid "Itms couldn't be duplicated"
+msgstr "Innlegg duplisert"
+
+#: admin/apps/content/content.php:486 admin/apps/content/content.php:528
+#, fuzzy
+#| msgid "No licence key provided"
+msgid "No Meta Key provided"
+msgstr "Ingen lisensnøkkel gitt"
+
+#: admin/apps/content/content.php:568
+#, fuzzy
+#| msgid "Attributes"
+msgid "Attributes Updated"
+msgstr "Attributter"
+
+#: admin/apps/content/content.php:759
+#, fuzzy
+#| msgid "Items Deleted"
+msgid "Items deleted succesffuly"
+msgstr "Elementer slettet"
+
+#: admin/apps/content/content.php:762
+msgid "Itms couldn't be deleted"
+msgstr ""
+
+#: admin/apps/content/content.php:784 admin/classes/folders.php:376
+#: admin/classes/folders.php:408
+#, fuzzy
+#| msgid "No content found"
+msgid "No content to move"
+msgstr "Fant ingen innhold"
+
+#: admin/apps/content/content.php:797 admin/classes/folders.php:390
+#: admin/classes/folders.php:421
+#, fuzzy
+#| msgid "Content"
+msgid "Content moved"
+msgstr "Innhold"
+
+#: admin/apps/content/content.php:923
+#, fuzzy
+#| msgid "Unable to delete item"
+msgid "Unable to update item"
+msgstr "Kan ikke slette elementet"
+
+#: admin/apps/content/content.php:953
+#, fuzzy
+#| msgid "Item Updated"
+msgid "Item updated"
+msgstr "Vare oppdatert"
+
+#: admin/apps/content/content.php:992
+#, fuzzy
+#| msgid "Item Updated"
+msgid "Items updated"
+msgstr "Vare oppdatert"
+
+#: admin/apps/content/content.php:1304 admin/apps/content/content.php:1593
+msgid "Content"
+msgstr "Innhold"
+
+#: admin/apps/content/content.php:1346
+#: admin/apps/menu-creator/menu-creator.php:630
+#: admin/classes/uipress-app.php:776
+msgid "Pro Feature"
+msgstr ""
+
+#: admin/apps/content/content.php:1349
+msgid "Upgrade to UiPress Pro to unlock the content page and content folders"
+msgstr ""
+
+#: admin/apps/content/content.php:1351
+#: admin/apps/menu-creator/menu-creator.php:635
+msgid "See UiPress Pro Plans"
+msgstr ""
+
+#: admin/apps/content/content.php:1393
+msgid "Update Tags and Categories"
+msgstr ""
+
+#: admin/apps/content/content.php:1400 admin/apps/content/content.php:1813
+#: admin/apps/content/content.php:1818 admin/apps/content/content.php:2050
+#: admin/apps/content/content.php:2053
+msgid "Categories"
+msgstr "Kategorier"
+
+#: admin/apps/content/content.php:1401 admin/apps/content/content.php:1819
+#: admin/apps/content/content.php:2054
+#, fuzzy
+#| msgid "Categories"
+msgid "Search categories..."
+msgstr "Kategorier"
+
+#: admin/apps/content/content.php:1406
+msgid "Keep existing categories"
+msgstr ""
+
+#: admin/apps/content/content.php:1415 admin/apps/content/content.php:1825
+#: admin/apps/content/content.php:1829 admin/apps/content/content.php:2062
+#: admin/apps/content/content.php:2065
+msgid "Tags"
+msgstr ""
+
+#: admin/apps/content/content.php:1416 admin/apps/content/content.php:1830
+#: admin/apps/content/content.php:2066
+#, fuzzy
+#| msgid "Search Admin Pages"
+msgid "Search tags..."
+msgstr "Søk i Admin Sider"
+
+#: admin/apps/content/content.php:1421
+msgid "Keep existing tags"
+msgstr ""
+
+#: admin/apps/content/content.php:1430 admin/apps/content/content.php:1668
+#: admin/classes/uipress-app.php:824
+#, fuzzy
+#| msgid "Updates"
+msgid "Update"
+msgstr "Oppdateringer"
+
+#: admin/apps/content/content.php:1447 admin/apps/content/content.php:2549
+msgid "Batch Rename"
+msgstr "Batchendring"
+
+#: admin/apps/content/content.php:1455
+msgid "Attribute to rename"
+msgstr "Attribute å gi nytt navn til"
+
+#: admin/apps/content/content.php:1462 admin/apps/content/content.php:2305
+#: admin/apps/menu-creator/menu-creator.php:683
+#: admin/apps/menu-creator/menu-creator.php:1182
+#: admin/apps/menu-creator/menu-creator.php:1183
+#: admin/classes/uipress-app.php:822
+msgid "Name"
+msgstr "Navn"
+
+#: admin/apps/content/content.php:1463
+msgid "Meta Key"
+msgstr "Meta Key"
+
+#: admin/apps/content/content.php:1464
+msgid "Alt Tag (Attachments only)"
+msgstr ""
+
+#: admin/apps/content/content.php:1469
+#, fuzzy
+#| msgid "Meta Key"
+msgid "Meta Key Name"
+msgstr "Meta Key"
+
+#: admin/apps/content/content.php:1480
+#, fuzzy
+#| msgid "Filename"
+msgid "Filename Structure"
+msgstr "Filnavn"
+
+#: admin/apps/content/content.php:1488
+#, fuzzy
+#| msgid "Rename"
+msgid "Rename Item"
+msgstr "Gi nytt navn"
+
+#: admin/apps/content/content.php:1496
+msgid "Add"
+msgstr "Legg Til"
+
+#: admin/apps/content/content.php:1522
+#, fuzzy
+#| msgid "New text"
+msgid "New Text"
+msgstr "Ny tekst"
+
+#: admin/apps/content/content.php:1524
+#, fuzzy
+#| msgid "Invalid Date Format"
+msgid "Date Format"
+msgstr "Ugyldig datoformat"
+
+#: admin/apps/content/content.php:1526
+msgid "Start Number"
+msgstr "Startnummer"
+
+#: admin/apps/content/content.php:1528
+#, fuzzy
+#| msgid "Meta key"
+msgid "Meta key Name"
+msgstr "Metanøkkel"
+
+#: admin/apps/content/content.php:1530
+msgid "Find"
+msgstr ""
+
+#: admin/apps/content/content.php:1534
+msgid "Replace"
+msgstr ""
+
+#: admin/apps/content/content.php:1558 admin/apps/content/content.php:1575
+#: admin/apps/menu-creator/menu-creator.php:999
+msgid "Preview"
+msgstr "Forhåndsvisning"
+
+#: admin/apps/content/content.php:1561
+#, fuzzy
+#| msgid "Current Alt"
+msgid "Current"
+msgstr "Nåværende Alt"
+
+#: admin/apps/content/content.php:1562
+#: admin/apps/menu-creator/menu-creator.php:668
+msgid "New"
+msgstr "Ny"
+
+#: admin/apps/content/content.php:1576
+msgid "Rename"
+msgstr "Gi nytt navn"
+
+#: admin/apps/content/content.php:1600
+#, fuzzy
+#| msgid "Content"
+msgid "All Content"
+msgstr "Innhold"
+
+#: admin/apps/content/content.php:1661
+#: admin/apps/menu-creator/menu-creator.php:759
+msgid "Delete"
+msgstr "Slett"
+
+#: admin/apps/content/content.php:1666
+#, fuzzy
+#| msgid "Edit Admin Page"
+msgid "Edit Image"
+msgstr "Rediger Admin Side"
+
+#: admin/apps/content/content.php:1697
+#, fuzzy
+#| msgid "View details"
+msgid "Details"
+msgstr "Vis detaljer"
+
+#: admin/apps/content/content.php:1753 admin/apps/content/content.php:1754
+#: admin/apps/overview/overview.php:585
+msgid "Title"
+msgstr "Tittel"
+
+#: admin/apps/content/content.php:1760
+msgid "Alt Text"
+msgstr "Alt Tekst"
+
+#: admin/apps/content/content.php:1761
+msgid "Alt"
+msgstr "Alt"
+
+#: admin/apps/content/content.php:1765 admin/apps/content/content.php:1766
+msgid "Caption"
+msgstr "Bildetekst"
+
+#: admin/apps/content/content.php:1770 admin/apps/content/content.php:1771
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: admin/apps/content/content.php:1781
+#, fuzzy
+#| msgid "Meta Value"
+msgid "Meta Data"
+msgstr "Metaverdi"
+
+#: admin/apps/content/content.php:1801 admin/apps/content/content.php:1806
+#: admin/apps/content/content.php:2321
+#: admin/apps/menu-creator/menu-creator.php:687
+#: admin/apps/menu-creator/menu-creator.php:829
+#: admin/classes/uipress-app.php:605
+msgid "Status"
+msgstr "Status"
+
+#: admin/apps/content/content.php:1807
+#, fuzzy
+#| msgid "Search website"
+msgid "Search status..."
+msgstr "Søk på nettsiden"
+
+#: admin/apps/content/content.php:1909
+msgid "Filters"
+msgstr "Filtre"
+
+#: admin/apps/content/content.php:1914
+msgid "Upload"
+msgstr "Laste opp"
+
+#: admin/apps/content/content.php:1936
+msgid "Items Per Page"
+msgstr ""
+
+#: admin/apps/content/content.php:1946
+msgid "Columns"
+msgstr ""
+
+#: admin/apps/content/content.php:1958
+#, fuzzy
+#| msgid "Search"
+msgid "Search..."
+msgstr "Søk"
+
+#: admin/apps/content/content.php:1966
+msgid "of"
+msgstr ""
+
+#: admin/apps/content/content.php:1969
+msgid "items"
+msgstr ""
+
+#: admin/apps/content/content.php:1993 admin/apps/content/content.php:1996
+msgid "Post Types"
+msgstr "Innleggstyper"
+
+#: admin/apps/content/content.php:1997
+#, fuzzy
+#| msgid "Select Post Types"
+msgid "Search Post Types..."
+msgstr "Velg Innleggstyper"
+
+#: admin/apps/content/content.php:2004 admin/apps/content/content.php:2007
+#, fuzzy
+#| msgid "Status"
+msgid "Post Status"
+msgstr "Status"
+
+#: admin/apps/content/content.php:2008
+msgid "Search Post Statuses..."
+msgstr ""
+
+#: admin/apps/content/content.php:2021
+msgid "Posted On"
+msgstr ""
+
+#: admin/apps/content/content.php:2022
+msgid "Posted After"
+msgstr ""
+
+#: admin/apps/content/content.php:2023
+msgid "Posted Before"
+msgstr ""
+
+#: admin/apps/content/content.php:2038 admin/apps/content/content.php:2041
+#, fuzzy
+#| msgid "File Type"
+msgid "Media Types"
+msgstr "Filtype"
+
+#: admin/apps/content/content.php:2042
+#, fuzzy
+#| msgid "Search Admin Pages"
+msgid "Search Media Types..."
+msgstr "Søk i Admin Sider"
+
+#: admin/apps/content/content.php:2071
+#, fuzzy
+#| msgid "Filters"
+msgid "Clear Filters"
+msgstr "Filtre"
+
+#: admin/apps/content/content.php:2072
+#, fuzzy
+#| msgid "Overview"
+msgid "Save as view"
+msgstr "Oversikt"
+
+#: admin/apps/content/content.php:2118
+#, fuzzy
+#| msgid "Post Types"
+msgid "Posted"
+msgstr "Innleggstyper"
+
+#: admin/apps/content/content.php:2309
+msgid "Type"
+msgstr "Type"
+
+#: admin/apps/content/content.php:2313
+msgid "Author"
+msgstr ""
+
+#: admin/apps/content/content.php:2317
+#: admin/apps/menu-creator/menu-creator.php:691
+#: admin/apps/overview/overview.php:679
+msgid "Date"
+msgstr "Dato"
+
+#: admin/apps/content/content.php:2465
+msgid "Load More"
+msgstr "Last mer"
+
+#: admin/apps/content/content.php:2474
+msgid "No content found"
+msgstr "Fant ingen innhold"
+
+#: admin/apps/content/content.php:2493 admin/classes/uipress-app.php:778
+msgid "View"
+msgstr "Vis"
+
+#: admin/apps/content/content.php:2500
+#: admin/apps/menu-creator/menu-creator.php:737
+#: admin/classes/uipress-app.php:779
+msgid "Edit"
+msgstr "Rediger"
+
+#: admin/apps/content/content.php:2507
+msgid "Quick Edit"
+msgstr ""
+
+#: admin/apps/content/content.php:2514
+#: admin/apps/menu-creator/menu-creator.php:744
+msgid "Duplicate"
+msgstr "Dupliser"
+
+#: admin/apps/content/content.php:2522
+#, fuzzy
+#| msgid "Delete"
+msgid "Delete Item"
+msgstr "Slett"
+
+#: admin/apps/content/content.php:2542
+#, fuzzy
+#| msgid "Items Deleted"
+msgid "items selected"
+msgstr "Elementer slettet"
+
+#: admin/apps/content/content.php:2555
+#, fuzzy
+#| msgid "Categories"
+msgid "Categories & Tags"
+msgstr "Kategorier"
+
+#: admin/apps/content/content.php:2561
+#, fuzzy
+#| msgid "Item Deleted"
+msgid "Delete Selected"
+msgstr "Element slettet"
+
+#: admin/apps/content/content.php:2567
+msgid "Clear Selection"
+msgstr ""
+
+#: admin/apps/content/content.php:2589
+#, fuzzy
+#| msgid "Creates new admin menu."
+msgid "Create New View"
+msgstr "Oppretter en ny admin meny"
+
+#: admin/apps/content/content.php:2594
+#, fuzzy
+#| msgid "Filename"
+msgid "View name"
+msgstr "Filnavn"
+
+#: admin/apps/content/content.php:2597
+#, fuzzy
+#| msgid "New Name"
+msgid "View Name"
+msgstr "Nytt navn"
+
+#: admin/apps/content/content.php:2605
+#: admin/apps/menu-creator/menu-creator.php:1239 admin/classes/settings.php:195
+#: admin/classes/styles.php:337
+msgid "Save"
+msgstr "Lagre"
+
+#: admin/apps/menu-creator/menu-creator.php:75
+#: admin/apps/menu-creator/menu-creator.php:580
+#: admin/apps/menu-creator/menu-creator.php:588
+#: admin/apps/menu-creator/menu-creator.php:663
+#: admin/apps/menu-creator/menu-creator.php:1229
+#, fuzzy
+#| msgid "Menu Editor"
+msgid "Menu Creator"
+msgstr "Meny Redigering"
+
+#: admin/apps/menu-creator/menu-creator.php:76
+#, fuzzy
+#| msgid "Creates new admin menu."
+msgid "Creates custom admin menus."
+msgstr "Oppretter en ny admin meny"
+
+#: admin/apps/menu-creator/menu-creator.php:80
+#, fuzzy
+#| msgid "Disable Create Button"
+msgid "Disable Menu Creator?"
+msgstr "Deaktiver Legg Til knapp"
+
+#: admin/apps/menu-creator/menu-creator.php:81
+msgid "If disabled, the menu creator will not be available to any users."
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:214
+#, fuzzy
+#| msgid "Add New Admin Page"
+msgid "Add New Admin Menu"
+msgstr "Legg til ny Admin Side"
+
+#: admin/apps/menu-creator/menu-creator.php:215
+#, fuzzy
+#| msgid "New Admin Page"
+msgid "New Admin Menu"
+msgstr "Ny Admin Side"
+
+#: admin/apps/menu-creator/menu-creator.php:216
+#, fuzzy
+#| msgid "Edit Admin Page"
+msgid "Edit Admin Menu"
+msgstr "Rediger Admin Side"
+
+#: admin/apps/menu-creator/menu-creator.php:217
+#, fuzzy
+#| msgid "View Admin Page"
+msgid "View Admin Menu"
+msgstr "Vis Admin Sider"
+
+#: admin/apps/menu-creator/menu-creator.php:218
+#, fuzzy
+#| msgid "All Admin Pages"
+msgid "All Admin Menus"
+msgstr "Alle Admin Sider"
+
+#: admin/apps/menu-creator/menu-creator.php:219
+#, fuzzy
+#| msgid "Search Admin Pages"
+msgid "Search Admin Menus"
+msgstr "Søk i Admin Sider"
+
+#: admin/apps/menu-creator/menu-creator.php:220
+#, fuzzy
+#| msgid "No Admin Pages found."
+msgid "No Admin Menus found."
+msgstr "Ingen Admin Sider funnet"
+
+#: admin/apps/menu-creator/menu-creator.php:221
+#, fuzzy
+#| msgid "No Admin Pages found in Trash."
+msgid "No Admin Menus found in Trash."
+msgstr "Ingen Admin Sider funnet i søppelbøtten"
+
+#: admin/apps/menu-creator/menu-creator.php:225
+msgid "Description."
+msgstr "Beskrivelse."
+
+#: admin/apps/menu-creator/menu-creator.php:317
+#, fuzzy
+#| msgid "Item Updated"
+msgid "Status Updated"
+msgstr "Vare oppdatert"
+
+#: admin/apps/menu-creator/menu-creator.php:338
+msgid "You don't have permission to delete this"
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:346
+#, fuzzy
+#| msgid "Unable to delete item"
+msgid "Unable to delete menu"
+msgstr "Kan ikke slette elementet"
+
+#: admin/apps/menu-creator/menu-creator.php:351
+#, fuzzy
+#| msgid "Video deleted"
+msgid "Menu deleted"
+msgstr "Video slettet"
+
+#: admin/apps/menu-creator/menu-creator.php:372
+msgid "Unable to duplicate menu, menu is corrupted"
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:378
+msgid "(copy)"
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:386
+#, fuzzy
+#| msgid "Unable to delete item"
+msgid "Unable to duplicate menu"
+msgstr "Kan ikke slette elementet"
+
+#: admin/apps/menu-creator/menu-creator.php:396
+#, fuzzy
+#| msgid "Post duplicated"
+msgid "Menu duplicated"
+msgstr "Innlegg duplisert"
+
+#: admin/apps/menu-creator/menu-creator.php:425
+#, fuzzy
+#| msgid "Unable to save item"
+msgid "Unable to save, menu is corrupted"
+msgstr "Kan ikke lagre varen"
+
+#: admin/apps/menu-creator/menu-creator.php:446
+#, fuzzy
+#| msgid "Unable to save item"
+msgid "Unable to save menu"
+msgstr "Kan ikke lagre varen"
+
+#: admin/apps/menu-creator/menu-creator.php:469
+#, fuzzy
+#| msgid "Image Saved"
+msgid "Menu Saved"
+msgstr "Bilde lagret"
+
+#: admin/apps/menu-creator/menu-creator.php:633
+msgid "Upgrade to UiPress Pro to unlock the menu creator"
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:674
+msgid "Looks like you haven't created any admin menus yet"
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:675
+#, fuzzy
+#| msgid "Creates new admin menu."
+msgid "Create your first admin menu"
+msgstr "Oppretter en ny admin meny"
+
+#: admin/apps/menu-creator/menu-creator.php:751
+#: admin/apps/menu-creator/menu-creator.php:1251 admin/classes/settings.php:209
+#: admin/classes/styles.php:347
+msgid "Export"
+msgstr "Eksporter"
+
+#: admin/apps/menu-creator/menu-creator.php:799
+msgid ""
+"Menu creator isn't optimised for mobile devices. For best results switch to "
+"a larger screen"
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:814
+#, fuzzy
+#| msgid "Menu Imported"
+msgid "Menu Items"
+msgstr "Meny importert"
+
+#: admin/apps/menu-creator/menu-creator.php:818
+#, fuzzy
+#| msgid "Settings"
+msgid "Menu Settings"
+msgstr "Innstillinger"
+
+#: admin/apps/menu-creator/menu-creator.php:839
+msgid "Apply to subsites"
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:849
+#: admin/apps/menu-creator/menu-creator.php:850
+#, fuzzy
+#| msgid "New Name"
+msgid "Menu Name"
+msgstr "Nytt navn"
+
+#: admin/apps/menu-creator/menu-creator.php:854
+#, fuzzy
+#| msgid "Menu Editor"
+msgid "Menu Applies to"
+msgstr "Meny Redigering"
+
+#: admin/apps/menu-creator/menu-creator.php:858
+msgid "Inclusive"
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:862
+msgid "Exclusive"
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:866
+msgid ""
+"In Inclusive mode, this menu will load for all Usernames and roles selected "
+"below."
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:869
+msgid ""
+"In Exclusive mode, this menu will load for every user except those Usernames "
+"and roles selected below."
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:875
+msgid "Choose users or roles..."
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:877
+#, fuzzy
+#| msgid "Select roles or users"
+msgid "Search roles and users..."
+msgstr "Velg roller eller brukere"
+
+#: admin/apps/menu-creator/menu-creator.php:886
+msgid "Add custom Item"
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:890
+#, fuzzy
+#| msgid "Separator"
+msgid "New Separator"
+msgstr "Separator"
+
+#: admin/apps/menu-creator/menu-creator.php:893
+#, fuzzy
+#| msgid "Set custom icon"
+msgid "New Custom Link"
+msgstr "Sett tilpasset ikon"
+
+#: admin/apps/menu-creator/menu-creator.php:898
+msgid "Available Menu Items"
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:905
+#, fuzzy
+#| msgid "Search website"
+msgid "Search menu items"
+msgstr "Søk på nettsiden"
+
+#: admin/apps/menu-creator/menu-creator.php:1049
+msgid "Add some menu items from the left toolbar to get started"
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:1068
+msgid "Separator"
+msgstr "Separator"
+
+#: admin/apps/menu-creator/menu-creator.php:1173
+msgid "Edit Menu Item"
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:1187
+#: admin/apps/menu-creator/menu-creator.php:1188
+msgid "Link"
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:1192
+msgid "Classes"
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:1194
+#, fuzzy
+#| msgid "Customer"
+msgid "Custom classes"
+msgstr "Kunde"
+
+#: admin/apps/menu-creator/menu-creator.php:1198
+msgid "Opens in new tab?"
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:1208
+#, fuzzy
+#| msgid "Icons"
+msgid "Icon"
+msgstr "Ikoner"
+
+#: admin/apps/menu-creator/menu-creator.php:1232
+msgid "Back to all menus"
+msgstr ""
+
+#: admin/apps/menu-creator/menu-creator.php:1260
+msgid "Import Menu"
+msgstr "Importer-meny"
+
+#: admin/apps/menu-creator/menu-creator.php:1269 admin/classes/settings.php:228
+#, fuzzy
+#| msgid "Settings"
+msgid "Reset Settings"
+msgstr "Innstillinger"
+
+#: admin/apps/overview/analytics.php:61
+msgid "Analytics account removed"
+msgstr "Analysekonto fjernet"
+
+#: admin/apps/overview/analytics.php:78
+msgid "Unable to connect account"
+msgstr "Ute av stand til å koble til konto"
+
+#: admin/apps/overview/analytics.php:90
+msgid "Analytics account connected"
+msgstr "Analysekonto koblet til"
+
+#: admin/apps/overview/analytics.php:294 admin/apps/overview/analytics.php:700
+msgid "Site Users"
+msgstr "Nettstedsbrukere"
+
+#: admin/apps/overview/analytics.php:302
+msgid "Site Users (comparison period)"
+msgstr ""
+
+#: admin/apps/overview/analytics.php:367 admin/apps/overview/analytics.php:682
+msgid "Page Views"
+msgstr "Side Visninger"
+
+#: admin/apps/overview/analytics.php:375
+msgid "Page Views (comparison period)"
+msgstr ""
+
+#: admin/apps/overview/analytics.php:592 admin/apps/overview/analytics.php:691
+#, fuzzy
+#| msgid "Average Page Speed"
+msgid "Page Speed"
+msgstr "Gjennomsnittslig Side Hastighet"
+
+#: admin/apps/overview/analytics.php:600
+msgid "Page Speed (comparison period)"
+msgstr ""
+
+#: admin/apps/overview/analytics.php:647 admin/apps/overview/analytics.php:685
+#: admin/apps/overview/analytics.php:694 admin/apps/overview/analytics.php:703
+#: admin/apps/overview/analytics.php:712 admin/apps/overview/analytics.php:721
+#: admin/apps/overview/analytics.php:730 admin/apps/overview/analytics.php:739
+#: admin/apps/overview/analytics.php:748 admin/apps/overview/analytics.php:757
+msgid "Analytics"
+msgstr "Analyse"
+
+#: admin/apps/overview/analytics.php:649
+msgid "Creates the google analytics cards for the overview page."
+msgstr "Oppretter Google Analytics-kortene for oversiktssiden."
+
+#: admin/apps/overview/analytics.php:665
+#, fuzzy
+#| msgid "Google Analytics Disabled for"
+msgid "Google Analytics disabled for"
+msgstr "Google Analytics deaktivert for"
+
+#: admin/apps/overview/analytics.php:666
+#, fuzzy
+#| msgid "Google Analytics will be disabled for any users or roles you select"
+msgid ""
+"Analytics will be disabled on the overview page for any users or roles you "
+"select"
+msgstr ""
+"Google Analytics blir deaktivert for alle brukere eller roller du velger"
+
+#: admin/apps/overview/analytics.php:684
+msgid "Display website page views within the date range."
+msgstr ""
+
+#: admin/apps/overview/analytics.php:693
+msgid "Display website page speed within the date range."
+msgstr ""
+
+#: admin/apps/overview/analytics.php:702
+msgid "Display website users within the date range."
+msgstr ""
+
+#: admin/apps/overview/analytics.php:709
+msgid "Site visits by device"
+msgstr ""
+
+#: admin/apps/overview/analytics.php:711
+msgid "Display site usage by device within the date range."
+msgstr ""
+
+#: admin/apps/overview/analytics.php:718
+msgid "Bounce Rate"
+msgstr "Avvisningsfrekvens"
+
+#: admin/apps/overview/analytics.php:720
+msgid "Display site bounce rate within the date range."
+msgstr ""
+
+#: admin/apps/overview/analytics.php:727
+msgid "Session Duration"
+msgstr "Øktens varighet"
+
+#: admin/apps/overview/analytics.php:729
+msgid "Display site session duration within the date range."
+msgstr ""
+
+#: admin/apps/overview/analytics.php:736
+#, fuzzy
+#| msgid "Visits By Country"
+msgid "Visits by Country"
+msgstr "Besøkende av Land"
+
+#: admin/apps/overview/analytics.php:738
+msgid "Displays country user data within the date range."
+msgstr ""
+
+#: admin/apps/overview/analytics.php:745
+msgid "Traffic Sources"
+msgstr "Trafikkilder"
+
+#: admin/apps/overview/analytics.php:747
+msgid "Displays traffic source info within the date range."
+msgstr ""
+
+#: admin/apps/overview/analytics.php:754
+msgid "Visits By Page"
+msgstr "Besøkende av Side"
+
+#: admin/apps/overview/analytics.php:756
+msgid "Displays traffic for most popular site pages within the date range."
+msgstr ""
+
+#: admin/apps/overview/overview.php:73 admin/apps/overview/overview.php:878
+#: admin/apps/overview/overview.php:883
+msgid "Overview"
+msgstr "Oversikt"
+
+#: admin/apps/overview/overview.php:74
+#, fuzzy
+#| msgid "Redirect to overview page"
+msgid "Creates the overview page."
+msgstr "Viderekoble til oversiktsside"
+
+#: admin/apps/overview/overview.php:78
+msgid "Disable Overview Page?"
+msgstr ""
+
+#: admin/apps/overview/overview.php:79
+msgid "Overview page will be disaplyed when this option is activated."
+msgstr ""
+
+#: admin/apps/overview/overview.php:86
+#, fuzzy
+#| msgid "Overview Disabled for"
+msgid "Overview Page Disabled For"
+msgstr "Oversikt Deaktivert for"
+
+#: admin/apps/overview/overview.php:87
+#, fuzzy
+#| msgid ""
+#| "Admin 2020 overview page will be disabled for any users or roles you "
+#| "select"
+msgid "Overview Page will be disabled for any users or roles you select"
+msgstr ""
+"Admin 2020 oversikt side vil bli deaktivert for de brukerene eller rollene "
+"du velger"
+
+#: admin/apps/overview/overview.php:95
+#, fuzzy
+#| msgid "Redirect to overview page"
+msgid "Who can edit the overview page?"
+msgstr "Viderekoble til oversiktsside"
+
+#: admin/apps/overview/overview.php:96
+msgid ""
+"Any role or user chosen here will be able to edit the overview page. If none "
+"are chosen it will fall back to administrators only"
+msgstr ""
+
+#: admin/apps/overview/overview.php:104
+msgid "Custom welcome message"
+msgstr ""
+
+#: admin/apps/overview/overview.php:105
+msgid "Add a custom welcome message here to displayed on the overview page"
+msgstr ""
+
+#: admin/apps/overview/overview.php:153 admin/apps/overview/overview.php:294
+#: admin/apps/overview/woocommerce.php:130
+msgid "ago"
+msgstr "siden"
+
+#: admin/apps/overview/overview.php:169 admin/apps/overview/overview.php:357
+#: admin/apps/overview/woocommerce.php:155
+#: admin/apps/overview/woocommerce.php:230
+msgid "Posts fetched"
+msgstr ""
+
+#: admin/apps/overview/overview.php:177 admin/apps/overview/woocommerce.php:163
+#, fuzzy
+#| msgid "No posts for date range"
+msgid "No posts posted during the date range."
+msgstr "Ingen innlegg for datoperioden"
+
+#: admin/apps/overview/overview.php:192
+#, fuzzy
+#| msgid "Unable to save attachment"
+msgid "Unable to save dash at this time"
+msgstr "Kan ikke lagre vedlegget"
+
+#: admin/apps/overview/overview.php:202
+#, fuzzy
+#| msgid "Settings saved"
+msgid "Dashboard settings saved"
+msgstr "Instillinger lagret"
+
+#: admin/apps/overview/overview.php:217
+#, fuzzy
+#| msgid "Settings reset"
+msgid "Dashboard settings reset"
+msgstr "Innstillingene ble tilbakestilt"
+
+#: admin/apps/overview/overview.php:230 admin/apps/overview/overview.php:238
+#, fuzzy
+#| msgid "Unable to register admin 2020 at this time"
+msgid "Unable to load shortcode at this time"
+msgstr "Ikke mulig å registrere Admin 2020 på dette tidspunktet"
+
+#: admin/apps/overview/overview.php:245
+#, fuzzy
+#| msgid "Date Uploaded"
+msgid "Shortcode loaded"
+msgstr "Opplastningsdato"
+
+#: admin/apps/overview/overview.php:364
+#, fuzzy
+#| msgid "No comments for date range"
+msgid "No comments during the date range."
+msgstr "Ingen kommentarer for datoperioden"
+
+#: admin/apps/overview/overview.php:384
+#, fuzzy
+#| msgid "WordPress version"
+msgid "Core version"
+msgstr "WordPress-versjon"
+
+#: admin/apps/overview/overview.php:389
+msgid "PHP version"
+msgstr "PHP-versjon"
+
+#: admin/apps/overview/overview.php:394
+#, fuzzy
+#| msgid "Plugins"
+msgid "Active Plugins"
+msgstr "Utvidelser"
+
+#: admin/apps/overview/overview.php:399
+#, fuzzy
+#| msgid "Plugins"
+msgid "Inactive Plugins"
+msgstr "Utvidelser"
+
+#: admin/apps/overview/overview.php:404
+msgid "Installed Themes"
+msgstr ""
+
+#: admin/apps/overview/overview.php:443
+msgid "Passed Checks"
+msgstr ""
+
+#: admin/apps/overview/overview.php:451
+#, fuzzy
+#| msgid "Recent Comments"
+msgid "Recommended"
+msgstr "Nylige Kommentarer"
+
+#: admin/apps/overview/overview.php:459
+msgid "Critical"
+msgstr ""
+
+#: admin/apps/overview/overview.php:470
+#, php-format
+msgid "Take a look at the %d items on the"
+msgstr ""
+
+#: admin/apps/overview/overview.php:471
+msgid "Site Health screen"
+msgstr ""
+
+#: admin/apps/overview/overview.php:479
+#, fuzzy
+#| msgid "Devices"
+msgid "Device Visits"
+msgstr "Enheter"
+
+#: admin/apps/overview/overview.php:564
+msgid "Card width"
+msgstr ""
+
+#: admin/apps/overview/overview.php:565
+msgid "Column width"
+msgstr ""
+
+#: admin/apps/overview/overview.php:566
+#, fuzzy
+#| msgid "Settings"
+msgid "Column settings"
+msgstr "Innstillinger"
+
+#: admin/apps/overview/overview.php:567
+#, fuzzy
+#| msgid "Remove"
+msgid "Remove Card"
+msgstr "Slett"
+
+#: admin/apps/overview/overview.php:568
+#, fuzzy
+#| msgid "Delete"
+msgid "Delete Column"
+msgstr "Slett"
+
+#: admin/apps/overview/overview.php:569
+#, fuzzy
+#| msgid "In the last"
+msgid "In the"
+msgstr "I det siste"
+
+#: admin/apps/overview/overview.php:570
+msgid "day range"
+msgstr ""
+
+#: admin/apps/overview/overview.php:571
+msgid "xxsmall (1/6)"
+msgstr ""
+
+#: admin/apps/overview/overview.php:572
+msgid "xsmall (1/5)"
+msgstr ""
+
+#: admin/apps/overview/overview.php:573
+msgid "small (1/4)"
+msgstr ""
+
+#: admin/apps/overview/overview.php:574
+msgid "small medium (1/3)"
+msgstr ""
+
+#: admin/apps/overview/overview.php:575
+msgid "medium (1/2)"
+msgstr ""
+
+#: admin/apps/overview/overview.php:576
+msgid "medium large (2/3)"
+msgstr ""
+
+#: admin/apps/overview/overview.php:577
+msgid "large (3/4)"
+msgstr ""
+
+#: admin/apps/overview/overview.php:578
+msgid "xlarge (1/1)"
+msgstr ""
+
+#: admin/apps/overview/overview.php:579
+msgid "I am an empty columnm. Drag cards into me."
+msgstr ""
+
+#: admin/apps/overview/overview.php:580
+msgid "Column Added"
+msgstr ""
+
+#: admin/apps/overview/overview.php:581
+msgid "Add card"
+msgstr ""
+
+#: admin/apps/overview/overview.php:582
+msgid "Section added"
+msgstr ""
+
+#: admin/apps/overview/overview.php:583
+#, fuzzy
+#| msgid "Search Folders"
+msgid "Search Cards"
+msgstr "Søk i mapper"
+
+#: admin/apps/overview/overview.php:584
+#, fuzzy
+#| msgid "Product"
+msgid "Pro"
+msgstr "Produkt"
+
+#: admin/apps/overview/overview.php:586 admin/apps/overview/overview.php:697
+msgid "Shortcode"
+msgstr ""
+
+#: admin/apps/overview/overview.php:587
+#, fuzzy
+#| msgid "Video URL Type"
+msgid "Video URL"
+msgstr "Video URL Type"
+
+#: admin/apps/overview/overview.php:588
+#, fuzzy
+#| msgid "File Type"
+msgid "Embed Type"
+msgstr "Filtype"
+
+#: admin/apps/overview/overview.php:589
+msgid "Premium feature. Upgrade to pro to unlock"
+msgstr ""
+
+#: admin/apps/overview/overview.php:590
+msgid "HTML"
+msgstr ""
+
+#: admin/apps/overview/overview.php:591
+msgid "Card Added"
+msgstr ""
+
+#: admin/apps/overview/overview.php:592
+#, fuzzy
+#| msgid "Background Color"
+msgid "Card Background colour"
+msgstr "Bakgrunnsfarge"
+
+#: admin/apps/overview/overview.php:593
+msgid "# Hex code only (#fff)"
+msgstr ""
+
+#: admin/apps/overview/overview.php:594
+msgid "Use light color for text"
+msgstr ""
+
+#: admin/apps/overview/overview.php:595
+#, fuzzy
+#| msgid "Post Types"
+msgid "Chart Type"
+msgstr "Innleggstyper"
+
+#: admin/apps/overview/overview.php:596
+msgid "Line Chart"
+msgstr ""
+
+#: admin/apps/overview/overview.php:597
+msgid "Bar Chart"
+msgstr ""
+
+#: admin/apps/overview/overview.php:598
+msgid "vs previous"
+msgstr "vs forrige"
+
+#: admin/apps/overview/overview.php:599
+msgid "days"
+msgstr "dager"
+
+#: admin/apps/overview/overview.php:600
+msgid "Doughnut"
+msgstr ""
+
+#: admin/apps/overview/overview.php:601
+msgid "Polar Area"
+msgstr ""
+
+#: admin/apps/overview/overview.php:602
+msgid "Bar"
+msgstr ""
+
+#: admin/apps/overview/overview.php:603 admin/apps/overview/overview.php:610
+msgid "Horizontal Bar"
+msgstr ""
+
+#: admin/apps/overview/overview.php:604
+msgid "Country"
+msgstr "Land"
+
+#: admin/apps/overview/overview.php:605
+msgid "Visits"
+msgstr "Besøk"
+
+#: admin/apps/overview/overview.php:606
+msgid "Change"
+msgstr "Endring"
+
+#: admin/apps/overview/overview.php:607
+#, fuzzy
+#| msgid "Background Color"
+msgid "No Background"
+msgstr "Bakgrunnsfarge"
+
+#: admin/apps/overview/overview.php:608
+#, fuzzy
+#| msgid "Hide"
+msgid "Hide Map"
+msgstr "Gjem"
+
+#: admin/apps/overview/overview.php:609
+#, fuzzy
+#| msgid "Analytics account connected"
+msgid "No Google Analytics account connected"
+msgstr "Analysekonto koblet til"
+
+#: admin/apps/overview/overview.php:611
+msgid "Hide Chart"
+msgstr ""
+
+#: admin/apps/overview/overview.php:612
+msgid "Source"
+msgstr "Kilde"
+
+#: admin/apps/overview/overview.php:613
+msgid "Page"
+msgstr "Side"
+
+#: admin/apps/overview/overview.php:614
+msgid "Product"
+msgstr "Produkt"
+
+#: admin/apps/overview/overview.php:615
+msgid "Sold"
+msgstr "Solgt"
+
+#: admin/apps/overview/overview.php:616
+msgid "Value"
+msgstr "Verdi"
+
+#: admin/apps/overview/overview.php:617
+msgid "WooCommerce is required to use this card"
+msgstr ""
+
+#: admin/apps/overview/overview.php:618 admin/classes/uipress-app.php:830
+msgid "Please select a valid JSON file"
+msgstr ""
+
+#: admin/apps/overview/overview.php:619 admin/classes/uipress-app.php:831
+msgid "File is to big"
+msgstr ""
+
+#: admin/apps/overview/overview.php:620
+#, fuzzy
+#| msgid "Menu Imported"
+msgid "Layout Imported"
+msgstr "Meny importert"
+
+#: admin/apps/overview/overview.php:621
+#, fuzzy
+#| msgid "Unable to connect account"
+msgid "Unable to import layout"
+msgstr "Ute av stand til å koble til konto"
+
+#: admin/apps/overview/overview.php:622
+#, fuzzy
+#| msgid ""
+#| "Are you sure you want to reset your menu back to default? There is no undo"
+msgid ""
+"Are you sure you want to reset the overview page to the default layout? "
+"There is no undo."
+msgstr ""
+"Er du sikker på at du vil resette menyen tilbake til opprinnelig? Det er "
+"ikke mulig å gå tilbake på valget"
+
+#: admin/apps/overview/overview.php:623
+#, fuzzy
+#| msgid "Active Cards"
+msgid "Available Cards"
+msgstr "Aktive Kort"
+
+#: admin/apps/overview/overview.php:643
+msgid "Recently Published"
+msgstr "Nylig publisert"
+
+#: admin/apps/overview/overview.php:645
+msgid "Display posts, pages and CPTs published within the date range."
+msgstr ""
+
+#: admin/apps/overview/overview.php:646 admin/apps/overview/overview.php:655
+#: admin/apps/overview/overview.php:664 admin/apps/overview/overview.php:673
+#: admin/apps/overview/overview.php:682 admin/apps/overview/overview.php:691
+#: admin/apps/overview/overview.php:700 admin/apps/overview/overview.php:709
+#: admin/classes/uipress-app.php:1904
+msgid "General"
+msgstr ""
+
+#: admin/apps/overview/overview.php:652
+msgid "Recent Comments"
+msgstr "Nylige Kommentarer"
+
+#: admin/apps/overview/overview.php:654
+msgid ""
+"Displays total comments and recent comments published within the date range."
+msgstr ""
+
+#: admin/apps/overview/overview.php:661
+msgid "System Info"
+msgstr "Systeminformasjon"
+
+#: admin/apps/overview/overview.php:663
+msgid "Displays info our about your cms and server setup."
+msgstr ""
+
+#: admin/apps/overview/overview.php:670
+msgid "Site Health"
+msgstr ""
+
+#: admin/apps/overview/overview.php:672
+msgid "Displays info our about your sites health."
+msgstr ""
+
+#: admin/apps/overview/overview.php:681
+msgid "Displays current time and date"
+msgstr ""
+
+#: admin/apps/overview/overview.php:688
+#, fuzzy
+#| msgid "Add Video"
+msgid "Video"
+msgstr "Legg til Video"
+
+#: admin/apps/overview/overview.php:690
+msgid "Displays a custom video"
+msgstr ""
+
+#: admin/apps/overview/overview.php:699
+msgid "Outputs a WordPress shortcode to the card"
+msgstr ""
+
+#: admin/apps/overview/overview.php:706
+#, fuzzy
+#| msgid "Custom JS"
+msgid "Custom HTML"
+msgstr "Egendefinert JS"
+
+#: admin/apps/overview/overview.php:708
+msgid "Outputs custom HTML to the card"
+msgstr ""
+
+#: admin/apps/overview/overview.php:763
+msgid "Hello"
+msgstr "Hallo"
+
+#: admin/apps/overview/overview.php:880
+#, fuzzy
+#| msgid "Overview"
+msgid "UiPress Overview"
+msgstr "Oversikt"
+
+#: admin/apps/overview/overview.php:919
+#, fuzzy
+#| msgid "Reset Menu"
+msgid "Reset Layout"
+msgstr "Tilbakestill meny"
+
+#: admin/apps/overview/overview.php:923 admin/apps/overview/overview.php:965
+#, fuzzy
+#| msgid "New text"
+msgid "New Section"
+msgstr "Ny tekst"
+
+#: admin/apps/overview/overview.php:928 admin/apps/overview/overview.php:968
+msgid "Save changes"
+msgstr ""
+
+#: admin/apps/overview/overview.php:971
+#, fuzzy
+#| msgid "Edit Folder"
+msgid "Exit edit mode"
+msgstr "Rediger Mappe"
+
+#: admin/apps/overview/overview.php:978 admin/classes/settings.php:62
+#: admin/classes/settings.php:75 admin/classes/settings.php:235
+msgid "Settings"
+msgstr "Innstillinger"
+
+#: admin/apps/overview/overview.php:981
+#, fuzzy
+#| msgid "Edit Folder"
+msgid "Editing Mode"
+msgstr "Rediger Mappe"
+
+#: admin/apps/overview/overview.php:993
+#, fuzzy
+#| msgid "Analytics"
+msgid "Disconnect Analytics"
+msgstr "Analyse"
+
+#: admin/apps/overview/overview.php:1003
+#, fuzzy
+#| msgid "Export Menu"
+msgid "Export Layout"
+msgstr "Eksportmeny"
+
+#: admin/apps/overview/overview.php:1012
+#, fuzzy
+#| msgid "Import Menu"
+msgid "Import Layout"
+msgstr "Importer-meny"
+
+#: admin/apps/overview/overview.php:1026 admin/classes/settings.php:219
+#: admin/classes/styles.php:357
+msgid "Unlock Export and Import features with pro"
+msgstr ""
+
+#: admin/apps/overview/overview.php:1090
+#, fuzzy
+#| msgid "Add New Folder"
+msgid "Add New Column"
+msgstr "Legg Til Ny Mappe"
+
+#: admin/apps/overview/overview.php:1094
+#, fuzzy
+#| msgid "Remove Account"
+msgid "Remove Section"
+msgstr "Fjern konto"
+
+#: admin/apps/overview/woocommerce.php:46
+#: admin/apps/overview/woocommerce.php:346
+#: admin/apps/overview/woocommerce.php:483
+msgid "Total Sales"
+msgstr "Totalt Salg"
+
+#: admin/apps/overview/woocommerce.php:48
+msgid "Display total sales in your store within the date range."
+msgstr ""
+
+#: admin/apps/overview/woocommerce.php:49
+#: admin/apps/overview/woocommerce.php:58
+#: admin/apps/overview/woocommerce.php:67
+#: admin/apps/overview/woocommerce.php:76
+#: admin/apps/overview/woocommerce.php:85
+#, fuzzy
+#| msgid "WooCommerce"
+msgid "Commerce"
+msgstr "WooCommerce"
+
+#: admin/apps/overview/woocommerce.php:55
+msgid "Total Orders"
+msgstr "Totale Ordrer"
+
+#: admin/apps/overview/woocommerce.php:57
+msgid "Display total orders in your store within the date range."
+msgstr ""
+
+#: admin/apps/overview/woocommerce.php:64
+msgid "Average Order Value"
+msgstr "Gjennomsnitlig Ordre Verdi"
+
+#: admin/apps/overview/woocommerce.php:66
+msgid "Display average order value in your store within the date range."
+msgstr ""
+
+#: admin/apps/overview/woocommerce.php:73
+msgid "Recent Orders"
+msgstr "Nylige Ordrer"
+
+#: admin/apps/overview/woocommerce.php:75
+msgid "Display recent orders from your store within the date range."
+msgstr ""
+
+#: admin/apps/overview/woocommerce.php:82
+msgid "Popular Products"
+msgstr "Populære Produkter"
+
+#: admin/apps/overview/woocommerce.php:84
+msgid "Display top selling products from your store within the date range."
+msgstr ""
+
+#: admin/apps/overview/woocommerce.php:97
+#: admin/apps/overview/woocommerce.php:175
+#: admin/apps/overview/woocommerce.php:248
+#: admin/apps/overview/woocommerce.php:387
+#: admin/apps/overview/woocommerce.php:525
+msgid "Woocommerce is required for this widget"
+msgstr ""
+
+#: admin/apps/overview/woocommerce.php:236
+#, fuzzy
+#| msgid "No posts for date range"
+msgid "No products sold during the date range."
+msgstr "Ingen innlegg for datoperioden"
+
+#: admin/apps/overview/woocommerce.php:354
+#: admin/apps/overview/woocommerce.php:491
+#, fuzzy
+#| msgid "Total Sales"
+msgid "Total Sales (Comparison)"
+msgstr "Totalt Salg"
+
+#: admin/classes/debug.php:101 admin/classes/debug.php:107
+#: admin/classes/debug.php:129
+#, fuzzy
+#| msgid "Unable to register admin 2020 at this time"
+msgid "Unable to register UiPress at this time"
+msgstr "Ikke mulig å registrere Admin 2020 på dette tidspunktet"
+
+#: admin/classes/debug.php:120
+#, fuzzy
+#| msgid "Admin 2020 succesfully activated"
+msgid "UiPress succesfully activated"
+msgstr "Admin 2020 vellykket aktivert"
+
+#: admin/classes/folders.php:68 admin/classes/uipress-app.php:818
+msgid "Folders"
+msgstr "Mapper"
+
+#: admin/classes/folders.php:69
+msgid "Creates media folder system."
+msgstr ""
+
+#: admin/classes/folders.php:73
+#, fuzzy
+#| msgid "Toggle Folders"
+msgid "Disable Folders?"
+msgstr "Bytt mapper"
+
+#: admin/classes/folders.php:74
+msgid "No media folders will be disaplyed when this option is activated."
+msgstr ""
+
+#: admin/classes/folders.php:81
+#, fuzzy
+#| msgid "Folders Disabled for"
+msgid "Folders Disabled For"
+msgstr "Mapper deaktivert for"
+
+#: admin/classes/folders.php:82
+#, fuzzy
+#| msgid "Folders will be disabled for any users or roles you select"
+msgid "UiPress folders will be disabled for any users or roles you select"
+msgstr "Mapper blir deaktivert for alle brukere eller roller du velger"
+
+#: admin/classes/folders.php:235
+#, fuzzy
+#| msgid "No video supplied to delete"
+msgid "No folder to delete"
+msgstr "Ingen video valgt for å slette"
+
+#: admin/classes/folders.php:245
+#, fuzzy
+#| msgid "Unable to delete item"
+msgid "Unable to delete the folder"
+msgstr "Kan ikke slette elementet"
+
+#: admin/classes/folders.php:296
+#, fuzzy
+#| msgid "Video deleted"
+msgid "Folder deleted"
+msgstr "Video slettet"
+
+#: admin/classes/folders.php:315
+#, fuzzy
+#| msgid "Unable to delete item"
+msgid "Unable to move folder into itself"
+msgstr "Kan ikke slette elementet"
+
+#: admin/classes/folders.php:329
+#, fuzzy
+#| msgid "Unable to save item"
+msgid "Unable to move folder"
+msgstr "Kan ikke lagre varen"
+
+#: admin/classes/folders.php:357
+#, fuzzy
+#| msgid "Folder Moved"
+msgid "Folder moved"
+msgstr "Mappe er flyttet\n"
+
+#: admin/classes/folders.php:460
+#, fuzzy
+#| msgid "Folder Name"
+msgid "Folder updated"
+msgstr "Mappenavn"
+
+#: admin/classes/folders.php:481
+msgid "Title is required"
+msgstr ""
+
+#: admin/classes/folders.php:487
+msgid "Colour is required"
+msgstr ""
+
+#: admin/classes/folders.php:502
+#, fuzzy
+#| msgid "Unable to delete item"
+msgid "Unable to create folder"
+msgstr "Kan ikke slette elementet"
+
+#: admin/classes/folders.php:513
+#, fuzzy
+#| msgid "Folder Name"
+msgid "Folder created"
+msgstr "Mappenavn"
+
+#: admin/classes/settings.php:128
+#, fuzzy
+#| msgid "Unable to save user preferences"
+msgid "Unable to save user settings"
+msgstr "Ikke mulig å lagre bruker preferanser"
+
+#: admin/classes/settings.php:134 admin/classes/uipress-app.php:809
+msgid "Settings saved"
+msgstr "Instillinger lagret"
+
+#: admin/classes/settings.php:148
+msgid "Settings reset"
+msgstr "Innstillingene ble tilbakestilt"
+
+#: admin/classes/settings.php:184 admin/classes/styles.php:332
+msgid "Version"
+msgstr "Versjon"
+
+#: admin/classes/settings.php:203 admin/classes/styles.php:342
+msgid "Import"
+msgstr "Importer"
+
+#: admin/classes/settings.php:357
+msgid "No licence key provided"
+msgstr "Ingen lisensnøkkel gitt"
+
+#: admin/classes/settings.php:389
+msgid "Licence removed"
+msgstr "Lisens fjernet"
+
+#: admin/classes/styles.php:113 admin/classes/styles.php:126
+#: admin/classes/styles.php:330
+msgid "Styles"
+msgstr ""
+
+#: admin/classes/styles.php:170
+#, fuzzy
+#| msgid "Unable to save item"
+msgid "Unable to save styles"
+msgstr "Kan ikke lagre varen"
+
+#: admin/classes/styles.php:196
+#, fuzzy
+#| msgid "Modules saved"
+msgid "Styles saved"
+msgstr "Moduler lagret"
+
+#: admin/classes/styles.php:316
+msgid ""
+"Uipress styles isn't optimised for mobile devices. Switch to a larger screen "
+"to modify UiPress Styles"
+msgstr ""
+
+#: admin/classes/styles.php:364
+msgid "Clear All"
+msgstr ""
+
+#: admin/classes/styles.php:397
+msgid "Global"
+msgstr ""
+
+#: admin/classes/styles.php:400
+#, fuzzy
+#| msgid "Background Color"
+msgid "Body Background"
+msgstr "Bakgrunnsfarge"
+
+#: admin/classes/styles.php:411
+#, fuzzy
+#| msgid "Select login background"
+msgid "Default Background"
+msgstr "Velg påloggingsbakgrunn"
+
+#: admin/classes/styles.php:422
+#, fuzzy
+#| msgid "Background Color"
+msgid "Muted Background"
+msgstr "Bakgrunnsfarge"
+
+#: admin/classes/styles.php:433
+msgid "Muted Background Accent"
+msgstr ""
+
+#: admin/classes/styles.php:444
+msgid "Primary Color"
+msgstr "Hoved Farge"
+
+#: admin/classes/styles.php:455
+#, fuzzy
+#| msgid "Primary Color"
+msgid "Primary Color Hover"
+msgstr "Hoved Farge"
+
+#: admin/classes/styles.php:466
+msgid "Font"
+msgstr ""
+
+#: admin/classes/styles.php:477
+msgid "Border Width"
+msgstr ""
+
+#: admin/classes/styles.php:488
+msgid "Border Radius"
+msgstr ""
+
+#: admin/classes/styles.php:499
+#, fuzzy
+#| msgid "Background Color"
+msgid "Border Colour"
+msgstr "Bakgrunnsfarge"
+
+#: admin/classes/styles.php:510
+#, fuzzy
+#| msgid "Notifications"
+msgid "Notification Background"
+msgstr "Varsler"
+
+#: admin/classes/styles.php:524 admin/classes/uipress-app.php:1975
+msgid "Menu"
+msgstr "Meny"
+
+#: admin/classes/styles.php:527
+msgid "Background Color"
+msgstr "Bakgrunnsfarge"
+
+#: admin/classes/styles.php:538 admin/classes/styles.php:633
+#, fuzzy
+#| msgid "Background Color"
+msgid "Secondary background Color"
+msgstr "Bakgrunnsfarge"
+
+#: admin/classes/styles.php:549
+#, fuzzy
+#| msgid "Background Color"
+msgid "Hover background Color"
+msgstr "Bakgrunnsfarge"
+
+#: admin/classes/styles.php:560
+msgid "Text Color"
+msgstr ""
+
+#: admin/classes/styles.php:571
+#, fuzzy
+#| msgid "Active Cards"
+msgid "Active Text Color"
+msgstr "Aktive Kort"
+
+#: admin/classes/styles.php:582
+msgid "Width"
+msgstr ""
+
+#: admin/classes/styles.php:594
+msgid "Padding"
+msgstr "Padding"
+
+#: admin/classes/styles.php:608 admin/classes/uipress-app.php:2061
+msgid "Toolbar"
+msgstr ""
+
+#: admin/classes/styles.php:611
+#, fuzzy
+#| msgid "Background Color"
+msgid "Toolbar Background Color"
+msgstr "Bakgrunnsfarge"
+
+#: admin/classes/styles.php:622
+msgid "Toolbar Text Color"
+msgstr ""
+
+#: admin/classes/styles.php:646
+msgid "Cards"
+msgstr ""
+
+#: admin/classes/styles.php:649 admin/classes/styles.php:726
+#, fuzzy
+#| msgid "Background Color"
+msgid "Background color"
+msgstr "Bakgrunnsfarge"
+
+#: admin/classes/styles.php:661
+msgid "Border color"
+msgstr ""
+
+#: admin/classes/styles.php:673
+msgid "Border radius"
+msgstr ""
+
+#: admin/classes/styles.php:685
+msgid "Shadow spread"
+msgstr ""
+
+#: admin/classes/styles.php:697
+msgid "Shadow blur"
+msgstr ""
+
+#: admin/classes/styles.php:709
+msgid "Shadow color"
+msgstr ""
+
+#: admin/classes/styles.php:723 admin/classes/uipress-app.php:2216
+msgid "Login"
+msgstr "Logg inn"
+
+#: admin/classes/uipress-app.php:105 admin/classes/uipress-app.php:116
+msgid "Add New Folder"
+msgstr "Legg Til Ny Mappe"
+
+#: admin/classes/uipress-app.php:106 admin/classes/uipress-app.php:819
+msgid "New Folder"
+msgstr "Ny mappe"
+
+#: admin/classes/uipress-app.php:107 admin/classes/uipress-app.php:823
+msgid "Edit Folder"
+msgstr "Rediger Mappe"
+
+#: admin/classes/uipress-app.php:108
+msgid "View Folder"
+msgstr "Vis mappe"
+
+#: admin/classes/uipress-app.php:109
+msgid "All Folders"
+msgstr "Alle Mapper"
+
+#: admin/classes/uipress-app.php:110
+msgid "Search Folders"
+msgstr "Søk i mapper"
+
+#: admin/classes/uipress-app.php:111
+msgid "No Folders found."
+msgstr "Ingen mapper funnet."
+
+#: admin/classes/uipress-app.php:112
+msgid "No Folders found in Trash."
+msgstr "Ingen mapper funnet i papirkurven."
+
+#: admin/classes/uipress-app.php:621
+#, fuzzy
+#| msgid "Activate"
+msgid "active"
+msgstr "Aktiver"
+
+#: admin/classes/uipress-app.php:625
+#, fuzzy
+#| msgid "Activate"
+msgid "inactive"
+msgstr "Aktiver"
+
+#: admin/classes/uipress-app.php:771
+#, fuzzy
+#| msgid "Preferences"
+msgid "Menu Preferences"
+msgstr "Preferanser"
+
+#: admin/classes/uipress-app.php:772
+msgid "Hide search bar"
+msgstr ""
+
+#: admin/classes/uipress-app.php:773
+#, fuzzy
+#| msgid "Icons"
+msgid "Hide Icons"
+msgstr "Ikoner"
+
+#: admin/classes/uipress-app.php:774
+msgid "Show submenu on hover"
+msgstr ""
+
+#: admin/classes/uipress-app.php:775
+#, fuzzy
+#| msgid "Search Content"
+msgid "Search Menu"
+msgstr "Søk i innhold"
+
+#: admin/classes/uipress-app.php:777
+msgid "Search"
+msgstr "Søk"
+
+#: admin/classes/uipress-app.php:780
+msgid "Show more"
+msgstr ""
+
+#: admin/classes/uipress-app.php:781
+msgid "other matches"
+msgstr ""
+
+#: admin/classes/uipress-app.php:782 admin/classes/uipress-app.php:810
+#, fuzzy
+#| msgid "No content found"
+msgid "Nothing found"
+msgstr "Fant ingen innhold"
+
+#: admin/classes/uipress-app.php:783 admin/classes/uipress-app.php:788
+#, fuzzy
+#| msgid "View Website"
+msgid "View Site"
+msgstr "Vis Nettside"
+
+#: admin/classes/uipress-app.php:784
+msgid "Dashboard"
+msgstr ""
+
+#: admin/classes/uipress-app.php:785
+#, fuzzy
+#| msgid "Search website"
+msgid "Search Site"
+msgstr "Søk på nettsiden"
+
+#: admin/classes/uipress-app.php:786
+msgid "Create"
+msgstr "Opprett"
+
+#: admin/classes/uipress-app.php:787
+#, fuzzy
+#| msgid "Create"
+msgid "Create New"
+msgstr "Opprett"
+
+#: admin/classes/uipress-app.php:789
+msgid "Updates"
+msgstr "Oppdateringer"
+
+#: admin/classes/uipress-app.php:790
+msgid "Preferences"
+msgstr "Preferanser"
+
+#: admin/classes/uipress-app.php:791
+#, fuzzy
+#| msgid "Dark Mode"
+msgid "Dark mode"
+msgstr "Nattmodus"
+
+#: admin/classes/uipress-app.php:792
+#, fuzzy
+#| msgid "Show screen options"
+msgid "Show screen options toggle"
+msgstr "Vis skjermalternativer"
+
+#: admin/classes/uipress-app.php:793
+#, fuzzy
+#| msgid "Show screen options"
+msgid "Screen options"
+msgstr "Vis skjermalternativer"
+
+#: admin/classes/uipress-app.php:794
+#, fuzzy
+#| msgid "Hide admin bar on front end"
+msgid "Hide admin bar links (left)"
+msgstr "Skjul admin bar på frontenden"
+
+#: admin/classes/uipress-app.php:795
+msgid "Logout"
+msgstr "Logg ut"
+
+#: admin/classes/uipress-app.php:796
+msgid "Notifications"
+msgstr "Varsler"
+
+#: admin/classes/uipress-app.php:797
+#, fuzzy
+#| msgid "Notifications"
+msgid "Hide notification"
+msgstr "Varsler"
+
+#: admin/classes/uipress-app.php:798
+#, fuzzy
+#| msgid "Notifications"
+msgid "hidden notifications"
+msgstr "Varsler"
+
+#: admin/classes/uipress-app.php:799
+msgid "show all"
+msgstr ""
+
+#: admin/classes/uipress-app.php:800
+#, fuzzy
+#| msgid "Notifications"
+msgid "Notifiction Hidden"
+msgstr "Varsler"
+
+#: admin/classes/uipress-app.php:801
+#, fuzzy
+#| msgid "Toggle menu"
+msgid "Toggle Menu"
+msgstr "Bytt meny"
+
+#: admin/classes/uipress-app.php:802
+msgid "Choose users or roles"
+msgstr ""
+
+#: admin/classes/uipress-app.php:803
+#, fuzzy
+#| msgid "Search Folders"
+msgid "Search users and roles"
+msgstr "Søk i mapper"
+
+#: admin/classes/uipress-app.php:804
+#, fuzzy
+#| msgid "Choose Icon"
+msgid "Choose Image"
+msgstr "Veg Ikon"
+
+#: admin/classes/uipress-app.php:805
+#, fuzzy
+#| msgid "Post Types"
+msgid "Choose Post Types"
+msgstr "Innleggstyper"
+
+#: admin/classes/uipress-app.php:806 admin/classes/uipress-app.php:807
+#, fuzzy
+#| msgid "Select Post Types"
+msgid "Searach Post Types"
+msgstr "Velg Innleggstyper"
+
+#: admin/classes/uipress-app.php:811
+#, fuzzy
+#| msgid "Use Default"
+msgid "Default"
+msgstr "Bruk standard"
+
+#: admin/classes/uipress-app.php:812
+#, fuzzy
+#| msgid "Add Video"
+msgid "Add File"
+msgstr "Legg til Video"
+
+#: admin/classes/uipress-app.php:813
+#, fuzzy
+#| msgid "Upload files"
+msgid "URL to file"
+msgstr "Last opp filer"
+
+#: admin/classes/uipress-app.php:814
+msgid "Remove"
+msgstr "Slett"
+
+#: admin/classes/uipress-app.php:815 admin/classes/uipress-app.php:816
+#, fuzzy
+#| msgid "All Updates"
+msgid "All media"
+msgstr "Alle Oppdateringer"
+
+#: admin/classes/uipress-app.php:817
+#, fuzzy
+#| msgid "New Folder"
+msgid "No folder"
+msgstr "Ny mappe"
+
+#: admin/classes/uipress-app.php:820
+msgid "Folder Name"
+msgstr "Mappenavn"
+
+#: admin/classes/uipress-app.php:821
+#, fuzzy
+#| msgid "Colour Tag"
+msgid "Colour"
+msgstr "Farge Tag"
+
+#: admin/classes/uipress-app.php:825
+msgid "1 File"
+msgstr ""
+
+#: admin/classes/uipress-app.php:826
+msgid "You havn't created a folder yet"
+msgstr ""
+
+#: admin/classes/uipress-app.php:827
+#, fuzzy
+#| msgid "Items Moved to folder"
+msgid "Remove from folder"
+msgstr "Elementer flyttet til mappen"
+
+#: admin/classes/uipress-app.php:828
+msgid ""
+"Upgrade to pro to unlock the notification center. View, edit and organise "
+"all your plugin and theme notifications in one place"
+msgstr ""
+
+#: admin/classes/uipress-app.php:829
+msgid ""
+"Upgrade to pro to gain full control of search results and included post types"
+msgstr ""
+
+#: admin/classes/uipress-app.php:832
+#, fuzzy
+#| msgid "Settings Imported"
+msgid "Styles Imported"
+msgstr "Innstillinger Importert"
+
+#: admin/classes/uipress-app.php:833
+msgid "Settings Imported"
+msgstr "Innstillinger Importert"
+
+#: admin/classes/uipress-app.php:834
+#, fuzzy
+#| msgid "Licence"
+msgid "Remove Licence"
+msgstr "Lisens"
+
+#: admin/classes/uipress-app.php:835
+msgid "UiPress Pro is active"
+msgstr ""
+
+#: admin/classes/uipress-app.php:836
+msgid "Activate"
+msgstr "Aktiver"
+
+#: admin/classes/uipress-app.php:837
+msgid "Add a pro licence to unlock pro features."
+msgstr ""
+
+#: admin/classes/uipress-app.php:838
+msgid "Choose Icon"
+msgstr "Veg Ikon"
+
+#: admin/classes/uipress-app.php:839
+#, fuzzy
+#| msgid ""
+#| "Are you sure you want to reset your menu back to default? There is no undo"
+msgid "Are you sure you want to delete this?"
+msgstr ""
+"Er du sikker på at du vil resette menyen tilbake til opprinnelig? Det er "
+"ikke mulig å gå tilbake på valget"
+
+#: admin/classes/uipress-app.php:840
+#, fuzzy
+#| msgid "Import Menu"
+msgid "Import started"
+msgstr "Importer-meny"
+
+#: admin/classes/uipress-app.php:841
+#, fuzzy
+#| msgid ""
+#| "Are you sure you want to reset your menu back to default? There is no undo"
+msgid "Are you sure you want to reset the settings?"
+msgstr ""
+"Er du sikker på at du vil resette menyen tilbake til opprinnelig? Det er "
+"ikke mulig å gå tilbake på valget"
+
+#: admin/classes/uipress-app.php:1322
+#, fuzzy
+#| msgid "Post Types"
+msgid "Unkown Post Type"
+msgstr "Innleggstyper"
+
+#: admin/classes/uipress-app.php:1325
+msgid "Unkown"
+msgstr ""
+
+#: admin/classes/uipress-app.php:1456
+msgid "Core"
+msgstr ""
+
+#: admin/classes/uipress-app.php:1462
+msgid "Themes"
+msgstr "Temaer"
+
+#: admin/classes/uipress-app.php:1468
+msgid "Plugins"
+msgstr "Utvidelser"
+
+#: admin/classes/uipress-app.php:1905
+msgid "General options"
+msgstr ""
+
+#: admin/classes/uipress-app.php:1910
+msgid "Network Override"
+msgstr ""
+
+#: admin/classes/uipress-app.php:1911
+msgid "If enabled, all settings applied here will be pushed to subsites."
+msgstr ""
+
+#: admin/classes/uipress-app.php:1920
+msgid "Set Dark Mode as Default"
+msgstr "Sett Nattmodus som standard"
+
+#: admin/classes/uipress-app.php:1921
+msgid ""
+"If enabled, dark mode will default to true for users that haven't set a "
+"preference."
+msgstr ""
+"Hvis aktivert, vil nattmodus være standard for brukere som ikke har angitt "
+"en preferanse."
+
+#: admin/classes/uipress-app.php:1929
+msgid "Set overview page as homepage"
+msgstr ""
+
+#: admin/classes/uipress-app.php:1930
+msgid ""
+"If enabled, the overview page will be the homepage when logging in and when "
+"accessing the admin area."
+msgstr ""
+
+#: admin/classes/uipress-app.php:1938
+msgid "Set custom page as homepage"
+msgstr ""
+
+#: admin/classes/uipress-app.php:1940
+msgid ""
+"If enabled, the page you choose will be the homepage when logging in and "
+"when accessing the admin area. For admin pages use a relative URL (path "
+"after /wp-admin/), for other pages use an absolute URL"
+msgstr ""
+
+#: admin/classes/uipress-app.php:1950
+msgid "Hide Footer"
+msgstr ""
+
+#: admin/classes/uipress-app.php:1951
+msgid "Hide the footer text that shows at the bottom of every admin page"
+msgstr ""
+
+#: admin/classes/uipress-app.php:1959
+#, fuzzy
+#| msgid "Alt Text"
+msgid "Footer Text"
+msgstr "Alt Tekst"
+
+#: admin/classes/uipress-app.php:1960
+msgid "Text entered here will be present at the bottom of admin pages"
+msgstr ""
+
+#: admin/classes/uipress-app.php:1976 admin/classes/uipress-app.php:1981
+msgid "Creates new admin menu."
+msgstr "Oppretter en ny admin meny"
+
+#: admin/classes/uipress-app.php:1980
+#, fuzzy
+#| msgid "Disables admin menu search"
+msgid "Disable Admin Menu Module"
+msgstr "Deaktiver søk i admin-menyen"
+
+#: admin/classes/uipress-app.php:1988
+msgid "Menu Disabled for"
+msgstr "Meny Deaktivert for"
+
+#: admin/classes/uipress-app.php:1989
+#, fuzzy
+#| msgid "Admin 2020 menu will be disabled for any users or roles you select"
+msgid "UiPress menu will be disabled for any users or roles you select"
+msgstr ""
+"Admin 2020 menyen vil bli deaktivert for de brukerene eller rollene du velger"
+
+#: admin/classes/uipress-app.php:1997
+msgid "Logo Light Mode"
+msgstr ""
+
+#: admin/classes/uipress-app.php:1998
+#, fuzzy
+#| msgid "Sets a background colour for the admin bar."
+msgid "Sets the logo for the admin bar in light mode."
+msgstr "Setter en bakgrunnsfarge for admin bar"
+
+#: admin/classes/uipress-app.php:2005
+#, fuzzy
+#| msgid "Dark Mode"
+msgid "Logo Dark Mode"
+msgstr "Nattmodus"
+
+#: admin/classes/uipress-app.php:2006
+#, fuzzy
+#| msgid "Sets a background colour for the admin bar."
+msgid "Optional dark mode logo for admin bar."
+msgstr "Setter en bakgrunnsfarge for admin bar"
+
+#: admin/classes/uipress-app.php:2013
+msgid "Collapsed Menu Logo Light Mode"
+msgstr ""
+
+#: admin/classes/uipress-app.php:2014
+msgid "Optional logo for when the menu is collapsed."
+msgstr ""
+
+#: admin/classes/uipress-app.php:2021
+msgid "Collapsed Menu Logo Dark Mode"
+msgstr ""
+
+#: admin/classes/uipress-app.php:2022
+msgid "Optional dark nmode logo for when the menu is collapsed."
+msgstr ""
+
+#: admin/classes/uipress-app.php:2029
+msgid "Show site title in menu"
+msgstr ""
+
+#: admin/classes/uipress-app.php:2030
+msgid ""
+"If enabled, the site title will be displayed in the menu next to the logo"
+msgstr ""
+
+#: admin/classes/uipress-app.php:2037 admin/classes/uipress-app.php:2091
+msgid "Disable Search"
+msgstr "Deaktiver Søk"
+
+#: admin/classes/uipress-app.php:2038
+#, fuzzy
+#| msgid "Disables admin menu search"
+msgid "Disables admin menu search."
+msgstr "Deaktiver søk i admin-menyen"
+
+#: admin/classes/uipress-app.php:2045
+msgid "Set collapsed menu as default"
+msgstr "Sett skjult meny som standard"
+
+#: admin/classes/uipress-app.php:2046
+#, fuzzy
+#| msgid ""
+#| "If enabled, the menu will default to the shrunk menu for users that "
+#| "haven't set a preference."
+msgid ""
+"If enabled, the menu will default to the shrunk menu for users that haven't "
+"set a preference.."
+msgstr ""
+"Hvis aktivert, vil menyen som standard være den krympede menyen for brukere "
+"som ikke har angitt en preferanse."
+
+#: admin/classes/uipress-app.php:2062
+#, fuzzy
+#| msgid "Creates new admin menu."
+msgid "Creates new admin toolbar."
+msgstr "Oppretter en ny admin meny"
+
+#: admin/classes/uipress-app.php:2066
+msgid "Disable ToolBar Module?"
+msgstr ""
+
+#: admin/classes/uipress-app.php:2067
+#, fuzzy
+#| msgid ""
+#| "Creates new admin bar, adds user off canvas menu and builds global search"
+msgid ""
+"Creates new admin bar, adds user off canvas menu, builds global search and "
+"notification center."
+msgstr ""
+"Lager en ny admin bar, legger til sidemeny for bruker, og bygger globalt "
+"søkeverktøy"
+
+#: admin/classes/uipress-app.php:2074
+#, fuzzy
+#| msgid "Admin Bar Disabled for"
+msgid "Admin Bar Disabled For"
+msgstr "Admin Bar deaktivert for"
+
+#: admin/classes/uipress-app.php:2075
+#, fuzzy
+#| msgid ""
+#| "Admin 2020 admin bar will be disabled for any users or roles you select"
+msgid ""
+"UiPress admin bar module will be disabled for any users or roles you select"
+msgstr ""
+"Admin 2020 admin bar vil bli deaktivert for de brukerne og rollene du velger"
+
+#: admin/classes/uipress-app.php:2083
+#, fuzzy
+#| msgid "Hide admin bar on front end"
+msgid "Hide admin bar links (left side)"
+msgstr "Skjul admin bar på frontenden"
+
+#: admin/classes/uipress-app.php:2084
+msgid ""
+"Disables legacy links on left side of admin bar for all users. Also hides "
+"the user preference."
+msgstr ""
+
+#: admin/classes/uipress-app.php:2092
+#, fuzzy
+#| msgid "Disables search icon and global search function from admin bar"
+msgid "Disables search icon and global search function from admin bar."
+msgstr "Deaktiverer søkeikon og global søkefunksjon fra admin bar"
+
+#: admin/classes/uipress-app.php:2099
+msgid "Disable Create Button"
+msgstr "Deaktiver Legg Til knapp"
+
+#: admin/classes/uipress-app.php:2100
+#, fuzzy
+#| msgid "Disables the 'new' button in the admin bar"
+msgid "Disables the 'create' button in the admin bar."
+msgstr "Deaktiverer 'Legg Til' knappen på admin bar"
+
+#: admin/classes/uipress-app.php:2107
+msgid "Disable View Website Button"
+msgstr "Deaktiver Vis Nettside Knappen"
+
+#: admin/classes/uipress-app.php:2108
+#, fuzzy
+#| msgid "Disables the view website link button in the admin bar"
+msgid "Disables the view website link button in the admin bar."
+msgstr "Deaktiverer vis nettside link knappen på admin bar"
+
+#: admin/classes/uipress-app.php:2115
+#, fuzzy
+#| msgid "Hide admin bar on front end"
+msgid "Load UIPress admin bar on front end"
+msgstr "Skjul admin bar på frontenden"
+
+#: admin/classes/uipress-app.php:2116
+#, fuzzy
+#| msgid ""
+#| "If enabled, admin 2020 admin bar will be load on the front end. Please "
+#| "note, this will not work on all themes and styling will vary."
+msgid ""
+"If enabled, UiPress admin bar will load on the front end. Please note, this "
+"will not work on all themes and styling will vary"
+msgstr ""
+"Hvis aktivert, vil admin 2020 admin bar lastes på frontend. Vær oppmerksom "
+"på at dette ikke fungerer på alle temaer, og styling vil variere."
+
+#: admin/classes/uipress-app.php:2124
+msgid "Hide admin bar on front end"
+msgstr "Skjul admin bar på frontenden"
+
+#: admin/classes/uipress-app.php:2125
+msgid "If enabled, front end admin bar will not load."
+msgstr "Hvis aktivert, lastes ikke frontend admin bar inn."
+
+#: admin/classes/uipress-app.php:2133
+#, fuzzy
+#| msgid "Disables admin menu search"
+msgid "Disable Notification Center"
+msgstr "Deaktiver søk i admin-menyen"
+
+#: admin/classes/uipress-app.php:2134
+msgid "If disabled, notifcations will show in the normal way"
+msgstr ""
+
+#: admin/classes/uipress-app.php:2142
+msgid "Post Types available in Search"
+msgstr "Innleggstyper tilgjengelig i Søk"
+
+#: admin/classes/uipress-app.php:2143
+msgid "The global search will only search the selected post types."
+msgstr "Det globale søket vil bare søke i de valgte posttypene."
+
+#: admin/classes/uipress-app.php:2151
+msgid "Post Types available in create button (new)"
+msgstr "Innleggstyper tilgjengelig i Opprett-knapp (ny)"
+
+#: admin/classes/uipress-app.php:2152
+msgid "Only the selected post types will show up in the create dropdown."
+msgstr "Bare de valgte posttypene vises i rullegardinmenyen Opprett."
+
+#: admin/classes/uipress-app.php:2160
+msgid "Only show notifcations to"
+msgstr ""
+
+#: admin/classes/uipress-app.php:2161
+msgid ""
+"UiPress will hide all notifications from all users except those selected "
+"below"
+msgstr ""
+
+#: admin/classes/uipress-app.php:2169
+msgid "Only show updates to"
+msgstr ""
+
+#: admin/classes/uipress-app.php:2170
+msgid ""
+"UiPress will hide all updates from all users except those selected below"
+msgstr ""
+
+#: admin/classes/uipress-app.php:2186
+msgid "Theme"
+msgstr "Tema"
+
+#: admin/classes/uipress-app.php:2187 admin/classes/uipress-app.php:2217
+#: admin/classes/uipress-app.php:2264
+msgid "Styles page content."
+msgstr ""
+
+#: admin/classes/uipress-app.php:2191
+#, fuzzy
+#| msgid "Disables admin menu search"
+msgid "Disable Admin Theme Module"
+msgstr "Deaktiver søk i admin-menyen"
+
+#: admin/classes/uipress-app.php:2192
+msgid "When the theme is disabled, pages will be styles in the original way."
+msgstr ""
+
+#: admin/classes/uipress-app.php:2199
+msgid "Theme Disabled for"
+msgstr "Tema Deaktivert for"
+
+#: admin/classes/uipress-app.php:2200
+msgid ""
+"When the theme is disabled, pages will be styles in the original way for "
+"selected users or roles."
+msgstr ""
+
+#: admin/classes/uipress-app.php:2221
+#, fuzzy
+#| msgid "Menu Disabled for"
+msgid "Login Module Disabled for"
+msgstr "Meny Deaktivert for"
+
+#: admin/classes/uipress-app.php:2222
+msgid ""
+"When the login module is disabled, the login page will be displayed in the "
+"original way for selected users or roles."
+msgstr ""
+
+#: admin/classes/uipress-app.php:2230
+msgid "Dark Mode"
+msgstr "Nattmodus"
+
+#: admin/classes/uipress-app.php:2231
+msgid "Puts the login page in dark mode for all users."
+msgstr ""
+
+#: admin/classes/uipress-app.php:2238
+#, fuzzy
+#| msgid "Admin Logo"
+msgid "Login Logo"
+msgstr "Admin Logo"
+
+#: admin/classes/uipress-app.php:2239
+#, fuzzy
+#| msgid "Sets an optional background image for the login page."
+msgid "Sets the logo for the login page"
+msgstr "Angir et valgfritt bakgrunnsbilde for påloggingssiden."
+
+#: admin/classes/uipress-app.php:2246
+#, fuzzy
+#| msgid "Login background url"
+msgid "Login Background"
+msgstr "URL for påloggingsbakgrunn"
+
+#: admin/classes/uipress-app.php:2247
+#, fuzzy
+#| msgid "Sets an optional background image for the login page."
+msgid "Sets an optional background image on the login page."
+msgstr "Angir et valgfritt bakgrunnsbilde for påloggingssiden."
+
+#: admin/classes/uipress-app.php:2263
+msgid "Advanced"
+msgstr "Avansert"
+
+#: admin/classes/uipress-app.php:2268
+msgid "Enqueue scripts"
+msgstr ""
+
+#: admin/classes/uipress-app.php:2269
+msgid "Add scripts to the <head> of every admin page and login page"
+msgstr ""
+
+#: admin/classes/uipress-app.php:2277
+msgid "Enqueue styles"
+msgstr ""
+
+#: admin/classes/uipress-app.php:2278
+msgid "Add stylesheets to the <head> of every admin page and login page"
+msgstr ""
+
+#: admin/classes/uipress-app.php:2286
+#, fuzzy
+#| msgid "Admin Bar"
+msgid "Admin CSS"
+msgstr "Admin Bar"
+
+#: admin/classes/uipress-app.php:2287
+#, fuzzy
+#| msgid "CSS added here will be loaded on every admin page."
+msgid ""
+"CSS added here will be loaded on every admin page as well as the login page"
+msgstr "CSS lagt til her vil bli lastet på hver admin-side."
+
+#: admin/classes/uipress-app.php:2296
+#, fuzzy
+#| msgid "Admin Bar"
+msgid "Admin JavaScript"
+msgstr "Admin Bar"
+
+#: admin/classes/uipress-app.php:2297
+#, fuzzy
+#| msgid "JS added here will be loaded on every admin page."
+msgid ""
+"JavaScript added here will be loaded on every admin page as well as the "
+"login page"
+msgstr "JS lagt til her vil bli lastet på hver admin-side."
+
+#: admin/classes/uipress-app.php:2306
+msgid "HTML for <head>"
+msgstr ""
+
+#: admin/classes/uipress-app.php:2307
+msgid ""
+"Add HTML here to be added to every admin page and login page <head> section"
+msgstr ""
+
+#: admin/classes/update.php:76
+#, fuzzy
+#| msgid "WordPress version"
+msgid "Welcome to UiPress version "
+msgstr "WordPress-versjon"
+
+#: admin/classes/update.php:79
+msgid ""
+"Would you like to automatically import settings from your older version of "
+"uipress?"
+msgstr ""
+
+#: admin/classes/update.php:81
+msgid "Don't show again"
+msgstr ""
+
+#: admin/classes/update.php:82
+#, fuzzy
+#| msgid "Import Menu"
+msgid "Import settings"
+msgstr "Importer-meny"
+
+#: admin/classes/update.php:94
+msgid "Check for updates"
+msgstr "Sjekk for oppdateringer"
+
+#: admin/classes/update.php:120
+#, fuzzy
+#| msgid "Unable to connect account"
+msgid "Unable to contact update server"
+msgstr "Ute av stand til å koble til konto"
+
+#: admin/classes/update.php:135
+msgid "Update available"
+msgstr "Oppdatering tilgjengelig"
+
+#: admin/classes/update.php:141
+msgid "No Updates available"
+msgstr "Ingen oppdateringer tilgjengelig"
+
+#: admin/classes/update.php:159
+msgid "Message dismissed"
+msgstr ""
+
+#: admin/classes/update.php:183
+#, fuzzy
+#| msgid "Settings Imported"
+msgid "No settings to import"
+msgstr "Innstillinger Importert"
+
+#: admin/classes/update.php:291
+#, fuzzy
+#| msgid "Settings Imported"
+msgid "Settings imported"
+msgstr "Innstillinger Importert"
+
+#~ msgid "Admin 2020 is not activated"
+#~ msgstr "Admin 2020 er ikke aktivert"
+
+#~ msgid "Please add a valid licence to activate"
+#~ msgstr "Vennligst legg til en gyldig lisensnøkkel for å aktivere"
+
+#~ msgid "Enter your licence key"
+#~ msgstr "Skriv inn din lisensnøkkel"
+
+#~ msgid "Supercharge your admin with Admin 2020 Pro"
+#~ msgstr "Oppfrisk admin-panelet med Admin 2020 Pro"
+
+#~ msgid ""
+#~ "Unlock powerful features and speed up your workflow with Admin 2020 Pro"
+#~ msgstr ""
+#~ "Lås opp kraftfulle funksjoner og få fart på arbeidet med Admin 2020 Pro"
+
+#~ msgid "Upgrade"
+#~ msgstr "Oppdater"
+
+#~ msgid "Dimiss"
+#~ msgstr "Avvis"
+
+#~ msgid "Upgrade to Pro"
+#~ msgstr "Oppgrader til Pro"
+
+#~ msgid "No options supplied to save"
+#~ msgstr "Ingen endringer å lagre"
+
+#~ msgid "Settings saved. You may need to refresh for changes to take effect."
+#~ msgstr ""
+#~ "Innstillinger lagret. Du må kanskje oppdatere for at endringene skal bli "
+#~ "synlige"
+
+#~ msgid "No video supplied to save"
+#~ msgstr "Ingen videoer satt for å lagres"
+
+#~ msgid "Video name must be unique"
+#~ msgstr "Navnet på videoen må være unikt"
+
+#~ msgid "Video saved"
+#~ msgstr "Video lagret"
+
+#~ msgid "Exports Admin 2020 settings to JSON file"
+#~ msgstr "Eksporter Admin 2020 Innstillinger til en JSON fil"
+
+#~ msgid "Imports Admin 2020 settings to from JSON"
+#~ msgstr "Importer Admin 2020 innstillinger fra JSON"
+
+#~ msgid "Modules"
+#~ msgstr "Moduler"
+
+#~ msgid ""
+#~ "Admin 2020 licence is active. To remove licence or change licence click "
+#~ "remove."
+#~ msgstr ""
+#~ "Admin 2020 lisens er aktivert. For å fjerne lisensen eller endre lisens "
+#~ "klikk slett"
+
+#~ msgid "Override Subsite Settings?"
+#~ msgstr "Overstyr subside innstillinger"
+
+#~ msgid ""
+#~ "If this is enabled then all the settings here will be applied to your "
+#~ "subsites and they will not be able to be changed from a subsite."
+#~ msgstr ""
+#~ "Dersom denne er aktivert vil alle innstiller her være lagt til for dine "
+#~ "subsider og de vil ikke være mulig å endre fra subsidene"
+
+#~ msgid ""
+#~ "Sets the logo for the admin bar and also the logo for the login page if "
+#~ "login styles is enabled. If no logo is set for dark mode then then the "
+#~ "light logo will be used."
+#~ msgstr ""
+#~ "Setter logoen for admin bar og logoen for innlogginssiden, dersom "
+#~ "innlogginss-stiler er aktivert. Dersom ikke noen logo er satt for "
+#~ "nattmodus, vil dagmodus logo bli brukt."
+
+#~ msgid "Light"
+#~ msgstr "Dagmodus"
+
+#~ msgid "Light Logo Url"
+#~ msgstr "Dagmodus Logo URL"
+
+#~ msgid "Select Light Logo"
+#~ msgstr "Velg Dagmodus Logo"
+
+#~ msgid "Dark"
+#~ msgstr "Nattmodus"
+
+#~ msgid "Dark Logo Url"
+#~ msgstr "Nattmodus Logo URL"
+
+#~ msgid "Select Dark Logo"
+#~ msgstr "Velg Nattmodus Logo"
+
+#~ msgid "Super Admin"
+#~ msgstr "Super Admin"
+
+#~ msgid "Load admin 2020 bar on front end"
+#~ msgstr "Last admin 2020 bar på frontenden"
+
+#~ msgid "items found for"
+#~ msgstr "gjenstander funnet for"
+
+#~ msgid "User"
+#~ msgstr "Bruker"
+
+#~ msgid "Start searching to see results"
+#~ msgstr "Begynn å søke for å se resultater"
+
+#~ msgid "View Profile"
+#~ msgstr "Vis Profil"
+
+#~ msgid "Hide WP links"
+#~ msgstr "Gjem WP lenker"
+
+#~ msgid "Everything is up to date"
+#~ msgstr "Alt er oppdatert"
+
+#~ msgid "WordPress"
+#~ msgstr "WordPress"
+
+#~ msgid "View website"
+#~ msgstr "Vis nettside"
+
+#~ msgid "new"
+#~ msgstr "ny"
+
+#~ msgid "Styles the admin login page."
+#~ msgstr "Endrer utseende på admin innlogginssiden"
+
+#~ msgid "Login style will match dark theme if enabled"
+#~ msgstr "Påloggingsstil vil matche nattmodus hvis aktivert"
+
+#~ msgid ""
+#~ "If enabled, after logging in users will be redirected to the overview page"
+#~ msgstr ""
+#~ "Hvis aktivert, vil brukere etter pålogging bli omdirigert til "
+#~ "oversiktssiden"
+
+#~ msgid "Sets a background colour for the admin menu."
+#~ msgstr "Angir en bakgrunnsfarge for admin-menyen."
+
+#~ msgid ""
+#~ "Creates the main theme for admin 2020. Disables default WordPress theme "
+#~ "and applies admin 2020."
+#~ msgstr ""
+#~ "Oppretter hovedtemaet for admin 2020. Deaktiverer standard WordPress-tema "
+#~ "og bruker admin 2020."
+
+#~ msgid "Admin 2020 theme will be disabled for any users or roles you select"
+#~ msgstr ""
+#~ "Admin 2020 Temaet vil bli deaktivert for de brukerene eller rollene du "
+#~ "velger"
+
+#~ msgid "Sets a background colour for admin pages."
+#~ msgstr "Angir en bakgrunnsfarge for admin-sider."
+
+#~ msgid "Sets the primary color throughout Admin 2020."
+#~ msgstr "Angir hovedfargen i hele Admin 2020."
+
+#~ msgid "Sets padding (in px) for cards, metaboxes and other items in the UI."
+#~ msgstr ""
+#~ "Angir padding (i px) for kort, metabokser og andre gjenstander i "
+#~ "brukergrensesnittet."
+
+#~ msgid "Creates options for adding customm CSS and JS."
+#~ msgstr "Oppretter alternativer for å legge til customm CSS og JS."
+
+#~ msgid "Advanced Disabled for"
+#~ msgstr "Avansert Deaktivert for"
+
+#~ msgid "Custom CSS and JS will not load for the selected roles and users."
+#~ msgstr ""
+#~ "Tilpasset CSS og JS lastes ikke inn for de valgte rollene og brukerne."
+
+#~ msgid "Custom CSS"
+#~ msgstr "Tilpasset CSS"
+
+#~ msgid "Analytics account"
+#~ msgstr "Analyse konto"
+
+#~ msgid ""
+#~ "Select the google analytics account you wish to use for displaying data "
+#~ "on the overview page"
+#~ msgstr ""
+#~ "Velg Google Analytics-kontoen du vil bruke til å vise data på "
+#~ "oversiktssiden"
+
+#~ msgid "Total Page Views"
+#~ msgstr "Totalt Side Visninger"
+
+#~ msgid "Total Site Users"
+#~ msgstr "Totalt Side Brukere"
+
+#~ msgid "Connect analytics account to view site statistics"
+#~ msgstr "Koble til analyse konto for å vise side statistikk"
+
+#~ msgid "Avg page speed"
+#~ msgstr "Avg side hastighet"
+
+#~ msgid ""
+#~ "Creates the content page where you can manage all of your assets, posts "
+#~ "and pages from one place."
+#~ msgstr ""
+#~ "Oppretter innholdssiden der du kan administrere alle eiendelene, "
+#~ "innleggene og sidene dine fra ett sted."
+
+#~ msgid "Admin 2020 content page disabled for"
+#~ msgstr "Admin 2020 innholdsside deaktivert for"
+
+#~ msgid ""
+#~ "Admin 2020 Content Page will be disabled for any users or roles you select"
+#~ msgstr ""
+#~ "Admin 2020 Innholdsside vil bli deaktivert for de brukerene eller rollene "
+#~ "du velger"
+
+#~ msgid ""
+#~ "Batch rename only currently works with media files and attachments, any "
+#~ "selected posts will be ignored."
+#~ msgstr ""
+#~ "Batchnavn fungerer for øyeblikket bare med mediefiler og vedlegg. Valgte "
+#~ "innlegg blir ignorert."
+
+#~ msgid "Alt Tag"
+#~ msgstr "Alt Tag"
+
+#~ msgid "Original Alt"
+#~ msgstr "Original Alt"
+
+#~ msgid "File Extension"
+#~ msgstr "Filutvidelse"
+
+#~ msgid "Deselect All"
+#~ msgstr "Opphev alle"
+
+#~ msgid "All"
+#~ msgstr "Alle\n"
+
+#~ msgid "Toggle List View"
+#~ msgstr "Bytt listevisning"
+
+#~ msgid "Month"
+#~ msgstr "Måned"
+
+#~ msgid "Year"
+#~ msgstr "År"
+
+#~ msgid "Users"
+#~ msgstr "Brukere"
+
+#~ msgid "Thumnbnail size"
+#~ msgstr "Thumnbnail størrelse"
+
+#~ msgid "By"
+#~ msgstr "Av"
+
+#~ msgid "Featured Image"
+#~ msgstr "Utvalgt bilde"
+
+#~ msgid "Meta"
+#~ msgstr "Meta"
+
+#~ msgid "Link copied to clipboard"
+#~ msgstr "Link kopiert til utklippstavlen"
+
+#~ msgid "Uploaded"
+#~ msgstr "Lastet opp"
+
+#~ msgid "Size"
+#~ msgstr "Størrelse"
+
+#~ msgid "Dimensions"
+#~ msgstr "Dimensjoner"
+
+#~ msgid "Attachment Saved"
+#~ msgstr "Vedlegg lagret"
+
+#~ msgid "insufficient privileges to delete item"
+#~ msgstr "utilstrekkelige privilegier for å slette elementet"
+
+#~ msgid "Current Filename"
+#~ msgstr "Nåværende filnavn"
+
+#~ msgid "Format"
+#~ msgstr "Format"
+
+#~ msgid "Extension"
+#~ msgstr "Utvidelser"
+
+#~ msgid "Current Extension"
+#~ msgstr "Nåværende utvidelse"
+
+#~ msgid "Sequence start num"
+#~ msgstr "Sekvensstart num"
+
+#~ msgid "No attachments selected"
+#~ msgstr "Ingen vedlegg valgt"
+
+#~ msgid "Attachments successfully renamed"
+#~ msgstr "Vedlegget er vellykket endret navn på"
+
+#~ msgid "Files succesfully uploaded"
+#~ msgstr "Filene er lastet opp"
+
+#~ msgid "File saved as copy"
+#~ msgstr "Filen er lagret som kopi"
+
+#~ msgid ""
+#~ "Creates the folder system for the content page and media page / modals."
+#~ msgstr "Oppretter mappesystemet for innholdssiden og mediesiden / modalene."
+
+#~ msgid "Uncategorised"
+#~ msgstr "Ukategorisert"
+
+#~ msgid "Double click to edit"
+#~ msgstr "Dobbeltklikk for å redigere"
+
+#~ msgid "Folder succesfully renamed"
+#~ msgstr "Mappen ble omdøpt"
+
+#~ msgid "Folder succesfully deleted"
+#~ msgstr "Mappen ble slettet"
+
+#~ msgid "Folder is already there"
+#~ msgstr "Mappen er allerede der"
+
+#~ msgid "No source or destination provided"
+#~ msgstr "Ingen kilde eller destinasjon oppgitt"
+
+#~ msgid ""
+#~ "Creates the menu editor and allows for rearanging, renaming and removal "
+#~ "of menu items."
+#~ msgstr ""
+#~ "Oppretter meny redigering og tillater omorganisering, omdøping og "
+#~ "fjerning av menyelementer."
+
+#~ msgid "Menu Editor Disabled for"
+#~ msgstr "Meny Redigering deaktivert for"
+
+#~ msgid ""
+#~ "Admin 2020 menu editor will be disabled for any users or roles you select"
+#~ msgstr ""
+#~ "Admin 2020 meny redigeringsverktøyet vil bli deaktivert for de brukerene "
+#~ "eller rollene du velger"
+
+#~ msgid "Menu Editor (Admin 2020)"
+#~ msgstr "Meny Redigering (Admin 2020)"
+
+#~ msgid ""
+#~ "Edit each menu item's name, link, icon and visibility. Drag and drop to "
+#~ "rearange the menu. Changes will take effect after page refresh."
+#~ msgstr ""
+#~ "Rediger hvert menyelements navn, lenke, ikon og synlighet. Dra og slipp "
+#~ "for å omorganisere menyen. Endringene trer i kraft etter oppdatering av "
+#~ "siden."
+
+#~ msgid ""
+#~ "If you have admin 2020 menu component disabled, icons and label dividers "
+#~ "won't change."
+#~ msgstr ""
+#~ "Hvis du har admin 2020-menykomponent deaktivert, vil ikoner og "
+#~ "etikettdelere ikke endres."
+
+#~ msgid "Imports Admin 2020 menu from JSON"
+#~ msgstr "Importerer Admin 2020-menyen fra JSON"
+
+#~ msgid "Rename as"
+#~ msgstr "Gi nytt navn til"
+
+#~ msgid "New name..."
+#~ msgstr "Nytt navn ..."
+
+#~ msgid "Hidden For Roles"
+#~ msgstr "Skjult for roller"
+
+#~ msgid "Sub Menu"
+#~ msgstr "Undermeny"
+
+#~ msgid "Change Link"
+#~ msgstr "Endre lenke"
+
+#~ msgid "New Link..."
+#~ msgstr "Ny lenke ..."
+
+#~ msgid "No sub menu items"
+#~ msgstr "Ingen undermenyelementer"
+
+#~ msgid "Select"
+#~ msgstr "Velg"
+
+#~ msgid "Total Posts"
+#~ msgstr "Totalt antall innlegg"
+
+#~ msgid "Total Pages"
+#~ msgstr "Totalt antall sider"
+
+#~ msgid "Total Comments"
+#~ msgstr "Totalt antall kommentarer"
+
+#~ msgid "In the last "
+#~ msgstr "I den siste "
+
+#~ msgid "on"
+#~ msgstr "på"
+
+#~ msgid "by"
+#~ msgstr "av"
+
+#~ msgid ""
+#~ "Creates the overview page. If this is disabled, you will not be able to "
+#~ "see analytics cards or woocommerce cards."
+#~ msgstr ""
+#~ "Oppretter oversiktssiden. Hvis dette er deaktivert, vil du ikke kunne se "
+#~ "analysekort eller woocommerce-kort."
+
+#~ msgid "Add videos to the overview page"
+#~ msgstr "Legg til videor på oversikt siden"
+
+#~ msgid ""
+#~ "Here you can add video links that will then load up as video cards on the "
+#~ "overviewpage. Choosing a category name will also give it a custom "
+#~ "category on the overview page. "
+#~ msgstr ""
+#~ "Her kan du legge til videolinker som deretter lastes opp som skjermkort "
+#~ "på oversiktssiden. Hvis du velger et kategorinavn, vil det også gi den en "
+#~ "egendefinert kategori på oversiktssiden. "
+
+#~ msgid "Url"
+#~ msgstr "Url"
+
+#~ msgid "Category"
+#~ msgstr "Kategori"
+
+#~ msgid "Youtube embed"
+#~ msgstr "Youtube Embed"
+
+#~ msgid "Vimeo embed"
+#~ msgstr "Vime Embed"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "Make Primary"
+#~ msgstr "Gjør til Hoved"
+
+#~ msgid "Make Default"
+#~ msgstr "Lag til Standard"
+
+#~ msgid "No Card supplied to save"
+#~ msgstr "Ingen Kort valgt for å lagre"
+
+#~ msgid "Card options saved"
+#~ msgstr "Kort alternativer lagret"
+
+#~ msgid "Unable to save card preferences"
+#~ msgstr "Ute av stand til å lagre kort preferansene"
+
+#~ msgid "No Card supplied to hide"
+#~ msgstr "Ingen kort valgt for å gjemme"
+
+#~ msgid "Admin Pages"
+#~ msgstr "Admin Sider"
+
+#~ msgid ""
+#~ "Creates the admin pages editor, allowing you to create new top level "
+#~ "admin pages and their content"
+#~ msgstr ""
+#~ "Oppretter Admin Side redigeringsverktøyet, tillater deg å lage ny topnivå "
+#~ "admin sider og deres innhold"
+
+#~ msgid ""
+#~ "Admin 2020 admin pages will be disabled for any users or roles you select"
+#~ msgstr ""
+#~ "Admin 2020 admin sider vil bli deaktivert for de brukerene eller rollene "
+#~ "du velger"
+
+#~ msgid "Creates the woocommerce cards for the overview page."
+#~ msgstr "Lager WooCommerce kortene for oversikt siden"
+
+#~ msgid "WooCommerce Cards"
+#~ msgstr "WooCommere Kort"
+
+#~ msgid "WooCommerce cards will be disabled for any users or roles you select"
+#~ msgstr ""
+#~ "Woocommerce kortene vil bli deaktivert for de brukerne eller rollene du "
+#~ "velger"
+
+#~ msgid "No sales data available for dates"
+#~ msgstr "Ingen salgsinformasjon tilgjengelig for datoene"
+
+#~ msgid "For given date period"
+#~ msgstr "For gitt dato periode"
+
+#~ msgid "Order"
+#~ msgstr "Ordre"
+
+#~ msgid "View Order"
+#~ msgstr "Vis oredrer"
+
+#~ msgid "View Customer"
+#~ msgstr "Vis Kunder"

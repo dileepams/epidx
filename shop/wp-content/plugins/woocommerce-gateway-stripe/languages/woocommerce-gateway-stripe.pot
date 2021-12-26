@@ -1,0 +1,183 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"X-Generator: babel-plugin-makepot\n"
+
+#: client/blocks/upe/payment-method.js:49
+msgid "Credit / Debit Card"
+msgstr ""
+
+#: client/blocks/upe/payment-method.js:65
+msgid "Stripe Credit Card payment method"
+msgstr ""
+
+#: client/components/payment-method-fees-pill/index.js:20
+#. %s: Transaction fee text.
+msgid "Base transaction fees: %s"
+msgstr ""
+
+#: client/components/payment-method-missing-currency-pill/index.js:27
+#. $1: a payment method name. %2: Currency(ies).
+msgid "%1$s won't be visible to your customers until you add %2$s to your store."
+msgid_plural ""
+"%1$s won't be visible to your customers until you add one of these "
+"currencies to your store: %2$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: client/components/payment-method-missing-currency-pill/index.js:38
+msgid "Requires currency"
+msgstr ""
+
+#: client/data/account/actions.js:33
+msgid "Error updating account data."
+msgstr ""
+
+#: client/settings/connect-stripe-account/index.js:104
+msgid "Create or connect an account"
+msgstr ""
+
+#: client/settings/connect-stripe-account/index.js:117
+msgid "Enter account keys (advanced)"
+msgstr ""
+
+#: client/settings/connect-stripe-account/index.js:121
+msgid "Enter account keys"
+msgstr ""
+
+#: client/settings/connect-stripe-account/index.js:69
+msgid "Get started with Stripe"
+msgstr ""
+
+#: client/settings/connect-stripe-account/index.js:75
+msgid ""
+"Connect or create a Stripe account to accept payments directly onsite, "
+"including Payment Request buttons (such as Apple Pay and Google Pay), "
+"iDeal, SEPA, Sofort, and more international payment methods."
+msgstr ""
+
+#: client/settings/connect-stripe-account/index.js:84
+msgid ""
+"By clicking \"Create or connect an account\", you agree to the "
+"{{tosLink}}Terms of service.{{/tosLink}}"
+msgstr ""
+
+#: client/settings/general-settings-section/index.js:47
+msgid "Updating payment methods information, please wait."
+msgstr ""
+
+#: client/settings/general-settings-section/remove-method-confirmation-modal.js:14
+#. %1: payment method name (e.g.: giropay, EPS, Sofort, etc).
+msgid ""
+"Are you sure you want to remove <strong>%1$s</strong>? Your customers will "
+"no longer be able to pay using <strong>%1$s</strong>."
+msgstr ""
+
+#: client/settings/general-settings-section/remove-method-confirmation-modal.js:27
+#. %s: payment method name (e.g.: giropay, EPS, Sofort, etc).
+msgid "Remove %s from checkout"
+msgstr ""
+
+#: client/settings/general-settings-section/remove-method-confirmation-modal.js:39
+msgid "Remove"
+msgstr ""
+
+#: client/settings/general-settings-section/remove-method-confirmation-modal.js:42
+msgid "Cancel"
+msgstr ""
+
+#: client/settings/general-settings-section/remove-method-confirmation-modal.js:53
+msgid "You can add it again at any time in Stripe settings."
+msgstr ""
+
+#: client/settings/general-settings-section/section-heading.js:50
+msgid "Payment methods"
+msgstr ""
+
+#: client/settings/general-settings-section/section-heading.js:53
+msgid "Early access"
+msgstr ""
+
+#: client/settings/general-settings-section/section-heading.js:63
+msgid "Payment methods menu"
+msgstr ""
+
+#: client/settings/general-settings-section/section-heading.js:69
+msgid "Refresh payment methods"
+msgstr ""
+
+#: client/settings/general-settings-section/section-heading.js:76
+msgid "Disable"
+msgstr ""
+
+#: client/settings/save-settings-section/index.js:23
+msgid "Save changes"
+msgstr ""
+
+#: client/stripe-utils/utils.js:106
+msgid "Invalid email address, please correct and try again."
+msgstr ""
+
+#: client/stripe-utils/utils.js:111
+msgid "Unable to process this payment, please try again or use alternative method."
+msgstr ""
+
+#: client/stripe-utils/utils.js:39
+msgid "The card number is not a valid credit card number."
+msgstr ""
+
+#: client/stripe-utils/utils.js:43
+msgid "The card expiration month is invalid."
+msgstr ""
+
+#: client/stripe-utils/utils.js:47
+msgid "The card expiration year is invalid."
+msgstr ""
+
+#: client/stripe-utils/utils.js:51
+msgid "The card security code is invalid."
+msgstr ""
+
+#: client/stripe-utils/utils.js:55
+msgid "The card number is incorrect."
+msgstr ""
+
+#: client/stripe-utils/utils.js:59
+msgid "The card number is incomplete."
+msgstr ""
+
+#: client/stripe-utils/utils.js:63
+msgid "The card security code is incomplete."
+msgstr ""
+
+#: client/stripe-utils/utils.js:67
+msgid "The card expiration date is incomplete."
+msgstr ""
+
+#: client/stripe-utils/utils.js:71
+msgid "The card has expired."
+msgstr ""
+
+#: client/stripe-utils/utils.js:75
+msgid "The card security code is incorrect."
+msgstr ""
+
+#: client/stripe-utils/utils.js:79
+msgid "The card zip code failed validation."
+msgstr ""
+
+#: client/stripe-utils/utils.js:83
+msgid "The card expiration year is in the past"
+msgstr ""
+
+#: client/stripe-utils/utils.js:87
+msgid "The card was declined."
+msgstr ""
+
+#: client/stripe-utils/utils.js:91
+msgid "There is no card on a customer that is being charged."
+msgstr ""
+
+#: client/stripe-utils/utils.js:95
+msgid "An error occurred while processing the card."
+msgstr ""

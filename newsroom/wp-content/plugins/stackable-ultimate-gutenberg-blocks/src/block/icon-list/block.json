@@ -1,0 +1,15 @@
+{
+	"name": "stackable/icon-list",
+	"title": "Icon List",
+	"description": "An unordered list with icons. You can use this as a list of features or benefits.",
+	"category": "common",
+	"usesContext": [ "postId", "postType", "queryId" ],
+	"keywords": [
+		"Checklist",
+		"Bullets",
+		"Number list"
+	],
+	"textdomain": "stackable-ultimate-gutenberg-blocks",
+	"stk-type": "essential",
+	"stk-demo": "https://wpstackable.com/icon-list-block/?utm_source=welcome&utm_medium=settings&utm_campaign=view_demo&utm_content=demolink"
+}

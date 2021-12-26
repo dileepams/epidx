@@ -1,0 +1,12 @@
+{
+	"name": "stackable/button-group",
+	"title": "Button Group",
+	"description": "Add a customizable button.",
+	"category": "layout",
+	"usesContext": [ "postId", "postType", "queryId" ],
+	"keywords": [
+		"Link"
+	],
+	"textdomain": "stackable-ultimate-gutenberg-blocks",
+	"stk-type": "hidden"
+}

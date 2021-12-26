@@ -3,9 +3,484 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>epid x | COVID 10 Tracker & Personal Assitant</title>
+
+    <meta name="theme-color" content="#0274BD">
+
+    <title>epid x | COVID 19 Tracker & Personal Assitant</title>
+
+    <link rel="icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/home.de.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css"> <!--Fontawesome-->
+    <link rel="manifest" href="manifest.json">
+
+    <!--Chart JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js" integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 <body>
+
+<span class="desktop-version"> <!--desktop version start-->
     
+    <!--left-->
+    <div class="left-box">
+        
+        <div class="nav-bar-logo">
+            <img src="img/logo-mini.png" alt="epid x logo">
+        </div>
+
+        <hr class="left-box-hr">
+
+        <div class="left-nav">
+            <h3> MENU </h3>
+
+            <ul>
+                <li> <a href="index.html"> <i class="fas fa-home"></i> &nbsp;	&nbsp;	Home </a> </li>
+                <li> <a href="statistics.html"> <i class="fas fa-chart-line"></i> &nbsp;	&nbsp;	Statistics </a> </li>
+                <li> <a href="http://localhost/epidx/shop/" target="_blank"> <i class="fas fa-shopping-cart"></i> &nbsp;	&nbsp;	Shop </a> </li>
+                <li> <a href="http://localhost/epidx/newsroom/"> <i class="fas fa-newspaper"></i> &nbsp;	&nbsp;	News Room </a> </li>
+                <li> <a href="information"> <i class="fas fa-file-alt"></i> &nbsp;	&nbsp;	Information </a> </li>
+                <li> <a href="contact"> <i class="fas fa-phone"></i> &nbsp;	&nbsp;	Contact </a> </li>
+            </ul>
+        </div>
+
+        <hr class="left-box-hr">
+
+        <div class="left-nav left-help">
+            <ul>
+                <li> <a href="#"> <i class="fas fa-question-circle"></i> &nbsp;	&nbsp;	Help </a> </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+    <!--mid-->
+    <div class="mid-box">
+
+        <h1 class="section-topic">Latest Statistics</h1>
+        <h3 class="section-topic-describe">Updated : <span id="lblLastUpdated"></span> </h3> <!--last updated from API-->
+
+        <!--summary cards-->
+        <div class="summary-box">
+            <div class="mid-summary-cards" style="margin-left: 0%;">
+                <h2 style="color: #f39c12;"> <i class="fas fa-ambulance"></i> </h1>
+                <p>New Cases</p>
+                <h1 style="color: #f39c12;"> <span id="lblNewCases"></span> </h1> <!--new cases from API-->
+            </div>
+
+            <div class="mid-summary-cards">
+                <h2 style="color: #e74c3c;"> <i class="fas fa-book-dead"></i> </h1>
+                <p>New Deaths</p>
+                <h1 style="color: #e74c3c;"> <span id="lblNewDeaths"></span> </h1> <!--new deaths from API-->
+            </div>
+
+            <div class="mid-summary-cards">
+                <h2 style="color: #0274BD;"> <i class="fas fa-procedures"></i> </h1>
+                <p>Active Cases</p>
+                <h1 style="color: #0274BD;"> <span id="lblActiveCases"></span> </h1> <!--active cases from API-->
+            </div>
+
+            <div class="mid-summary-cards">
+                <h2 style="color: #27ae60;"> <i class="fas fa-user-shield"></i> </h1>
+                <p>Total Recovered</p>
+                <h1 style="color: #27ae60;">  <span id="lblTotalRecovered"></span> </h1> <!--total recovered from API-->
+            </div>
+        </div>
+
+        <!--large two card-->
+        <div class="mid-large-card" style="margin-left: 0%;">
+            <table class="summary-table">
+                <tr>
+                    <td style="font-size: 18px; color: rgba(0, 0, 0, 0.9);"> Global Statistics Summary</td>
+                    
+                </tr>
+
+                <tr>
+                    <td> <i class="fas fa-globe-americas"></i> &nbsp;	&nbsp; Affected Countries </td>
+                    <td> 122 </td>
+                </tr>
+
+                <tr>
+                    <td> <i class="fas fa-globe-americas"></i> &nbsp;	&nbsp; Global New Cases </td>
+                    <td> <span id="lblGlobalNewCases"></span> </td> <!--Global New Cases from API-->
+                </tr>
+
+                <tr>
+                    <td> <i class="fas fa-globe-americas"></i> &nbsp;	&nbsp; Global New Death </td>
+                    <td> <span id="lblGlobalNewDeaths"></span> </td> <!--Global New Death from API-->
+                </tr>
+
+                <tr>
+                    <td> <i class="fas fa-globe-americas"></i> &nbsp;	&nbsp; Global Active Cases </td>
+                    <td> <span id="lblGlobalRecovered"></span> </td> <!--Global Active Cases from API-->
+                </tr>
+            </table>
+        </div>
+
+        <div class="mid-large-card mob-hide" style="margin-left: 2%; background-image: url(/img/Virus-bg.svg); background-size: cover;">
+            <p style="font-size: 24px; color: #fff;">What's up <br> during your quarantine?</p>
+            <p style="font-size: 16px; color: #fff; font-weight: 400; opacity: 0.7;">Spend your quarantine period <br> effectively</p> <br> <br> <br>
+            <a href="#" class="make-a-plan"> Make a plan </a> <br> <br>
+            <img src="img/stay-safe-image.svg" alt="stay at home"> <br>
+        </div>
+
+        <!--mid large card long-->
+
+        <div class="mid-large-card-long mob-hide" style="margin-left: 0%;">
+            <!--Understanding COVID-19-->
+            <hr style="opacity: 0.19;">
+            <p class="section-topic">Understanding COVID-19</p>
+            <p class="section-topic-describe">Help to make the world a better place</p> <br>
+            <table>
+                <tr>
+                    <td>
+                        <!--Understanding COVID-19 animated icon-->
+                        <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+                        <lord-icon
+                            src="https://cdn.lordicon.com/mypzgycw.json"
+                            trigger="loop"
+                            colors="primary:#121331,secondary:#0274bd"
+                            stroke="69"
+                            style="width:250px;height:250px">
+                        </lord-icon>
+                    </td>
+
+                    <td>
+                        <p class="large-card-details">COVID-19 is spread by close person-to-person contact and over long distances through respiratory droplets from speaking, coughing or sneezing.</p> <br> <br>
+                        <p class="large-card-details">Symptoms may appear 2 to 14 days after exposure to the virus that causes COVID-19. A person does not have to have symptoms to spread the virus.</p> <br> <br>
+                        <p class="large-card-details">COVID-19 can only be diagnosed with a laboratory test done in person or at the home.</p>
+                    </td>
+                </tr>
+            </table> <br> <br>
+
+            <a href="#" class="mid-button"> See more </a>
+
+        <!--symtoms-->
+        <div class="mid-large-card-long" style="margin-left: 0%;">
+            <hr style="opacity: 0.19;">
+            <p class="section-topic">COVID-19 Symptoms</p>
+            <p class="section-topic-describe">Recognize the symptoms and quickly take a action</p> <br>
+        </div>
+
+        <table class="symptoms-protect-table">
+            <tr>
+                <td> 
+                    <img src="img/symptoms/breathing difficulty.png" alt="breathing difficulty">
+                    <h3>Breathing Difficulty</h3>
+                </td>
+
+                <td>
+                    <img src="img/symptoms/congestion and runny nose.jpg" alt="congestion and runny nose"> 
+                    <h3>Runny Nose</h3>
+                </td>
+                
+                <td> 
+                    <img src="img/symptoms/coughing.png" alt="coughing">
+                    <h3>Coughing</h3>
+                </td>
+
+                <td> 
+                    <img src="img/symptoms/fever.png" alt="breathing difficulty">
+                    <h3>Fever</h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <img src="img/symptoms/diarrhea.svg" alt="congestion and runny nose"> 
+                    <h3>Diarrhea</h3>
+                </td>
+                
+                <td> 
+                    <img src="img/symptoms/fatigue.svg" alt="coughing">
+                    <h3>Fatigue</h3>
+                </td>
+
+                <td> 
+                    <img src="img/symptoms/headache.svg" alt="breathing difficulty">
+                    <h3>Headache</h3>
+                </td>
+
+                <td>
+                    <img src="img/symptoms/no taste.svg" alt="congestion and runny nose"> 
+                    <h3>No Taste</h3>
+                </td>
+            </tr>
+        </table> <br> <br>
+
+        <a href="#" class="mid-button"> Contact Health Sectors </a>
+
+
+        <!--protect your self -->
+        <div class="mid-large-card-long" style="margin-left: 0%;">
+            <hr style="opacity: 0.19;">
+            <p class="section-topic">COVID-19 Symptoms</p>
+            <p class="section-topic-describe">Recognize the symptoms and quickly take a action</p> <br>
+        </div>
+
+        <table class="symptoms-protect-table">
+            <tr>
+                <td> 
+                    <img src="img/protect/coughing hand.png" alt="breathing difficulty">
+                    <h3 class="large-card-details" style="font-size: 16px; padding: 5%;">Cough or sneeze into a tissue or bent elbow. Throw the tissue in the trash.</h3>
+                </td>
+
+                <td> 
+                    <img src="img/protect/coughing hand.png" alt="breathing difficulty">
+                    <h3 class="large-card-details" style="font-size: 16px; padding: 5%;">Cough or sneeze into a tissue or bent elbow. Throw the tissue in the trash.</h3>
+                </td>
+
+                <td> 
+                    <img src="img/protect/coughing hand.png" alt="breathing difficulty">
+                    <h3 class="large-card-details" style="font-size: 16px; padding: 5%;">Cough or sneeze into a tissue or bent elbow. Throw the tissue in the trash.</h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td> 
+                    <img src="img/protect/coughing hand.png" alt="breathing difficulty">
+                    <h3 class="large-card-details" style="font-size: 16px; padding: 5%;">Cough or sneeze into a tissue or bent elbow. Throw the tissue in the trash.</h3>
+                </td>
+
+                <td> 
+                    <img src="img/protect/coughing hand.png" alt="breathing difficulty">
+                    <h3 class="large-card-details" style="font-size: 16px; padding: 5%;">Cough or sneeze into a tissue or bent elbow. Throw the tissue in the trash.</h3>
+                </td>
+
+                <td> 
+                    <img src="img/protect/coughing hand.png" alt="breathing difficulty">
+                    <h3 class="large-card-details" style="font-size: 16px; padding: 5%;">Cough or sneeze into a tissue or bent elbow. Throw the tissue in the trash.</h3>
+                </td>
+            </tr>
+        </table> <br> <br>
+
+        <a href="#" class="mid-button"> See more </a>
+
+        <!--shopping item cards-->
+        <div class="mid-large-card-long" style="margin-left: 0%;">
+            <hr style="opacity: 0.19;">
+            <p class="section-topic">Visit epid x Online Shop</p>
+            <p class="section-topic-describe">Stay Safe & Make Your Order From Home</p> <br>
+        </div>
+
+        <div class="shop-item-cards"> 
+
+            <div class="shop-long-card"> <!--shop-item 01-->
+                <div class="shop-card-content">
+                    <p style="font-size: 22px; font-weight: 500; color: #2d3436;">Respirone Nano <br> AV99 Face Mask</p> <br>
+                    <p style="font-family: poppins; font-size: 18px; font-weight: 800; opacity: 0.9;">රු.200.00</p> <br> 
+                    <a href="http://localhost/epidx/shop/product/respirone-nano-av99-mask/" target="_blank" class="buy-now-button" style="font-size: 16px; background-color: #0274BD;"> Buy Now </a>
+                    <img src="img/AV99-image.png" alt="stay at home"> <br>
+                </div>
+            </div>
+
+            <div class="shop-long-card" style="margin-left: 5%;"> <!--shop-item 02-->
+                <div class="shop-card-content">
+                    <p style="font-size: 22px; font-weight: 500; color: #2d3436;"> Hello Bello <br> Hand Sanitizer</p> <br>
+                    <p style="font-family: poppins; font-size: 18px; font-weight: 800; opacity: 0.9;">රු.260.00</p> <br>
+                    <a href="#" class="buy-now-button" style="font-size: 16px; background-color: #0274BD;"> Buy Now </a> 
+                    <img src="img/Hygienic hand disinfection.png" alt="sanitizer" style="width: 55%; margin-left: 22%;"> <br>
+                </div>
+            </div>
+
+            <div class="shop-long-card" style="margin-top: 3%;"> <!--shop-item 03-->
+                <div class="shop-card-content">
+                    <p style="font-size: 22px; font-weight: 500; color: #2d3436;"> Kimberly-Clark <br> Safety Face Shield</p> <br>
+                    <p style="font-family: poppins; font-size: 18px; font-weight: 800; opacity: 0.9;">රු.680.00</p> <br> 
+                    <a href="#" class="buy-now-button" style="font-size: 16px; background-color: #0274BD;"> Buy Now </a>
+                    <img src="img/face-shield-img.png" alt="face-shield" style="width: 47%; margin-left: 27%;"> <br>
+                </div>
+            </div>
+
+            <div class="shop-long-card" style="margin-top: 3%; margin-left: 5%;"> <!--shop-item 04-->
+                <div class="shop-card-content">
+                    <p style="font-size: 22px; font-weight: 500; color: #2d3436;"> Dsmtiir <br> Surgical Mask</p> <br>
+                    <p style="font-family: poppins; font-size: 18px; font-weight: 800; opacity: 0.9;">රු.310.00</p> <br> 
+                    <a href="#" class="buy-now-button" style="font-size: 16px; background-color: #0274BD;"> Buy Now </a>
+                    <img src="img/Dsmtiir_Surgical_Mask.png" alt="stay at home" style="margin-left: 27%;"> <br>
+                </div>
+            </div>
+
+            <div class="shop-long-card" style="width: 22.7%; margin-top: 7%; text-align: center;"> <!--shop-item 05-->
+                <div class="shop-card-content" style="padding-bottom: 15%;">
+                    <img src="img/AV99-image.png" alt="sanitizer" style="width: 45%; margin-left: -15%; margin-top: -40px;"> <br> <br>
+                    <p style="font-size: 18px; font-weight: 500; color: #2d3436;"> Hello Bello <br> Hand Sanitizer</p> <br>
+                    <p style="font-family: poppins; font-size: 14px; font-weight: 800; opacity: 0.9;">රු.260.00</p> <br>
+                    <a href="http://localhost/epidx/shop/product/grey-honeywell-n95-face-mask/" class="buy-now-button" style="font-size: 14px; background-color: #0274BD;"> Buy Now </a> 
+                    </div>
+            </div>
+
+            <div class="shop-long-card" style="width: 22.7%; margin-top: 7%; margin-left: 2%; text-align: center;"> <!--shop-item 06-->
+                <div class="shop-card-content" style="padding-bottom: 15%;">
+                    <img src="img/HoneywellN95-image.png" alt="sanitizer" style="width: 45%; margin-left: -22%; margin-top: -40px;"> <br> <br>
+                    <p style="font-size: 18px; font-weight: 500; color: #2d3436;"> Honeywell <br> N95 Mask</p> <br>
+                    <p style="font-family: poppins; font-size: 14px; font-weight: 800; opacity: 0.9;">රු.200.00</p> <br>
+                    <a href="#" class="buy-now-button" style="font-size: 14px; background-color: #0274BD;"> Buy Now </a> 
+                    </div>
+            </div>
+
+            <div class="shop-long-card" style="width: 22.7%; margin-top: 7%; margin-left: 2%; text-align: center;"> <!--shop-item 07-->
+                <div class="shop-card-content" style="padding-bottom: 15%;">
+                    <img src="img/HoneywellSafety Mask.png" alt="sanitizer" style="width: 45%; margin-left: -22%; margin-top: -40px;"> <br> <br>
+                    <p style="font-size: 18px; font-weight: 500; color: #2d3436;"> Honeywell <br> Mask With Valve</p> <br>
+                    <p style="font-family: poppins; font-size: 14px; font-weight: 800; opacity: 0.9;">රු.270.00</p> <br>
+                    <a href="http://localhost/epidx/shop/product/white-honeywell-safety-mask-with-valve/" class="buy-now-button" style="font-size: 14px; background-color: #0274BD;"> Buy Now </a> 
+                    </div>
+            </div>
+
+            <div class="shop-long-card" style="width: 22.7%; margin-top: 7%; margin-bottom: 7%; margin-left: 2%; text-align: center;"> <!--shop-item 08-->
+                <div class="shop-card-content" style="padding-bottom: 15%;">
+                    <img src="img/Thermometer-Gun.png" alt="sanitizer" style="width: 45%; margin-left: -22%; margin-top: -40px;"> <br> <br>
+                    <p style="font-size: 18px; font-weight: 500; color: #2d3436;"> Forehead <br> Thermometer Gun</p> <br>
+                    <p style="font-family: poppins; font-size: 14px; font-weight: 800; opacity: 0.9;">රු9,900.00</p> <br>
+                    <a href="#" class="buy-now-button" style="font-size: 14px; background-color: #0274BD;"> Buy Now </a>
+                    </div>
+            </div>
+            
+            </div> <br> <br>
+
+            <a href="http://localhost/epidx/shop/" target="_blank" class="mid-button" style="margin-top: 15%;"> Go to shop </a>
+
+        </div>
+
+        <!--Assistant CTA-->
+        <div class="mid-large-card-long" style="margin-left: 0%;">
+            
+            <div class="assitant-cta">
+                <div class="assistant-cta-inside">
+                    <h1>epid x voice Assistant</h1> <br>
+                    <p>First voice based cat bot for epidemic heliping <br> in the world</p> <br> <br>
+                    <a href="assistant/index.html"> Start a coversation </a>
+                    <img src="img/epidx-assistant-small-icon-blue.png" alt="stay at home"> <br>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!--footer-->
+        <div class="mid-large-card-long" style="text-align: center; opacity: 0.9;">
+            <hr style="opacity: 0.19;">
+            
+            <p class="section-topic" style="font-size: 16px;">This project is design & developed by Dileepa Mihiranga <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js" ></script>
+                <lord-icon
+                    src="https://cdn.lordicon.com/rjzlnunf.json"
+                    trigger="loop"
+                    colors="primary:#121331,secondary:#104891"
+                    >
+                </lord-icon> <!--animated icon in footer-->
+                for an educational purpose</p> <br>
+
+        <center>
+            <b>
+                <a href="#" target="_blank"> epid x Home </a> &nbsp; | &nbsp;
+                <a href="#" target="_blank"> Statistics </a> &nbsp; | &nbsp;
+                <a href="#" target="_blank"> Shop </a> &nbsp; | &nbsp;
+                <a href="#" target="_blank"> News Room </a> &nbsp; | &nbsp;
+                <a href="#" target="_blank"> Information </a> &nbsp; | &nbsp;
+                <a href="#" target="_blank"> Contact </a> &nbsp; | &nbsp;
+            </b>
+        </center> 
+
+            <p class="section-topic-describe" style="font-size: 14px; color: #000;">Data Sources : <a href="http://www.hpb.health.gov.lk"> <b> www.hpb.health.gov.lk </b> </a> <br> 
+                </p> 
+            <img src="img/payment-options.png" alt="payment-options" style="width: 25%;"> <br>
+        </div>
+
+    </div>
+
+    
+
+
+    <!--right-->
+    <div class="right-box">
+        
+        <div class="top-stories">
+            <h2>Top Stories</h2> <br>
+
+            <a href="http://localhost/epidx/newsroom/2021/12/16/covid-19-pandemic-could-go-on-for-another-18-months/"> <p class="stories"> <i class="fas fa-rss" style="color: #0274BD;"></i> COVID-19 Pandemic could go on for another 18 months... </p> </a> <br>
+            <a href="http://localhost/epidx/newsroom/2021/12/16/further-five-west-indies-tour-members-test-positive-for-covid-19/"> <p class="stories"> <i class="fas fa-rss" style="color: #0274BD;"></i> Five West Indies tour members test positive for COVID-19 </p> </a> <br>
+            <a href="http://localhost/epidx/newsroom/2021/12/16/covid-19-obtain-booster-as-soon-as-possible-urged-authorities/"> <p class="stories"> <i class="fas fa-rss" style="color: #0274BD;"></i> COVID-19: Obtain booster as soon as possible, urged authorities</p> </a> <br>
+            <a href="http://localhost/epidx/newsroom/2021/12/03/as-covid-deaths-surge-sri-lanka-prepares-for-10-day-lockdown/"> <p class="stories"> <i class="fas fa-rss" style="color: #0274BD;"></i> As COVID deaths surge, Sri Lanka prepares for 10-day lockdown</p> </a> <br>
+            <a href="http://localhost/epidx/newsroom/2021/12/16/schools-in-sri-lanka-may-be-shut-again-if-current-covid-19-case-trend-continues-officials/"> <p class="stories"> <i class="fas fa-rss" style="color: #0274BD;"></i> Schools in Sri Lanka may be shut...</p> </a> <br>
+            <a href="http://localhost/epidx/newsroom/2021/12/16/uk-germany-italy-confirm-cases-of-omicron-coronavirus-variant/"> <p class="stories"> <i class="fas fa-rss" style="color: #0274BD;"></i> UK, Germany, Italy confirm cases of Omicron coronavirus variant</p> </a>
+        </div>
+
+        <hr style="width: 85%; margin-left: 7.5%; margin-top: 9%;">
+
+        <!--assitant mic-->
+        <div class="assistant-mic">
+
+            <table style="width: 100%; text-align: center;">
+                
+                <tr>
+                    <td>
+                        <a href="assistant/index.html">
+                        <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+                        <lord-icon
+                            src="https://cdn.lordicon.com/fpipqhrr.json"
+                            trigger="loop-on-hover"
+                            colors="primary:#545454,secondary:#1663c7"
+                            stroke="75"
+                            style="width:50px;height:50px">
+                        </lord-icon> <!--animated mic icon-->
+                        </a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h3 style="text-align: center; font-family: rubik; font-weight: 500;">epid x Assistant</h3>
+                        <p style="text-align: center; font-family: rubik; font-size: 14px; font-weight: 300; opacity: 0.8;">Hi, I am here for you</p>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</span> <!--desktop version end-->
+
+
+
+    <script> //start JS
+        
+        window.addEventListener("load", function(){
+            getData()
+            .then(function(data){
+                showData(data.data);
+            }).catch(function(e){
+                console.log(e);
+                window.alert("Sorry! Some data cannot update at this moment. Check your internet connection & click OK to refesh this site")
+            })
+        })
+
+        //update data on frontend
+        function showData(data){
+            document.getElementById("lblLastUpdated").textContent = data.update_date_time;
+
+            document.getElementById("lblNewCases").textContent = data.local_new_cases;
+            document.getElementById("lblNewDeaths").textContent = data.local_new_deaths;
+            document.getElementById("lblActiveCases").textContent = data.local_active_cases;
+            document.getElementById("lblTotalRecovered").textContent = data.local_recovered;
+
+            document.getElementById("lblGlobalNewCases").textContent = data.global_new_cases;
+            document.getElementById("lblGlobalNewDeaths").textContent = data.global_new_deaths;
+            document.getElementById("lblGlobalRecovered").textContent = data.global_recovered;
+        }
+
+        //get request
+        async function getData() {
+            var response = await fetch("https://www.hpb.health.gov.lk/api/get-current-statistical");
+            var data = response.json();
+            return data;
+        }
+
+    </script>
+
+    <script src="index.js"></script>
+
 </body>
 </html>

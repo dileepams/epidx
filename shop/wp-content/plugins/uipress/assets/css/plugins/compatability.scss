@@ -1,0 +1,48 @@
+////MOTION.PAGE
+
+html[uip-toolbar="true"] {
+  body.toplevel_page_motionpage #uip-toolbar {
+    display: none !important;
+  }
+}
+//// SCRIPTS ORGANISER
+html[uip-toolbar="true"] body.scorg-edit-scripts #uip-toolbar {
+  display: none;
+}
+
+html[uip-admin-menu="true"] body.scorg-edit-scripts #wpcontent {
+  margin: 0;
+}
+
+html[uip-admin-theme="true"] body.scorg-edit-scripts .wrap .wp-heading-inline {
+  margin: 0 !important;
+  font-size: 13px;
+  padding: var(--gap);
+  padding-bottom: 5px;
+}
+
+html[uip-admin-theme="true"] body.scorg-edit-scripts #screen-meta {
+  display: none;
+}
+
+///FIXED B2B KING CHECKBOXES
+input#b2bking_dynamic_rule_discount_show_everywhere_checkbox_input:checked {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8 4a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4V8a4 4 0 0 0-4-4H8zm7.79 6.27a.75.75 0 1 0-1.08-1.04l-3.793 3.939-1.627-1.69a.75.75 0 1 0-1.08 1.041l2.166 2.25a.75.75 0 0 0 1.08 0l4.334-4.5z' fill='%230c5cef'/%3E%3C/svg%3E");
+  background-position: center;
+  background-color: #fff;
+  border-color: var(--uip-border-color);
+}
+
+///autonami
+html[uip-toolbar="true"] {
+  .wr .wr_t_wrap {
+    padding-top: var(--uip-toolbar-height);
+  }
+}
+
+//FLUENT CRM DIALOGS / M,ODALS
+html[uip-toolbar="true"] {
+  .el-dialog__wrapper .el-dialog {
+    margin-top: var(--uip-toolbar-height) !important;
+  }
+}

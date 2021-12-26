@@ -1,0 +1,12 @@
+html[uip-admin-theme="true"] {
+  body.toplevel_page_gf_edit_forms .gforms_edit_form:not(.gforms_form_settings_wrap) {
+    top: var(--uip-toolbar-height);
+    width: calc(100% - var(--uip-menu-width));
+  }
+  body.toplevel_page_gf_edit_forms #gform-form-toolbar {
+    width: calc(100% - var(--uip-menu-width));
+  }
+  .editor-sidebar {
+    top: calc(91px - 31px + var(--uip-toolbar-height));
+  }
+}

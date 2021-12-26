@@ -1,0 +1,20 @@
+html[uip-admin-theme="true"][data-theme="dark"] {
+  .breeze-form {
+    .tab-child {
+      background-color: var(--uip-background-muted);
+      color: var(--uip-text-color-normal);
+      border-color: var(--uip-border-color);
+      label {
+        color: var(--uip-text-color-emphasis);
+      }
+    }
+  }
+  #breeze-tabs .nav-tab.active {
+    background: var(--uip-background-primary);
+    color: var(--uip-text-color-inverse);
+  }
+  #breeze-and-cloudways .rs-content p,
+  #breeze-and-cloudways .rs-content ul {
+    color: var(--uip-text-color-normal);
+  }
+}

@@ -1,0 +1,14 @@
+html[uip-admin-theme="true"][data-theme="dark"] {
+  .select2-container {
+    filter: invert(1) hue-rotate(180deg);
+    input {
+      filter: invert(1) hue-rotate(180deg);
+    }
+  }
+  .uip-light-logo {
+    display: none;
+  }
+  .uip-dark-logo {
+    display: inline-block;
+  }
+}

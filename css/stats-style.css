@@ -1,0 +1,140 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Rubik;
+    box-sizing: border-box;
+}
+
+header {
+    height: 60px;
+    background: #fff;
+    color: #03283B;
+    text-align: center;
+    line-height: 60px;
+    font-size: 30px;
+    box-shadow: 10px 0 5px #b9b7b7;
+    width: 100%;
+    
+    z-index: 2;
+}
+
+.nav-bar a{
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    color: inherit;
+    padding-left: 25px;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    background-color: #F5F6F7;
+}
+
+.container{
+    width: 100%;
+    text-align: center;
+}
+
+h3{
+    margin: 10px 0;
+}
+
+#date{
+    color: #0274BD;
+}
+
+form input,
+form button{
+    width: 50%;
+    height: 35px;
+    border: 1px solid #e6e6e6;
+    padding: 5px 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+form input{
+    font-family: rubik;
+    font-size: 16px;
+    padding: 16px;
+    border-radius: 5px;
+    box-shadow:
+        2.8px 2.8px 2.2px rgba(0, 0, 0, 0.011),
+        6.7px 6.7px 5.3px rgba(0, 0, 0, 0.016),
+        12.5px 12.5px 10px rgba(0, 0, 0, 0.02),
+        22.3px 22.3px 17.9px rgba(0, 0, 0, 0.024),
+        41.8px 41.8px 33.4px rgba(0, 0, 0, 0.029),
+        100px 100px 80px rgba(0, 0, 0, 0.04);
+}
+
+form button{
+    border-radius: 5px;
+    border: 2px solid #0274BD;
+    background-color: transparent;
+    font-family: Rubik;
+    font-size: 16px;
+    font-weight: 500;
+    color: #0274BD;
+}
+
+
+
+#name-country{
+    color: #555;
+    margin-top: 20px;
+}
+
+.content{
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    cursor: pointer;
+}
+
+.content h3{
+    font-size: 34px;
+}
+
+.content i{
+    font-weight: 700;
+}
+
+.content .box{
+    min-width: 270px;
+    margin: 10px;
+    padding: 15px;
+    background-color: #fff;
+    width: 30%;
+    float: left;
+    box-shadow:
+        2.8px 2.8px 2.2px rgba(0, 0, 0, 0.011),
+        6.7px 6.7px 5.3px rgba(0, 0, 0, 0.016),
+        12.5px 12.5px 10px rgba(0, 0, 0, 0.02),
+        22.3px 22.3px 17.9px rgba(0, 0, 0, 0.024),
+        41.8px 41.8px 33.4px rgba(0, 0, 0, 0.029),
+        100px 100px 80px rgba(0, 0, 0, 0.04);
+}
+
+.content .box p{
+    font-size: 20px;
+    font-weight: 600;
+    opacity: 0.7;
+}
+
+.confirmed h3,
+.confirmed i{
+    color: #f39c12;
+}
+
+.deaths h3,
+.deaths i{
+    color: #e74c3c;
+}
+
+.recovered h3,
+.recovered i{
+    color: #27ae60;
+}

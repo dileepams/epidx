@@ -1,0 +1,7 @@
+html[uip-admin-theme="true"] {
+  .wcf-global-nav-menu {
+    top: var(--uip-toolbar-height);
+    left: var(--uip-menu-width);
+    width: calc(100% - var(--uip-menu-width));
+  }
+}

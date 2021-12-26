@@ -1,0 +1,28 @@
+html[uip-admin-theme="true"] {
+  #e-admin-top-bar-root {
+    width: calc(100% - var(--uip-menu-width));
+  }
+}
+html[uip-admin-theme="true"][data-theme="dark"] {
+  #e-admin-top-bar-root {
+    background-color: var(--uip-background-muted);
+    color: var(--uip-text-color-normal);
+    border-color: var(--uip-border-color);
+  }
+  #e-admin-top-bar-root .e-admin-top-bar__heading-title {
+    color: var(--uip-text-color-emphasis);
+  }
+  .elementor-settings-form-page {
+    color: var(--uip-text-color-normal);
+    label {
+      color: var(--uip-text-color-normal);
+    }
+    h1,
+    h2 {
+      color: var(--uip-text-color-emphasis);
+    }
+    #elementor_notice {
+      color: var(--uip-text-color-normal);
+    }
+  }
+}
