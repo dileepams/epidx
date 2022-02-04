@@ -10,9 +10,9 @@ use Elementor\Group_Control_Border;
 use Elementor\Widget_Base;
 use Elementor\Widget_Button;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Background;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Icons_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -374,8 +374,8 @@ class CartFlows_Next_Step_Button extends Widget_Base {
 						'fields_options' => array(
 							'color' => array(
 								'scheme' => array(
-									'type'  => Scheme_Color::get_type(),
-									'value' => Scheme_Color::COLOR_4,
+									'type'  => Color::get_type(),
+									'value' => Color::COLOR_4,
 								),
 							),
 						),
@@ -434,8 +434,8 @@ class CartFlows_Next_Step_Button extends Widget_Base {
 						'fields_options' => array(
 							'color' => array(
 								'scheme' => array(
-									'type'  => Scheme_Color::get_type(),
-									'value' => Scheme_Color::COLOR_4,
+									'type'  => Color::get_type(),
+									'value' => Color::COLOR_4,
 								),
 							),
 						),
@@ -520,7 +520,7 @@ class CartFlows_Next_Step_Button extends Widget_Base {
 			array(
 				'name'     => 'title_typography',
 				'label'    => 'Title Typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme'   => Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .cartflows-elementor__next-step-button-title',
 			)
 		);
@@ -530,7 +530,7 @@ class CartFlows_Next_Step_Button extends Widget_Base {
 			array(
 				'name'      => 'sub_title_typography',
 				'label'     => 'Sub Title Typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme'    => Typography::TYPOGRAPHY_3,
 				'selector'  => '{{WRAPPER}} .cartflows-elementor__next-step-button-sub-title',
 				'condition' => array(
 					'sub_title!' => '',

@@ -18,7 +18,7 @@ const getTotalItemsWidthFor = (nav) => {
 	let navStyle = window.getComputedStyle(nav)
 
 	return (
-		getCacheFor(nav.dataset.id).itemsWidth.reduce((sum, n) => sum + n, 0) +
+		getCacheFor(nav.__id).itemsWidth.reduce((sum, n) => sum + n, 0) +
 		(parseInt(navStyle.getPropertyValue('margin-left')) +
 			parseInt(navStyle.getPropertyValue('margin-right')))
 	)
@@ -113,16 +113,16 @@ export const getItemsDistribution = (nav) => {
 
 	if (!hasAnyOverlap) {
 		return {
-			fit: getCacheFor(nav.dataset.id).children,
+			fit: getCacheFor(nav.__id).children,
 			notFit: [],
 		}
 	}
 
 	let allNavs = baseContainer.querySelectorAll('[data-id*="menu"]')
 
-	return getCacheFor(nav.dataset.id).children.reduce(
+	return getCacheFor(nav.__id).children.reduce(
 		({ fit, notFit }, currentEl, currentIndex) => ({
-			...(getCacheFor(nav.dataset.id)
+			...(getCacheFor(nav.__id)
 				.itemsWidth.slice(0, currentIndex + 1)
 				.reduce((sum, n) => sum + n, 0) <
 			containerWidth -

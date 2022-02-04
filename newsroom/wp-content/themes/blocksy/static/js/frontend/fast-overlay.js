@@ -9,6 +9,13 @@ export const fastOverlayHandleClick = (e, settings) => {
 		...settings,
 	}
 
+	if (
+		document.body.hasAttribute('data-panel') &&
+		settings.openStrategy !== 'skip'
+	) {
+		return
+	}
+
 	if (settings.openStrategy !== 'skip') {
 		if (settings.container) {
 			settings.container.classList.add('active')
@@ -33,7 +40,7 @@ export const fastOverlayHandleClick = (e, settings) => {
 export const fastOverlayMount = (el, { event, focus = false }) => {
 	fastOverlayHandleClick(event, {
 		isModal: true,
-		container: document.querySelector(el.hash),
+		container: document.querySelector(el.dataset.togglePanel || el.hash),
 		clickOutside: true,
 		focus,
 	})

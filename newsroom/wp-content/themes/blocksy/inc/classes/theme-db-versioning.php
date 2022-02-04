@@ -119,6 +119,11 @@ class Blocksy_Db_Versioning {
 			[
 				'version' => '1.8.6.1',
 				'cb' => [$this, 'v_1_8_6_1']
+			],
+
+			[
+				'version' => '1.8.12',
+				'cb' => [$this, 'v_1_8_12']
 			]
 		];
 	}
@@ -1231,6 +1236,30 @@ class Blocksy_Db_Versioning {
 				])
 			);
 		}
+	}
+
+	public function v_1_8_12() {
+		$this->migrate_options_values([
+			[
+				'id' => 'shop_cards_alignment_1',
+				'migrate' => [
+					[
+						'old' => 'left',
+						'new' => 'flex-start'
+					]
+				]
+			],
+
+			[
+				'id' => 'shop_cards_alignment_1',
+				'migrate' => [
+					[
+						'old' => 'right',
+						'new' => 'flex-end'
+					]
+				]
+			]
+		]);
 	}
 
 	private function transform_tags_in_layers($list, $post_type) {

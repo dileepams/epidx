@@ -105,14 +105,12 @@ class Cartflows_Optin_Meta_Data extends Cartflows_Step_Meta_Base {
 		$tabs            = array_merge( $common_tabs, $add_tabs );
 		$settings        = $this->get_settings_fields( $step_id );
 		$design_settings = $this->get_design_fields( $step_id );
-		$custom_fields   = apply_filters( 'cartflows_get_optin_custom_fields_data', $step_id, $options );
 
 		$settings_data = array(
 			'tabs'            => $tabs,
 			'settings'        => $settings,
 			'page_settings'   => $this->get_page_settings( $step_id ),
 			'design_settings' => $design_settings,
-			'custom_fields'   => $custom_fields,
 		);
 
 		return $settings_data;
@@ -296,13 +294,6 @@ class Cartflows_Optin_Meta_Data extends Cartflows_Step_Meta_Base {
 					'title'  => __( 'Submit Button', 'cartflows' ),
 					'slug'   => 'button_options',
 					'fields' => array(
-						'button-text'               => array(
-							'type'        => 'text',
-							'label'       => __( 'Button Text', 'cartflows' ),
-							'name'        => 'wcf-submit-button-text',
-							'value'       => $options['wcf-submit-button-text'],
-							'placeholder' => __( 'Submit', 'cartflows' ),
-						),
 						'buttom-font-size'          => array(
 							'type'  => 'number',
 							'label' => __( 'Font Size', 'cartflows' ),
@@ -485,10 +476,17 @@ class Cartflows_Optin_Meta_Data extends Cartflows_Step_Meta_Base {
 				),
 
 				'settings'      => array(
-					'title'    => __( 'Fields Settings', 'cartflows' ),
+					'title'    => __( 'Optin Settings', 'cartflows' ),
 					'slug'     => 'fields_settings',
 					'priority' => 30,
 					'fields'   => array(
+						'button-text'                => array(
+							'type'        => 'text',
+							'label'       => __( 'Button Text', 'cartflows' ),
+							'name'        => 'wcf-submit-button-text',
+							'value'       => $options['wcf-submit-button-text'],
+							'placeholder' => __( 'Submit', 'cartflows' ),
+						),
 						'optin-pass-fields'          => array(
 							'type'  => 'checkbox',
 							'label' => __( 'Pass Fields as URL Parameters', 'cartflows' ),

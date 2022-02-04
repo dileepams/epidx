@@ -11,10 +11,6 @@ let cacheInfo = {}
 
 export const getCacheFor = (id) => cacheInfo[id]
 
-if (window.wp && wp.customize) {
-	ctEvents.on('blocksy:frontend:init', () => (cacheInfo = {}))
-}
-
 const maybeCreateMoreItemsFor = (nav, onDone) => {
 	if (nav.querySelector('.more-items-container')) {
 		onDone()
@@ -33,12 +29,12 @@ const maybeCreateMoreItemsFor = (nav, onDone) => {
 		`<a href="#" class="ct-menu-link">
       ${ct_localizations.more_text}
       <span class="ct-toggle-dropdown-desktop">
-        <svg width="8" height="8" viewBox="0 0 15 15">
+        <svg class="ct-icon" width="8" height="8" viewBox="0 0 15 15">
             <path d="M2.1,3.2l5.4,5.4l5.4-5.4L15,4.3l-7.5,7.5L0,4.3L2.1,3.2z"></path>
         </svg>
       </span>
     </a>
-    <button class="ct-toggle-dropdown-desktop-ghost" aria-enabled="false" aria-label="${ct_localizations.expand_submenu}"></button>
+    <button class="ct-toggle-dropdown-desktop-ghost" aria-expanded="false" aria-label="${ct_localizations.expand_submenu}"></button>
     <ul class="sub-menu"></ul>`
 	)
 
@@ -76,7 +72,11 @@ const maybeMakeCacheForAllNavs = (nav) => {
 	let allNavs = baseContainer.querySelectorAll('[data-id*="menu"]')
 
 	;[...allNavs].map((nav) => {
-		if (cacheInfo[nav.dataset.id]) {
+		if (!nav.__id) {
+			nav.__id = Math.random()
+		}
+
+		if (cacheInfo[nav.__id]) {
 			return
 		}
 
@@ -84,7 +84,7 @@ const maybeMakeCacheForAllNavs = (nav) => {
 			return
 		}
 
-		cacheInfo[nav.dataset.id] = {
+		cacheInfo[nav.__id] = {
 			el: nav,
 			previousRenderedWidth: null,
 			children: [
@@ -115,13 +115,13 @@ export const mount = (nav) => {
 	maybeMakeCacheForAllNavs(nav)
 
 	if (
-		cacheInfo[nav.dataset.id].previousRenderedWidth &&
-		cacheInfo[nav.dataset.id].previousRenderedWidth === window.innerWidth
+		cacheInfo[nav.__id].previousRenderedWidth &&
+		cacheInfo[nav.__id].previousRenderedWidth === window.innerWidth
 	) {
 		return
 	}
 
-	cacheInfo[nav.dataset.id].previousRenderedWidth = window.innerWidth
+	cacheInfo[nav.__id].previousRenderedWidth = window.innerWidth
 
 	let { fit, notFit } = getItemsDistribution(nav)
 

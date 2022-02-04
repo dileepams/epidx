@@ -2,12 +2,11 @@
 
 /**
  * Class ActionScheduler_AdminView
- *
  * @codeCoverageIgnore
  */
 class ActionScheduler_AdminView extends ActionScheduler_AdminView_Deprecated {
 
-	private static $admin_view = null;
+	private static $admin_view = NULL;
 
 	private static $screen_id = 'tools_page_action-scheduler';
 
@@ -21,7 +20,7 @@ class ActionScheduler_AdminView extends ActionScheduler_AdminView_Deprecated {
 	public static function instance() {
 
 		if ( empty( self::$admin_view ) ) {
-			$class            = apply_filters( 'action_scheduler_admin_view_class', 'ActionScheduler_AdminView' );
+			$class = apply_filters('action_scheduler_admin_view_class', 'ActionScheduler_AdminView');
 			self::$admin_view = new $class();
 		}
 
@@ -79,7 +78,7 @@ class ActionScheduler_AdminView extends ActionScheduler_AdminView_Deprecated {
 			'action-scheduler',
 			array( $this, 'render_admin_ui' )
 		);
-		add_action( 'load-' . $hook_suffix, array( $this, 'process_admin_ui' ) );
+		add_action( 'load-' . $hook_suffix , array( $this, 'process_admin_ui' ) );
 	}
 
 	/**

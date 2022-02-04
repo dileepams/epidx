@@ -161,7 +161,7 @@ class AccountAuth {
 			exit;
 		}
 
-		if (function_exists('wc_create_new_customer')) {
+		if ($this->has_woo_register_flow()) {
 			$validation_error = new \WP_Error();
 			$validation_error = apply_filters(
 				'woocommerce_process_registration_errors',
@@ -183,7 +183,7 @@ class AccountAuth {
 		if (! is_wp_error($errors)) {
 			$errors = new \WP_Error();
 
-			if (function_exists('wc_create_new_customer')) {
+			if ($this->has_woo_register_flow()) {
 				$error_message = sprintf(
 					__(
 						'Your account was created successfully. Your login details have been sent to your email address. Please visit the <a href="%s">login page</a>.',
@@ -230,5 +230,12 @@ class AccountAuth {
 		);
 
 		wp_die();
+	}
+
+	public function has_woo_register_flow() {
+		return apply_filters(
+			'blocksy:account:register:has_woo_register',
+			function_exists('wc_create_new_customer')
+		);
 	}
 }

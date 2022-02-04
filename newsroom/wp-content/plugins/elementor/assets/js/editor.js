@@ -1,4 +1,4 @@
-/*! elementor - v3.5.0 - 12-12-2021 */
+/*! elementor - v3.5.3 - 28-12-2021 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -3532,7 +3532,7 @@ var MediaParser = /*#__PURE__*/function (_FileParserBase) {
         }, options)
       }).catch(function (result) {
         elementor.notifications.showToast({
-          message: result
+          message: result.message
         });
         return _promise.default.reject(result);
       });
@@ -3608,7 +3608,7 @@ var _createSuper2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtim
 
 var _containerFactory = _interopRequireDefault(__webpack_require__(/*! ../../../container-factory */ "../assets/dev/js/editor/components/browser-import/container-factory.js"));
 
-var _base = __webpack_require__(/*! elementor-editor/components/browser-import/files/parsers/base */ "../assets/dev/js/editor/components/browser-import/files/parsers/base/index.js");
+var _base = __webpack_require__(/*! ../base */ "../assets/dev/js/editor/components/browser-import/files/parsers/base/index.js");
 
 var Widget = /*#__PURE__*/function (_MediaParser) {
   (0, _inherits2.default)(Widget, _MediaParser);
@@ -3654,22 +3654,28 @@ var Widget = /*#__PURE__*/function (_MediaParser) {
                   settings: _context.t4
                 };
                 container = _context.t0.createElementContainer.call(_context.t0, _context.t5);
-                this.upload(file).then(function (result) {
+                this.upload(file).then(function (_ref) {
+                  var data = _ref.data;
                   $e.internal('document/elements/set-settings', {
                     // The reason we use the container id and not the container instance itself is that the container
                     // created above is just a placeholder, which later recreated using the same id.
                     container: elementor.getContainer(container.id),
                     settings: {
                       image: {
-                        url: result.data.source_url,
-                        id: result.data.id
+                        url: data.source_url,
+                        id: data.id
                       }
                     }
                   });
                 }).catch(function () {
-                  $e.run('document/elements/delete', {
-                    container: elementor.getContainer(container.id)
+                  elementor.documents.getCurrent().history.setActive(false);
+                  $e.run('document/elements/reset-settings', {
+                    container: elementor.getContainer(container.id),
+                    options: {
+                      external: true
+                    }
                   });
+                  elementor.documents.getCurrent().history.setActive(true);
                 });
                 return _context.abrupt("return", container);
 
@@ -4010,7 +4016,7 @@ var _createSuper2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtim
 
 var _containerFactory = _interopRequireDefault(__webpack_require__(/*! ../../../container-factory */ "../assets/dev/js/editor/components/browser-import/container-factory.js"));
 
-var _base = __webpack_require__(/*! elementor-editor/components/browser-import/files/parsers/base */ "../assets/dev/js/editor/components/browser-import/files/parsers/base/index.js");
+var _base = __webpack_require__(/*! ../base */ "../assets/dev/js/editor/components/browser-import/files/parsers/base/index.js");
 
 var Widget = /*#__PURE__*/function (_MediaParser) {
   (0, _inherits2.default)(Widget, _MediaParser);
@@ -4057,22 +4063,28 @@ var Widget = /*#__PURE__*/function (_MediaParser) {
                   settings: _context.t4
                 };
                 container = _context.t0.createElementContainer.call(_context.t0, _context.t5);
-                this.upload(file).then(function (result) {
+                this.upload(file).then(function (_ref) {
+                  var data = _ref.data;
                   $e.internal('document/elements/set-settings', {
                     // The reason we use the container id and not the container instance itself is that the container
                     // created above is just a placeholder, which later recreated using the same id.
                     container: elementor.getContainer(container.id),
                     settings: {
                       hosted_url: {
-                        url: result.data.source_url,
-                        id: result.data.id
+                        url: data.source_url,
+                        id: data.id
                       }
                     }
                   });
                 }).catch(function () {
-                  $e.run('document/elements/delete', {
-                    container: elementor.getContainer(container.id)
+                  elementor.documents.getCurrent().history.setActive(false);
+                  $e.run('document/elements/reset-settings', {
+                    container: elementor.getContainer(container.id),
+                    options: {
+                      external: true
+                    }
                   });
+                  elementor.documents.getCurrent().history.setActive(true);
                 });
                 return _context.abrupt("return", container);
 
@@ -5528,6 +5540,8 @@ var _assign = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-core
 
 var _promise = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/promise */ "../node_modules/@babel/runtime-corejs2/core-js/promise.js"));
 
+var _values = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/values */ "../node_modules/@babel/runtime-corejs2/core-js/object/values.js"));
+
 var _createForOfIteratorHelper2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/createForOfIteratorHelper */ "../node_modules/@babel/runtime-corejs2/helpers/createForOfIteratorHelper.js"));
 
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/asyncToGenerator */ "../node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js"));
@@ -5766,14 +5780,21 @@ var Session = /*#__PURE__*/function () {
     value: function resolve(containers) {
       var _this2 = this;
 
+      if ((0, _values.default)(containers).some(function (element) {
+        return 'section' === element.model.get('elType');
+      })) {
+        this.target = elementor.getPreviewContainer();
+      }
+
       return containers.map(function (element) {
         switch (element.type) {
           case 'container':
           case 'section':
           case 'column':
           case 'widget':
-            return _this2.target.view.createElementFromContainer(element, (0, _assign.default)(_this2.options.target, {
-              event: _this2.options.event
+            return _this2.target.view.createElementFromModel(element.model, (0, _assign.default)(_this2.options.target, {
+              event: _this2.options.event,
+              scrollIntoView: 0 === containers.indexOf(element)
             }));
         }
       });
@@ -30361,7 +30382,12 @@ var _stringify = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-c
       } else {
         var _elementor$channels$p;
 
-        settings.getDropContainer().view.createElementFromModel((_elementor$channels$p = elementor.channels.panelElements.request('element:selected')) === null || _elementor$channels$p === void 0 ? void 0 : _elementor$channels$p.model.attributes, {
+        var dragged = (_elementor$channels$p = elementor.channels.panelElements.request('element:selected')) === null || _elementor$channels$p === void 0 ? void 0 : _elementor$channels$p.model.attributes;
+        settings.getDropContainer().view.createElementFromModel({
+          elType: dragged.elType,
+          widgetType: dragged.widgetType,
+          custom: dragged.custom
+        }, {
           at: settings.getDropIndex(currentSide, event)
         });
       }
@@ -31872,6 +31898,8 @@ var _keys = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs
 
 var _assign = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/assign */ "../node_modules/@babel/runtime-corejs2/core-js/object/assign.js"));
 
+var _element = _interopRequireDefault(__webpack_require__(/*! elementor-elements/models/element */ "../assets/dev/js/editor/elements/models/element.js"));
+
 module.exports = Marionette.CompositeView.extend({
   templateHelpers: function templateHelpers() {
     return {
@@ -31951,7 +31979,9 @@ module.exports = Marionette.CompositeView.extend({
     if (options.edit && elementor.documents.getCurrent().history.getActive()) {
       // Ensure container is created. TODO: Open editor via UI hook after `document/elements/create`.
       newView.getContainer();
-      newModel.trigger('request:edit');
+      newModel.trigger('request:edit', {
+        scrollIntoView: options.scrollIntoView
+      });
     }
 
     return newView;
@@ -31962,26 +31992,26 @@ module.exports = Marionette.CompositeView.extend({
   },
   createElementFromModel: function createElementFromModel(model) {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    var container = this.getContainer();
 
     if (model instanceof Backbone.Model) {
       model = model.toJSON();
-    }
-
-    model = (0, _assign.default)(model, model.custom);
-
-    if ('section' === model.elType) {
-      model.isInner = true;
     }
 
     if (elementor.helpers.maybeDisableWidget(model.widgetType)) {
       return;
     }
 
+    model = (0, _assign.default)(model, model.custom); // Check whether the container cannot contain a section, in which case we should use an inner-section.
+
+    if ('section' === model.elType) {
+      model.isInner = true;
+    }
+
     var historyId = $e.internal('document/history/start-log', {
       type: this.getHistoryType(options.event),
       title: elementor.helpers.getModelLabel(model)
     });
-    var container = this.getContainer();
 
     if (options.shouldWrap) {
       var containerExperiment = elementorCommon.config.experimentalFeatures.container;
@@ -32503,8 +32533,6 @@ var _interopRequireDefault = __webpack_require__(/*! @babel/runtime-corejs2/help
 
 var _objectSpread2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/objectSpread2 */ "../node_modules/@babel/runtime-corejs2/helpers/objectSpread2.js"));
 
-__webpack_require__(/*! core-js/modules/es7.array.includes.js */ "../node_modules/core-js/modules/es7.array.includes.js");
-
 var _independent = _interopRequireDefault(__webpack_require__(/*! ./add-section/independent */ "../assets/dev/js/editor/views/add-section/independent.js"));
 
 var BaseSectionsContainerView = __webpack_require__(/*! elementor-views/base-sections-container */ "../assets/dev/js/editor/views/base-sections-container.js");
@@ -32578,14 +32606,8 @@ var Preview = BaseSectionsContainerView.extend({
   },
   createElementFromModel: function createElementFromModel(model) {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    var shouldWrap = !['container', 'section'].includes(model.elType || (model === null || model === void 0 ? void 0 : model.get('elType')));
-
-    if (!shouldWrap) {
-      delete options.at;
-    }
-
     return BaseSectionsContainerView.prototype.createElementFromModel.call(this, model, (0, _objectSpread2.default)((0, _objectSpread2.default)({}, options), {}, {
-      shouldWrap: shouldWrap
+      shouldWrap: 'container' !== model.elType
     }));
   },
   onRender: function onRender() {

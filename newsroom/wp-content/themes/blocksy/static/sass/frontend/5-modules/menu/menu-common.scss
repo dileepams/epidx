@@ -2,17 +2,28 @@ nav[class*="menu"] {
 
 	li a {
 		color: var(--linkInitialColor);
+		--icon-color: var(--linkInitialColor);
 	}
 	
-	li > a:hover {
+	li > a:hover,
+	li > .ct-sub-menu-parent:hover {
 		color: var(--linkHoverColor);
-		--icon-color: var(--icon-hover-color, var(--linkHoverColor));
+		// --icon-color: var(--icon-hover-color, var(--linkHoverColor));
+
+		svg {
+			fill: var(--icon-hover-color, var(--linkHoverColor));
+		}
 	}
 
 	li > a.ct-highlight,
-	li.current-menu-item > a {
+	li.current-menu-item > a,
+	li.current-menu-item > .ct-sub-menu-parent {
 		color: var(--linkActiveColor, var(--linkHoverColor));
-		--icon-color: var(--icon-active-color, var(--icon-hover-color, var(--linkActiveColor, var(--linkHoverColor))));
+		// --icon-color: var(--icon-active-color, var(--icon-hover-color, var(--linkActiveColor, var(--linkHoverColor))));
+
+		svg {
+			fill: var(--icon-active-color, var(--icon-hover-color, var(--linkActiveColor, var(--linkHoverColor))));
+		}
 	}
 
 }

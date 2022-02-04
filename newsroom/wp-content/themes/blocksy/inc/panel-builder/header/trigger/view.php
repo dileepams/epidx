@@ -26,9 +26,9 @@ $trigger_label_alignment = blocksy_expand_responsive_value(
 
 ?>
 
-<a
-	href="#offcanvas"
-	class="ct-header-trigger"
+<button
+	data-toggle-panel="#offcanvas"
+	class="ct-header-trigger ct-toggle"
 	data-design="<?php echo $trigger_design ?>"
 	data-label="<?php echo $trigger_label_alignment[$device] ?>"
 	aria-label="<?php echo $trigger_label ?>"
@@ -37,14 +37,13 @@ $trigger_label_alignment = blocksy_expand_responsive_value(
 	<span class="<?php echo $label_class ?>"><?php echo $trigger_label ?></span>
 
 	<svg
-		class="ct-trigger ct-icon"
+		class="ct-icon"
 		width="18" height="14" viewBox="0 0 18 14"
-		aria-label="<?php echo __('Off-canvas trigger icon', 'blocksy') ?>"
+		aria-label="<?php echo __('Off Canvas trigger icon', 'blocksy') ?>"
 		data-type="<?php echo esc_attr($trigger_type) ?>">
 
 		<rect y="0.00" width="18" height="1.7" rx="1"/>
 		<rect y="6.15" width="18" height="1.7" rx="1"/>
 		<rect y="12.3" width="18" height="1.7" rx="1"/>
 	</svg>
-
-</a>
+</button>

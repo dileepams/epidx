@@ -70,9 +70,6 @@ class Cartflows_Checkout_Markup {
 
 		add_filter( 'global_cartflows_js_localize', array( $this, 'add_localize_vars' ) );
 
-		/* Global Checkout */
-		add_action( 'template_redirect', array( $this, 'global_checkout_template_redirect' ), 1 );
-
 		add_action( 'wp_ajax_wcf_woo_remove_coupon', array( $this, 'remove_coupon' ) );
 		add_action( 'wp_ajax_nopriv_wcf_woo_remove_coupon', array( $this, 'remove_coupon' ) );
 
@@ -347,57 +344,6 @@ class Cartflows_Checkout_Markup {
 		}
 	}
 
-
-	/**
-	 * Redirect from default to the global checkout page
-	 *
-	 * @since 1.0.0
-	 */
-	public function global_checkout_template_redirect() {
-		if ( function_exists( 'is_checkout' ) && ! is_checkout() ) {
-			return;
-		}
-
-		if ( wcf()->utils->is_step_post_type() ) {
-			return;
-		}
-
-		// Return if the key OR Order paramater is found in the URL for certain Payment gateways.
-		if (isset($_GET['key']) || isset($_GET['order'])) { //phpcs:ignore
-			return;
-		}
-
-		// redirect only for cartflows checkout pages.
-		$order_pay_endpoint      = get_option( 'woocommerce_checkout_pay_endpoint', 'order-pay' );
-		$order_received_endpoint = get_option( 'woocommerce_checkout_order_received_endpoint', 'order-received' );
-
-		$common = Cartflows_Helper::get_common_settings();
-
-		$global_checkout = $common['global_checkout'];
-
-		if (
-			isset( $_SERVER['REQUEST_URI'] ) &&
-			// ignore on order-pay.
-			false === wcf_mb_strpos( esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ), '/' . $order_pay_endpoint . '/' ) &&
-			// ignore on TY page.
-			false === wcf_mb_strpos( esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ), '/' . $order_received_endpoint . '/' ) &&
-			// ignore if order-pay in query param.
-			false === wcf_mb_strpos( esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ), $order_pay_endpoint . '=' )
-		) {
-
-			if ( '' !== $global_checkout ) {
-
-				$link = apply_filters( 'cartflows_global_checkout_url', get_permalink( $global_checkout ) );
-
-				if ( ! empty( $link ) ) {
-
-					wp_safe_redirect( $link );
-					die();
-				}
-			}
-		}
-	}
-
 	/**
 	 * Check for checkout flag
 	 *
@@ -408,7 +354,7 @@ class Cartflows_Checkout_Markup {
 	public function woo_checkout_flag( $is_checkout ) {
 		if ( ! is_admin() ) {
 
-			if ( _is_wcf_checkout_type() || _is_wcf_checkout_shortcode() ) {
+			if ( _is_wcf_checkout_type() ) {
 
 				$is_checkout = true;
 			}
@@ -508,7 +454,7 @@ class Cartflows_Checkout_Markup {
 
 		global $post, $wcf_step;
 
-		if ( _is_wcf_checkout_type() || _is_wcf_checkout_shortcode() ) {
+		if ( _is_wcf_checkout_type() ) {
 
 			if ( wp_doing_ajax() ) {
 				return;
@@ -1058,6 +1004,9 @@ class Cartflows_Checkout_Markup {
 
 			if ( _is_wcf_checkout_type() ) {
 
+				$query_args = array();
+				$url        = $endpoint_url;
+
 				if ( mb_strpos( $endpoint_url, 'checkout', 0, 'utf-8' ) === false ) {
 
 					if ( '' === $request ) {
@@ -1071,10 +1020,12 @@ class Cartflows_Checkout_Markup {
 					}
 
 					$uri = explode('?', $_SERVER['REQUEST_URI'], 2); //phpcs:ignore
-					$uri = $uri[0];
-
-					$endpoint_url = esc_url( add_query_arg( $query_args, $uri ) );
+					$url = esc_url( $uri[0] );
 				}
+
+				$query_args['wcf_checkout_id'] = $post->ID;
+
+				$endpoint_url = add_query_arg( $query_args, $url );
 			}
 		}
 
@@ -1090,18 +1041,19 @@ class Cartflows_Checkout_Markup {
 	 * @return void
 	 */
 	public function save_checkout_fields( $order_id, $posted ) {
-		if (isset($_POST['_wcf_checkout_id'])) { //phpcs:ignore
 
-			$checkout_id = wc_clean(intval($_POST['_wcf_checkout_id'])); //phpcs:ignore
+		if ( isset( $_POST['_wcf_checkout_id'] ) ) { //phpcs:ignore
+			$checkout_id = wc_clean( intval( $_POST['_wcf_checkout_id'] ) ); //phpcs:ignore
+			$flow_id = isset( $_POST['_wcf_flow_id'] ) ? wc_clean( intval( $_POST['_wcf_flow_id'] ) ) : 0; //phpcs:ignore
 
+		} elseif ( isset( $_GET['wcf_checkout_id'] ) ) { //phpcs:ignore
+			$checkout_id = wc_clean( intval( $_GET['wcf_checkout_id'] ) ); //phpcs:ignore
+			$flow_id     = wcf()->utils->get_flow_id_from_step_id( $checkout_id );
+		}
+
+		if ( ! empty( $flow_id ) && ! empty( $checkout_id ) ) {
+			update_post_meta( $order_id, '_wcf_flow_id', $flow_id );
 			update_post_meta( $order_id, '_wcf_checkout_id', $checkout_id );
-
-			if (isset($_POST['_wcf_flow_id'])) { //phpcs:ignore
-
-				$flow_id = wc_clean(intval($_POST['_wcf_flow_id'])); //phpcs:ignore
-
-				update_post_meta( $order_id, '_wcf_flow_id', $flow_id );
-			}
 		}
 	}
 
@@ -1269,7 +1221,7 @@ class Cartflows_Checkout_Markup {
 
 		$vars['wcf_validate_remove_cart_product_nonce'] = wp_create_nonce( 'wcf-remove-cart-product' );
 
-		$vars['allow_persistence'] = wcf_apply_filters_deprecated( 'cartflows_allow_persistace', array( 'yes' ), '1.6.0', 'cartflows_allow_persistence' );
+		$vars['allow_persistence'] = apply_filters( 'cartflows_allow_persistence', 'yes' );
 
 		return $vars;
 	}

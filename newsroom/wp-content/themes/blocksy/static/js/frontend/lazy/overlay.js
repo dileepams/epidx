@@ -20,11 +20,15 @@ const showOffcanvas = (settings) => {
 		focus: true,
 		...settings,
 	}
-	;[...document.querySelectorAll(`[href*="${settings.container.id}"]`)].map(
-		(trigger) => {
-			trigger.classList.add('active')
-		}
-	)
+	;[
+		...document.querySelectorAll(
+			`[data-toggle-panel*="${settings.container.id}"]`
+		),
+
+		...document.querySelectorAll(`[href*="${settings.container.id}"]`),
+	].map((trigger) => {
+		trigger.setAttribute('aria-expanded', 'true')
+	})
 
 	if (settings.focus) {
 		setTimeout(() => {
@@ -145,11 +149,15 @@ const hideOffcanvas = (settings, args = {}) => {
 		return
 	}
 
-	;[...document.querySelectorAll(`[href*="${settings.container.id}"]`)].map(
-		(trigger) => {
-			trigger.classList.remove('active')
-		}
-	)
+	;[
+		...document.querySelectorAll(
+			`[data-toggle-panel*="${settings.container.id}"]`
+		),
+
+		...document.querySelectorAll(`[href*="${settings.container.id}"]`),
+	].map((trigger) => {
+		trigger.setAttribute('aria-expanded', 'false')
+	})
 
 	settings.container.classList.remove('active')
 
@@ -247,10 +255,8 @@ export const handleClick = (e, settings) => {
 			}
 
 			if (
-				e.target.classList.contains('ct-header-trigger') ||
-				e.target.closest('.ct-header-trigger') ||
-				e.target.classList.contains('ct-offcanvas-trigger') ||
-				e.target.closest('.ct-offcanvas-trigger')
+				e.target.classList.contains('ct-header-account') ||
+				e.target.closest('.ct-header-account')
 			) {
 				return
 			}
@@ -306,7 +312,7 @@ ctEvents.on('ct:offcanvas:force-close', (settings) => hideOffcanvas(settings))
 export const mount = (el, { event, focus = false }) => {
 	handleClick(event, {
 		isModal: true,
-		container: document.querySelector(el.hash),
+		container: document.querySelector(el.dataset.togglePanel || el.hash),
 		clickOutside: true,
 		focus,
 	})

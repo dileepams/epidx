@@ -106,6 +106,7 @@ if (
 <nav
 	id="<?php echo esc_attr($class) ?>"
 	class="<?php echo esc_attr($class) ?>"
+	role="navigation"
 	<?php echo blocksy_attr_to_html($attr) ?>
 	data-menu="<?php echo esc_attr($menu_type) ?>"
 	<?php echo $dropdown_output ?>

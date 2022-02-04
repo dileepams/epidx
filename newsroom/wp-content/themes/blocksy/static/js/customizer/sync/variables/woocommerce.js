@@ -4,6 +4,54 @@ import { handleBackgroundOptionFor } from './background'
 
 export const getWooVariablesFor = () => ({
 	// Woocommerce archive
+	shop_cards_alignment_1: [
+		{
+			selector: '[data-products="type-1"] .product',
+			variable: 'horizontal-alignment',
+			responsive: true,
+			unit: '',
+		},
+
+		{
+			selector: '[data-products="type-1"] .product',
+			variable: 'text-horizontal-alignment',
+			responsive: true,
+			unit: '',
+			extractValue: (value) => {
+
+				if (!value.desktop) {
+					return value
+				}
+
+				if (value.desktop === 'flex-start') {
+					value.desktop = 'left'
+				}
+
+				if (value.desktop === 'flex-end') {
+					value.desktop = 'right'
+				}
+
+				if (value.tablet === 'flex-start') {
+					value.tablet = 'left'
+				}
+
+				if (value.tablet === 'flex-end') {
+					value.tablet = 'right'
+				}
+
+				if (value.mobile === 'flex-start') {
+					value.mobile = 'left'
+				}
+
+				if (value.mobile === 'flex-end') {
+					value.mobile = 'right'
+				}
+
+				return value
+			},
+		},
+	],
+
 	shopCardsGap: {
 		selector: '[data-products]',
 		variable: 'grid-columns-gap',

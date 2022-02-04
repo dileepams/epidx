@@ -1,3 +1,22 @@
+1.8.14: 2021-12-29
+- Improvement: Infinite scroll integration with JetWooBuilder
+- Improvement: Responsive menu accessibility improvements
+- Improvement: WooCommerce archive cards responsive alignment option
+- Fix: WooCommerce archive categories cards alignment
+
+1.8.13: 2021-12-24
+- Improvement: WooCommerce notice/messages small CSS improvement
+- Improvement: Correctly mount fast overlays that have loaders
+- Fix: Search box live results CSS
+
+1.8.12: 2021-12-24
+- New: Options for changing out of stock and sale badge labels
+- Improvement: Better output color variable for related posts title
+- Improvement: Mobile menu trigger button accessibility improvements
+- Improvement: Add horizontal spacing option for desktop menu dropdowns
+- Fix: Menu arrows color transition
+- Fix: Add missing default to WooCommerce gallery variation variable
+
 1.8.11: 2021-12-18
 - Improvement: Toggle close button minor CSS improvements
 - Improvement: Sticky state header minor CSS improvements

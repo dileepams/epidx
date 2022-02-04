@@ -67,14 +67,12 @@ class ActionScheduler_wcSystemStatus {
 
 		$order = 'oldest' === $date_type ? 'ASC' : 'DESC';
 
-		$action = $this->store->query_actions(
-			array(
-				'claimed'  => false,
-				'status'   => $status,
-				'per_page' => 1,
-				'order'    => $order,
-			)
-		);
+		$action = $this->store->query_actions( array(
+			'claimed'  => false,
+			'status'   => $status,
+			'per_page' => 1,
+			'order'    => $order,
+		) );
 
 		if ( ! empty( $action ) ) {
 			$date_object = $this->store->get_date( $action[0] );
@@ -94,7 +92,7 @@ class ActionScheduler_wcSystemStatus {
 	 * @param array $oldest_and_newest Date of the oldest and newest action with each status.
 	 */
 	protected function get_template( $status_labels, $action_counts, $oldest_and_newest ) {
-		$as_version   = ActionScheduler_Versions::instance()->latest_version();
+		$as_version = ActionScheduler_Versions::instance()->latest_version();
 		$as_datastore = get_class( ActionScheduler_Store::instance() );
 		?>
 

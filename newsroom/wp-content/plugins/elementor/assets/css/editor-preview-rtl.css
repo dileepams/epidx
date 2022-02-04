@@ -1,4 +1,4 @@
-/*! elementor - v3.5.0 - 12-12-2021 */
+/*! elementor - v3.5.3 - 28-12-2021 */
 @charset "UTF-8";
 .elementor-control-unit-1 {
   width: 27px; }
@@ -2660,11 +2660,8 @@ html.elementor-html {
 .elementor-edit-area-active .elementor-edit-hidden {
   display: none; }
 
-.elementor-section-wrap {
-  position: relative;
-  z-index: 1; }
-  .elementor-section-wrap:empty {
-    min-height: 25px; }
+.elementor-section-wrap:empty {
+  min-height: 25px; }
 
 .elementor-element > .elementor-element-overlay {
   position: absolute;

@@ -43,13 +43,13 @@ export const replaceCards = () => {
 		const productsContainer = product.closest('[data-products]')
 		const nextType = productsContainer.dataset.products
 
-		productsContainer.removeAttribute('data-alignment')
+		// productsContainer.removeAttribute('data-alignment')
 
-		if (nextType === 'type-1') {
-			productsContainer.dataset.alignment = getOptionFor(
-				'shop_cards_alignment_1'
-			)
-		}
+		// if (nextType === 'type-1') {
+		// 	productsContainer.dataset.alignment = getOptionFor(
+		// 		'shop_cards_alignment_1'
+		// 	)
+		// }
 
 		const ratio = wp.customize('blocksy_woocommerce_thumbnail_cropping')()
 
@@ -93,7 +93,7 @@ watchOptionsWithPrefix({
 		'blocksy_woocommerce_thumbnail_cropping',
 		'woocommerce_thumbnail_cropping_custom_width',
 		'woocommerce_thumbnail_cropping_custom_height',
-		'shop_cards_alignment_1',
+		// 'shop_cards_alignment_1',
 	],
 
 	events: ['ct:archive-product-replace-cards:perform'],

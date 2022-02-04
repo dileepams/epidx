@@ -1,7 +1,7 @@
 <?php
 
 if ( ! class_exists( 'WP_List_Table' ) ) {
-	require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
+	require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
 /**
@@ -13,8 +13,8 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
  * which columns needs to be shown, filter, ordered by and more and forget about the details.
  *
  * This class supports:
- *  - Bulk actions
- *  - Search
+ *	- Bulk actions
+ *	- Search
  *  - Sortable columns
  *  - Automatic translations of the columns
  *
@@ -146,18 +146,16 @@ abstract class ActionScheduler_Abstract_ListTable extends WP_List_Table {
 
 		check_admin_referer( 'bulk-' . $this->_args['plural'] );
 
-		$method = 'bulk_' . $action;
+		$method   = 'bulk_' . $action;
 		if ( array_key_exists( $action, $this->bulk_actions ) && is_callable( array( $this, $method ) ) && ! empty( $_GET['ID'] ) && is_array( $_GET['ID'] ) ) {
 			$ids_sql = '(' . implode( ',', array_fill( 0, count( $_GET['ID'] ), '%s' ) ) . ')';
 			$this->$method( $_GET['ID'], $wpdb->prepare( $ids_sql, $_GET['ID'] ) );
 		}
 
-		wp_redirect(
-			remove_query_arg(
-				array( '_wp_http_referer', '_wpnonce', 'ID', 'action', 'action2' ),
-				wp_unslash( $_SERVER['REQUEST_URI'] )
-			)
-		);
+		wp_redirect( remove_query_arg(
+			array( '_wp_http_referer', '_wpnonce', 'ID', 'action', 'action2' ),
+			wp_unslash( $_SERVER['REQUEST_URI'] )
+		) );
 		exit;
 	}
 
@@ -229,7 +227,7 @@ abstract class ActionScheduler_Abstract_ListTable extends WP_List_Table {
 	 * @return int
 	 */
 	protected function get_items_offset() {
-		$per_page     = $this->get_items_per_page( $this->package . '_items_per_page', $this->items_per_page );
+		$per_page = $this->get_items_per_page( $this->package . '_items_per_page', $this->items_per_page );
 		$current_page = $this->get_pagenum();
 		if ( 1 < $current_page ) {
 			$offset = $per_page * ( $current_page - 1 );
@@ -357,9 +355,9 @@ abstract class ActionScheduler_Abstract_ListTable extends WP_List_Table {
 			return '';
 		}
 
-		$filter = array();
+		$filter  = array();
 		foreach ( $this->search_by as $column ) {
-			$filter[] = $wpdb->prepare( '`' . $column . '` like "%%s%"', $wpdb->esc_like( $_GET['s'] ) );
+			$filter[] = $wpdb->prepare('`' . $column . '` like "%%s%"', $wpdb->esc_like( $_GET['s'] ));
 		}
 		return implode( ' OR ', $filter );
 	}
@@ -416,16 +414,14 @@ abstract class ActionScheduler_Abstract_ListTable extends WP_List_Table {
 		$limit   = $this->get_items_query_limit();
 		$offset  = $this->get_items_query_offset();
 		$order   = $this->get_items_query_order();
-		$where   = array_filter(
-			array(
-				$this->get_items_query_search(),
-				$this->get_items_query_filters(),
-			)
-		);
+		$where   = array_filter(array(
+			$this->get_items_query_search(),
+			$this->get_items_query_filters(),
+		));
 		$columns = '`' . implode( '`, `', $this->get_table_columns() ) . '`';
 
 		if ( ! empty( $where ) ) {
-			$where = 'WHERE (' . implode( ') AND (', $where ) . ')';
+			$where = 'WHERE ('. implode( ') AND (', $where ) . ')';
 		} else {
 			$where = '';
 		}
@@ -437,13 +433,11 @@ abstract class ActionScheduler_Abstract_ListTable extends WP_List_Table {
 		$query_count = "SELECT COUNT({$this->ID}) FROM {$this->table_name} {$where}";
 		$total_items = $wpdb->get_var( $query_count );
 		$per_page    = $this->get_items_per_page( $this->package . '_items_per_page', $this->items_per_page );
-		$this->set_pagination_args(
-			array(
-				'total_items' => $total_items,
-				'per_page'    => $per_page,
-				'total_pages' => ceil( $total_items / $per_page ),
-			)
-		);
+		$this->set_pagination_args( array(
+			'total_items' => $total_items,
+			'per_page'    => $per_page,
+			'total_pages' => ceil( $total_items / $per_page ),
+		) );
 	}
 
 	public function extra_tablenav( $which ) {
@@ -462,7 +456,7 @@ abstract class ActionScheduler_Abstract_ListTable extends WP_List_Table {
 			echo '<select name="filter_by[' . esc_attr( $id ) . ']" class="first" id="filter-by-' . esc_attr( $id ) . '">';
 
 			foreach ( $options as $value => $label ) {
-				echo '<option value="' . esc_attr( $value ) . '" ' . esc_html( $value == $default ? 'selected' : '' ) . '>'
+				echo '<option value="' . esc_attr( $value ) . '" ' . esc_html( $value == $default ? 'selected' : '' )  .'>'
 					. esc_html( $label )
 				. '</option>';
 			}
@@ -491,7 +485,7 @@ abstract class ActionScheduler_Abstract_ListTable extends WP_List_Table {
 	 * name transformation though using `$this->ID`.
 	 */
 	public function column_cb( $row ) {
-		return '<input name="ID[]" type="checkbox" value="' . esc_attr( $row[ $this->ID ] ) . '" />';
+		return '<input name="ID[]" type="checkbox" value="' . esc_attr( $row[ $this->ID ] ) .'" />';
 	}
 
 	/**
@@ -500,7 +494,7 @@ abstract class ActionScheduler_Abstract_ListTable extends WP_List_Table {
 	 * This method renders the action menu, it reads the definition from the $row_actions property,
 	 * and it checks that the row action method exists before rendering it.
 	 *
-	 * @param array                     $row     Row to render
+	 * @param array $row     Row to render
 	 * @param $column_name   Current row
 	 * @return
 	 */
@@ -511,7 +505,7 @@ abstract class ActionScheduler_Abstract_ListTable extends WP_List_Table {
 
 		$row_id = $row[ $this->ID ];
 
-		$actions      = '<div class="row-actions">';
+		$actions = '<div class="row-actions">';
 		$action_count = 0;
 		foreach ( $this->row_actions[ $column_name ] as $action_key => $action ) {
 
@@ -521,13 +515,7 @@ abstract class ActionScheduler_Abstract_ListTable extends WP_List_Table {
 				continue;
 			}
 
-			$action_link = ! empty( $action['link'] ) ? $action['link'] : add_query_arg(
-				array(
-					'row_action' => $action_key,
-					'row_id'     => $row_id,
-					'nonce'      => wp_create_nonce( $action_key . '::' . $row_id ),
-				)
-			);
+			$action_link = ! empty( $action['link'] ) ? $action['link'] : add_query_arg( array( 'row_action' => $action_key, 'row_id' => $row_id, 'nonce'  => wp_create_nonce( $action_key . '::' . $row_id ) ) );
 			$span_class  = ! empty( $action['class'] ) ? $action['class'] : $action_key;
 			$separator   = ( $action_count < count( $this->row_actions[ $column_name ] ) ) ? ' | ' : '';
 
@@ -549,16 +537,14 @@ abstract class ActionScheduler_Abstract_ListTable extends WP_List_Table {
 
 		$method = 'row_action_' . $_REQUEST['row_action'];
 
-		if ( $_REQUEST['nonce'] === wp_create_nonce( $_REQUEST['row_action'] . '::' . $_REQUEST['row_id'] ) && method_exists( $this, $method ) ) {
+		if ( $_REQUEST['nonce'] === wp_create_nonce( $_REQUEST[ 'row_action' ] . '::' . $_REQUEST[ 'row_id' ] ) && method_exists( $this, $method ) ) {
 			$this->$method( $_REQUEST['row_id'] );
 		}
 
-		wp_redirect(
-			remove_query_arg(
-				array( 'row_id', 'row_action', 'nonce' ),
-				wp_unslash( $_SERVER['REQUEST_URI'] )
-			)
-		);
+		wp_redirect( remove_query_arg(
+			array( 'row_id', 'row_action', 'nonce' ),
+			wp_unslash( $_SERVER['REQUEST_URI'] )
+		) );
 		exit;
 	}
 
@@ -566,7 +552,7 @@ abstract class ActionScheduler_Abstract_ListTable extends WP_List_Table {
 	 * Default column formatting, it will escape everythig for security.
 	 */
 	public function column_default( $item, $column_name ) {
-		$column_html  = esc_html( $item[ $column_name ] );
+		$column_html = esc_html( $item[ $column_name ] );
 		$column_html .= $this->maybe_render_actions( $item, $column_name );
 		return $column_html;
 	}

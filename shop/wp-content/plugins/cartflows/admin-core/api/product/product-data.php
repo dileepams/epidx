@@ -99,7 +99,7 @@ class ProductData extends ApiBase {
 		if ( $product ) {
 
 			$data['img_url']       = get_the_post_thumbnail_url( $product_id );
-			$data['regular_price'] = AdminHelper::get_product_original_price( $product );
+			$data['regular_price'] = \Cartflows_Helper::get_product_original_price( $product );
 		}
 
 		$response = new \WP_REST_Response( $data );

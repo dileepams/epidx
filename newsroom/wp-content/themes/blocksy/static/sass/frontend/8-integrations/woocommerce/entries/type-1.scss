@@ -2,14 +2,18 @@
 	grid-row-gap: calc(var(--grid-columns-gap, 30px) + 20px);
 
 	.product {
+		position: relative;
 		display: flex;
 		flex-direction: column;
-		position: relative;
+		align-items: var(--horizontal-alignment);
+		text-align: var(--text-horizontal-alignment);
 	}
 
+	.product-category > a,
 	.woocommerce-loop-product__link {
 		display: flex;
 		flex-direction: column;
+		align-items: inherit;
 		position: relative;
 		width: 100%;
 	}
@@ -33,20 +37,20 @@
 	}
 
 	// alignment
-	&[data-alignment="center"] .product {
-		text-align: center;
+	// &[data-alignment="center"] .product {
+	// 	text-align: center;
 
-		.star-rating {
-			margin-left: auto;
-			margin-right: auto;
-		}
-	}
+	// 	.star-rating {
+	// 		margin-left: auto;
+	// 		margin-right: auto;
+	// 	}
+	// }
 
-	&[data-alignment="right"] .product {
-		text-align: right;
+	// &[data-alignment="right"] .product {
+	// 	text-align: right;
 
-		.star-rating {
-			margin-left: auto;
-		}
-	}
+	// 	.star-rating {
+	// 		margin-left: auto;
+	// 	}
+	// }
 }

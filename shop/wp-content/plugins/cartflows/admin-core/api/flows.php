@@ -188,33 +188,9 @@ class Flows extends ApiBase {
 		$data['found_posts'] = $result->found_posts;
 		$data['post_status'] = isset( $post_data['post_status'] ) ? $post_data['post_status'] : $args['post_status'];
 
-		$active_flows = new \WP_Query(
-			array(
-				'post_type'   => CARTFLOWS_FLOW_POST_TYPE,
-				'post_status' => 'publish',
-				'orderby'     => 'ID',
-			)
-		);
-
-		$trashed_flows = new \WP_Query(
-			array(
-				'post_type'   => CARTFLOWS_FLOW_POST_TYPE,
-				'post_status' => 'trash',
-				'orderby'     => 'ID',
-			)
-		);
-
-		$draft_flows = new \WP_Query(
-			array(
-				'post_type'   => CARTFLOWS_FLOW_POST_TYPE,
-				'post_status' => 'draft',
-				'orderby'     => 'ID',
-			)
-		);
-
-		$data['active_flows_count'] = $active_flows->found_posts;
-		$data['trash_flows_count']  = $trashed_flows->found_posts;
-		$data['draft_flows_count']  = $draft_flows->found_posts;
+		$data['active_flows_count'] = intval( wp_count_posts( CARTFLOWS_FLOW_POST_TYPE )->publish );
+		$data['trash_flows_count']  = intval( wp_count_posts( CARTFLOWS_FLOW_POST_TYPE )->trash );
+		$data['draft_flows_count']  = intval( wp_count_posts( CARTFLOWS_FLOW_POST_TYPE )->draft );
 
 		$data['pagination'] = array(
 			'found_posts' => $result->found_posts,

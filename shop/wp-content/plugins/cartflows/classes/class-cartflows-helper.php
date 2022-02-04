@@ -316,9 +316,10 @@ class Cartflows_Helper {
 			$common_default = apply_filters(
 				'cartflows_common_settings_default',
 				array(
-					'disallow_indexing'    => 'disable',
-					'global_checkout'      => '',
-					'default_page_builder' => 'elementor',
+					'global_checkout'          => '',
+					'override_global_checkout' => 'enable',
+					'disallow_indexing'        => 'disable',
+					'default_page_builder'     => 'elementor',
 				)
 			);
 
@@ -464,47 +465,6 @@ class Cartflows_Helper {
 		}
 
 		return $fields;
-	}
-
-	/**
-	 * Add Checkout field. ( Moved this function to pro so need to remove this function later )
-	 *
-	 * @param string $type Field type.
-	 * @param string $field_key Field key.
-	 * @param array  $field_data Field data.
-	 * @param int    $post_id Post id.
-	 * @return  boolean.
-	 */
-	public static function add_checkout_field( $type = '', $field_key = '', $field_data = array(), $post_id = 0 ) {
-
-		$fields = self::get_checkout_fields( $type, $post_id );
-
-		$fields[ $field_key ] = $field_data;
-
-		update_post_meta( $post_id, 'wcf_fields_' . $type, $fields );
-
-		return true;
-	}
-
-	/**
-	 * Get checkout fields settings. ( Moved this function to pro so need to remove this function later )
-	 *
-	 * @param string $type Field type.
-	 * @param string $field_key Field key.
-	 * @param int    $post_id Post id.
-	 * @return  array.
-	 */
-	public static function delete_checkout_field( $type, $field_key, $post_id ) {
-
-		$fields = self::get_checkout_fields( $type, $post_id );
-
-		if ( isset( $fields[ $field_key ] ) ) {
-			unset( $fields[ $field_key ] );
-		}
-
-		update_post_meta( $post_id, 'wcf_fields_' . $type, $fields );
-
-		return true;
 	}
 
 	/**
@@ -1039,5 +999,62 @@ class Cartflows_Helper {
 		return $url;
 	}
 
+	/**
+	 * Get product price.
+	 *
+	 * @param object $product product data.
+	 */
+	public static function get_product_original_price( $product ) {
+
+		$custom_price = '';
+		$product_id   = 0;
+
+		if ( $product->is_type( 'variable' ) ) {
+
+			$default_attributes = $product->get_default_attributes();
+
+			if ( ! empty( $default_attributes ) ) {
+
+				foreach ( $product->get_children() as $c_in => $variation_id ) {
+
+					if ( 0 === $c_in ) {
+						$product_id = $variation_id;
+					}
+
+					$single_variation = new \WC_Product_Variation( $variation_id );
+
+					if ( $default_attributes == $single_variation->get_attributes() ) {
+
+						$product_id = $variation_id;
+						break;
+					}
+				}
+			} else {
+
+				$product_childrens = $product->get_children();
+
+				if ( is_array( $product_childrens ) && ! empty( $product_childrens ) ) {
+
+					foreach ( $product_childrens  as $c_in => $c_id ) {
+
+						$product_id = $c_id;
+						break;
+					}
+				} else {
+
+					// Return if no childrens found.
+					return;
+				}
+			}
+
+			$product = wc_get_product( $product_id );
+		}
+
+		if ( $product ) {
+			$custom_price = $product->get_price( 'edit' );
+		}
+
+		return $custom_price;
+	}
 }
 

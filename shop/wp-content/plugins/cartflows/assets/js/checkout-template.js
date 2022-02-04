@@ -35,10 +35,13 @@
 		}
 
 		vis( function () {
-			if ( vis() ) {
+
+			var active_checkout_cookie = getCookie( cartflows.active_checkout_cookie );
+
+			if ( active_checkout_cookie && vis() ) {
 				if (
 					parseInt( cartflows.current_step ) !==
-					parseInt( getCookie( cartflows.active_checkout_cookie ) )
+					parseInt( active_checkout_cookie )
 				) {
 					// Add loader.
 					$(

@@ -10,9 +10,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Widget_Base;
 use Elementor\Widget_Button;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Background;
-use Elementor\Scheme_Color;
 
 
 if ( ! defined( 'ABSPATH' ) ) {

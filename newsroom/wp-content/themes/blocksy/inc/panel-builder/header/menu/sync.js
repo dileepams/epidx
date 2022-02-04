@@ -68,6 +68,18 @@ export const handleMenuVariables = ({ itemId }) => ({
 		unit: 'px',
 	},
 
+	dropdown_horizontal_offset: {
+		selector: assembleSelector(
+			mutateSelector({
+				selector: getRootSelectorFor({ itemId }),
+				operation: 'suffix',
+				to_add: '.sub-menu',
+			})
+		),
+		variable: 'dropdown-horizontal-offset',
+		unit: 'px',
+	},
+
 	dropdownMenuWidth: {
 		selector: assembleSelector(
 			mutateSelector({

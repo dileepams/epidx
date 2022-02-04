@@ -23,11 +23,10 @@
 
 // commun styles
 .ct-cart-item,
-// .site-branding,
 .ct-header-cta,
 .ct-header-text,
-.ct-header-search,
-.ct-header-trigger,
+// .ct-header-search,
+// .ct-header-trigger,
 .ct-header-account,
 .ct-header-wishlist {
 	display: flex;
@@ -54,5 +53,17 @@
 
 	&:hover .ct-icon {
 		fill: var(--icon-hover-color, var(--paletteColor2));
+	}
+}
+
+
+.ct-header-search,
+.ct-header-trigger {
+	.ct-label {
+		color: var(--linkInitialColor);
+	}
+
+	&:hover .ct-label {
+		color: var(--linkHoverColor);
 	}
 }

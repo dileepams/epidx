@@ -3,7 +3,11 @@
 add_filter(
 	'woocommerce_sale_flash',
 	function ($text, $post, $product) {
-		$text = __('Sale!', 'blocksy');
+		$text = get_theme_mod(
+			'sale_badge_default_value',
+			__('SALE!', 'blocksy')
+		);
+
 		$default_text = $text;
 
 		if (get_theme_mod('sale_badge_value', 'default') === 'custom') {

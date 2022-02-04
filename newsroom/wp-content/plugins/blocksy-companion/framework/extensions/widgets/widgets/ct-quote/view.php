@@ -18,13 +18,22 @@ $quote_text = do_shortcode(blocksy_default_akg( 'quote_text', $atts, '' ));
 $quote_author = blocksy_default_akg( 'quote_author', $atts, __( 'John Doe', 'blocksy-companion' ) );
 
 // Quote avatar
-$image_output = blc_call_fn(['fn' => 'blocksy_image'], [
-	'attachment_id' => blocksy_default_akg( 'quote_avatar/attachment_id', $atts, null ),
-	'ratio' => '1/1',
-	'tag_name' => 'figure',
-	'size' => 'thumbnail'
-]);
+$attachment_id = blocksy_default_akg(
+	'quote_avatar/attachment_id',
+	$atts,
+	null
+);
 
+$image_output = '';
+
+if ($attachment_id) {
+	$image_output = blc_call_fn(['fn' => 'blocksy_image'], [
+		'attachment_id' => $attachment_id,
+		'ratio' => '1/1',
+		'tag_name' => 'figure',
+		'size' => 'thumbnail'
+	]);
+}
 
 // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 echo $before_widget;

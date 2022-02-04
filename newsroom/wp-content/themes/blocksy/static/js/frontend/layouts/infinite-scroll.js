@@ -88,14 +88,12 @@ function getAppendSelectorFor(layoutEl) {
 		)
 
 		return layoutEl.classList.contains('products')
-			? `.ct-posts-shortcode:nth-child(${
-					layoutIndex + 1
-			  }) [data-products] > li`
+			? `.ct-posts-shortcode:nth-child(${layoutIndex + 1}) .products > li`
 			: `.ct-posts-shortcode:nth-child(${layoutIndex + 1}) .entries > *`
 	}
 
 	return layoutEl.classList.contains('products')
-		? `#main [data-products] > li`
+		? `#main .products > li`
 		: `.entries > *`
 
 	let maybeClosestShortcode = layoutEl.closest('[data-ct="latest-posts"]')

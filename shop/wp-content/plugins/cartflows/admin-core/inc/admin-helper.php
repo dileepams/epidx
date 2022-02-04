@@ -151,9 +151,10 @@ class AdminHelper {
 		$common_default = apply_filters(
 			'cartflows_common_settings_default',
 			array(
-				'disallow_indexing'    => 'disable',
-				'global_checkout'      => '',
-				'default_page_builder' => 'elementor',
+				'global_checkout'          => '',
+				'override_global_checkout' => 'enable',
+				'disallow_indexing'        => 'disable',
+				'default_page_builder'     => 'elementor',
 			)
 		);
 
@@ -466,63 +467,7 @@ class AdminHelper {
 		return $options;
 	}
 
-		/**
-		 * Get product price.
-		 *
-		 * @param object $product product data.
-		 */
-	public static function get_product_original_price( $product ) {
 
-		$custom_price = '';
-		$product_id   = 0;
-
-		if ( $product->is_type( 'variable' ) ) {
-
-			$default_attributes = $product->get_default_attributes();
-
-			if ( ! empty( $default_attributes ) ) {
-
-				foreach ( $product->get_children() as $c_in => $variation_id ) {
-
-					if ( 0 === $c_in ) {
-						$product_id = $variation_id;
-					}
-
-					$single_variation = new \WC_Product_Variation( $variation_id );
-
-					if ( $default_attributes == $single_variation->get_attributes() ) {
-
-						$product_id = $variation_id;
-						break;
-					}
-				}
-			} else {
-
-				$product_childrens = $product->get_children();
-
-				if ( is_array( $product_childrens ) && ! empty( $product_childrens ) ) {
-
-					foreach ( $product_childrens  as $c_in => $c_id ) {
-
-						$product_id = $c_id;
-						break;
-					}
-				} else {
-
-					// Return if no childrens found.
-					return;
-				}
-			}
-
-			$product = wc_get_product( $product_id );
-		}
-
-		if ( $product ) {
-			$custom_price = $product->get_price( 'edit' );
-		}
-
-		return $custom_price;
-	}
 
 	/**
 	 * Prepare step data.
@@ -538,9 +483,6 @@ class AdminHelper {
 
 		if ( is_array( $steps ) && ! empty( $steps ) ) {
 
-			$is_checkout = 0;
-			$step_length = count( $steps );
-
 			foreach ( $steps as $in => $step ) {
 				$step_id                             = $step['id'];
 				$steps[ $in ]['title']               = get_the_title( $step_id );
@@ -549,56 +491,8 @@ class AdminHelper {
 				$steps[ $in ]['actions']      = self::get_step_actions( $flow_id, $step_id );
 				$steps[ $in ]['menu_actions'] = self::get_step_actions( $flow_id, $step_id, 'menu' );
 
-				$steps[ $in ]['menu_actions'] = self::get_step_actions( $flow_id, $step_id, 'menu' );
-
-				if ( 'checkout' === $step['type'] ) {
-					$is_checkout++;
-				}
-
-				if ( _is_cartflows_pro() && in_array( $step['type'], array( 'upsell', 'downsell' ), true ) ) {
-
-					$is_thankyou = 0;
-
-					// Check if next remaining steps has thank you page.
-					for ( $i = $in; $i < $step_length; $i++ ) {
-						if ( 'thankyou' === $steps[ $i ]['type'] ) {
-							$is_thankyou++;
-						}
-					}
-
-					if ( $is_checkout > 0 && $is_thankyou > 0 ) {
-
-						$wcf_step_obj = wcf_pro_get_step( $step_id );
-						$flow_steps   = $wcf_step_obj->get_flow_steps();
-						$control_step = $wcf_step_obj->get_control_step();
-						if ( 'upsell' === $step['type'] ) {
-							$next_yes_steps = wcf_pro()->flow->get_next_step_id_for_upsell_accepted( $wcf_step_obj, $flow_steps, $step_id, $control_step );
-							$next_no_steps  = wcf_pro()->flow->get_next_step_id_for_upsell_rejected( $wcf_step_obj, $flow_steps, $step_id, $control_step );
-						}
-
-						if ( 'downsell' === $step['type'] ) {
-							$next_yes_steps = wcf_pro()->flow->get_next_step_id_for_downsell_accepted( $wcf_step_obj, $flow_steps, $step_id, $control_step );
-							$next_no_steps  = wcf_pro()->flow->get_next_step_id_for_downsell_rejected( $wcf_step_obj, $flow_steps, $step_id, $control_step );
-						}
-
-						if ( ! empty( $next_yes_steps ) && false !== get_post_status( $next_yes_steps ) ) {
-
-							$yes_label = __( 'YES : ', 'cartflows' ) . get_the_title( $next_yes_steps );
-						} else {
-							$yes_label = __( 'YES : Step not Found', 'cartflows' );
-						}
-
-						if ( ! empty( $next_no_steps ) && false !== get_post_status( $next_no_steps ) ) {
-
-							$no_label = __( 'No : ', 'cartflows' ) . get_the_title( $next_no_steps );
-						} else {
-							$no_label = __( 'No : Step not Found', 'cartflows' );
-						}
-
-						$steps[ $in ]['offer_yes_next_step'] = $yes_label;
-						$steps[ $in ]['offer_no_next_step']  = $no_label;
-					}
-				}
+				$steps[ $in ]['menu_actions']      = self::get_step_actions( $flow_id, $step_id, 'menu' );
+				$steps[ $in ]['page_builder_edit'] = self::get_page_builder_edit_link( $step_id );
 
 				/* Add variation data */
 				if ( ! empty( $steps[ $in ]['ab-test-variations'] ) ) {
@@ -635,10 +529,36 @@ class AdminHelper {
 					$steps[ $in ]['ab-test-archived-variations'] = array_values( $ab_test_archived_variations );
 				}
 			}
+
+			$steps = apply_filters( 'cartflows_admin_flows_step_data', $steps );
 		}
 
 		return $steps;
 
+	}
+
+	/**
+	 * Get step edit link.
+	 *
+	 * @param int $step_id Step id.
+	 */
+	public static function get_page_builder_edit_link( $step_id ) {
+
+		$edit_step         = get_edit_post_link( $step_id );
+		$view_step         = get_permalink( $step_id );
+		$page_builder      = \Cartflows_Helper::get_common_setting( 'default_page_builder' );
+		$page_builder_edit = $edit_step;
+
+		switch ( $page_builder ) {
+			case 'beaver-builder':
+				$page_builder_edit = strpos( $view_step, '?' ) ? $view_step . '&fl_builder' : $view_step . '?fl_builder';
+				break;
+			case 'elementor':
+				$page_builder_edit = admin_url( 'post.php?post=' . $step_id . '&action=elementor' );
+				break;
+		}
+
+		return $page_builder_edit;
 	}
 
 		/**

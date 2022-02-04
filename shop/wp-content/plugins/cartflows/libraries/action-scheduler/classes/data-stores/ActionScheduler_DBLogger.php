@@ -31,16 +31,12 @@ class ActionScheduler_DBLogger extends ActionScheduler_Logger {
 
 		/** @var \wpdb $wpdb */
 		global $wpdb;
-		$wpdb->insert(
-			$wpdb->actionscheduler_logs,
-			array(
-				'action_id'      => $action_id,
-				'message'        => $message,
-				'log_date_gmt'   => $date_gmt,
-				'log_date_local' => $date_local,
-			),
-			array( '%d', '%s', '%s', '%s' )
-		);
+		$wpdb->insert( $wpdb->actionscheduler_logs, [
+			'action_id'      => $action_id,
+			'message'        => $message,
+			'log_date_gmt'   => $date_gmt,
+			'log_date_local' => $date_local,
+		], [ '%d', '%s', '%s', '%s' ] );
 
 		return $wpdb->insert_id;
 	}
@@ -72,7 +68,11 @@ class ActionScheduler_DBLogger extends ActionScheduler_Logger {
 			return new ActionScheduler_NullLogEntry();
 		}
 
-		$date = as_get_datetime_object( $record->log_date_gmt );
+		if ( is_null( $record->log_date_gmt ) ) {
+			$date = as_get_datetime_object( ActionScheduler_StoreSchema::DEFAULT_DATE );
+		} else {
+			$date = as_get_datetime_object( $record->log_date_gmt );
+		}
 
 		return new ActionScheduler_LogEntry( $record->action_id, $record->message, $date );
 	}
@@ -90,7 +90,7 @@ class ActionScheduler_DBLogger extends ActionScheduler_Logger {
 
 		$records = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->actionscheduler_logs} WHERE action_id=%d", $action_id ) );
 
-		return array_map( array( $this, 'create_entry_from_db_record' ), $records );
+		return array_map( [ $this, 'create_entry_from_db_record' ], $records );
 	}
 
 	/**
@@ -99,13 +99,13 @@ class ActionScheduler_DBLogger extends ActionScheduler_Logger {
 	 * @codeCoverageIgnore
 	 */
 	public function init() {
-
 		$table_maker = new ActionScheduler_LoggerSchema();
+		$table_maker->init();
 		$table_maker->register_tables();
 
 		parent::init();
 
-		add_action( 'action_scheduler_deleted_action', array( $this, 'clear_deleted_action_logs' ), 10, 1 );
+		add_action( 'action_scheduler_deleted_action', [ $this, 'clear_deleted_action_logs' ], 10, 1 );
 	}
 
 	/**
@@ -116,7 +116,7 @@ class ActionScheduler_DBLogger extends ActionScheduler_Logger {
 	public function clear_deleted_action_logs( $action_id ) {
 		/** @var \wpdb $wpdb */
 		global $wpdb;
-		$wpdb->delete( $wpdb->actionscheduler_logs, array( 'action_id' => $action_id ), array( '%d' ) );
+		$wpdb->delete( $wpdb->actionscheduler_logs, [ 'action_id' => $action_id, ], [ '%d' ] );
 	}
 
 	/**
@@ -138,7 +138,7 @@ class ActionScheduler_DBLogger extends ActionScheduler_Logger {
 		$message    = __( 'action canceled', 'action-scheduler' );
 		$format     = '(%d, ' . $wpdb->prepare( '%s, %s, %s', $message, $date_gmt, $date_local ) . ')';
 		$sql_query  = "INSERT {$wpdb->actionscheduler_logs} (action_id, message, log_date_gmt, log_date_local) VALUES ";
-		$value_rows = array();
+		$value_rows = [];
 
 		foreach ( $action_ids as $action_id ) {
 			$value_rows[] = $wpdb->prepare( $format, $action_id );

@@ -150,16 +150,17 @@ export const mountDynamicChunks = () => {
 						event.preventDefault()
 
 						if (chunk.has_modal_loader) {
-							const loadingHtml = `
+							const actuallyLoadChunk = () => {
+								const loadingHtml = `
                                 <div data-behaviour="modal" class="ct-panel ${
 									chunk.has_modal_loader.class
 										? chunk.has_modal_loader.class
 										: ''
 								}" ${
-								chunk.has_modal_loader.id
-									? `id="${chunk.has_modal_loader.id}"`
-									: ''
-							}>
+									chunk.has_modal_loader.id
+										? `id="${chunk.has_modal_loader.id}"`
+										: ''
+								}>
                                     <span data-loader="circles">
                                         <span></span>
                                         <span></span>
@@ -168,23 +169,54 @@ export const mountDynamicChunks = () => {
                                 </div>
                             `
 
-							const div = document.createElement('div')
+								const div = document.createElement('div')
 
-							div.innerHTML = loadingHtml
+								div.innerHTML = loadingHtml
 
-							let divRef = div.firstElementChild
+								let divRef = div.firstElementChild
 
-							document
-								.querySelector('.ct-drawer-canvas')
-								.appendChild(div.firstElementChild)
+								document
+									.querySelector('.ct-drawer-canvas')
+									.appendChild(div.firstElementChild)
 
-							fastOverlayHandleClick(event, {
-								openStrategy: 'fast',
-								container: divRef,
-							})
+								fastOverlayHandleClick(event, {
+									openStrategy: 'fast',
+									container: divRef,
+								})
+
+								loadChunkWithPayload(chunk, { event }, el)
+							}
+
+							if (document.body.dataset.panel) {
+								let currentPanel = document.querySelector(
+									'.ct-panel.active'
+								)
+
+								if (currentPanel) {
+									let maybeButton =
+										document.querySelector(
+											`[data-toggle-panel="#${currentPanel.id}"]`
+										) ||
+										document.querySelector(
+											`[href="#${currentPanel.id}"]`
+										)
+
+									if (maybeButton) {
+										maybeButton.click()
+
+										setTimeout(() => {
+											actuallyLoadChunk()
+										}, 500)
+
+										return
+									}
+								}
+							} else {
+								actuallyLoadChunk()
+							}
+						} else {
+							loadChunkWithPayload(chunk, { event }, el)
 						}
-
-						loadChunkWithPayload(chunk, { event }, el)
 					}
 
 					el.dynamicJsChunkStop = () => {

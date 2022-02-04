@@ -62,7 +62,7 @@ class Cartflows_Checkout_Meta_Data extends Cartflows_Step_Meta_Base {
 					if ( $product_obj ) {
 						$checkout_products[ $index ]['name']          = $product_obj->get_name() . ' (#' . $product_obj->get_id() . ')';
 						$checkout_products[ $index ]['img_url']       = get_the_post_thumbnail_url( $product['product'] );
-						$checkout_products[ $index ]['regular_price'] = AdminHelper::get_product_original_price( $product_obj );
+						$checkout_products[ $index ]['regular_price'] = Cartflows_Helper::get_product_original_price( $product_obj );
 					}
 				}
 			} else {
@@ -116,31 +116,34 @@ class Cartflows_Checkout_Meta_Data extends Cartflows_Step_Meta_Base {
 				'icon'     => 'dashicons-format-aside',
 				'priority' => 40,
 			),
+			'dynamic-offers'       => array(
+				'title'    => __( 'Dynamic Offers', 'cartflows' ),
+				'id'       => 'dynamic-offers',
+				'class'    => '',
+				'icon'     => 'dashicons-format-aside',
+				'priority' => 50,
+			),
 			'settings'             => array(
 				'title'    => __( 'Settings', 'cartflows' ),
 				'id'       => 'settings',
 				'class'    => '',
 				'icon'     => 'dashicons-format-aside',
-				'priority' => 50,
+				'priority' => 60,
 			),
-
 		);
 
 		$tabs            = array_merge( $common_tabs, $add_tabs );
 		$settings        = $this->get_settings_fields( $step_id );
 		$design_settings = $this->get_design_fields( $step_id );
 		$options         = $this->get_data( $step_id );
-		$custom_fields   = apply_filters( 'cartflows_get_checkout_custom_fields_data', $step_id, $options );
 
-		$settings_data = array(
+		return array(
 			'tabs'            => $tabs,
 			'settings'        => $settings,
 			'page_settings'   => $this->get_page_settings( $step_id ),
 			'design_settings' => $design_settings,
-			'custom_fields'   => $custom_fields,
 		);
 
-		return $settings_data;
 	}
 
 	/**
@@ -747,18 +750,21 @@ class Cartflows_Checkout_Meta_Data extends Cartflows_Step_Meta_Base {
 
 		// @todo Remove this code after v1.7.4 update.
 		// Start.
-		$settings['settings']['order-bump-design'] = array(
-			'title'    => __( 'Order Bump', 'cartflows' ),
-			'priority' => 70,
-			'fields'   => ! _is_cartflows_pro() ? array(
-				'order-bump' => array(
-					'type'    => 'pro-notice',
-					'feature' => 'Order Bump',
-				),
-			)
 
-				: '',
-		);
+		if ( in_array( get_option( 'wcf_order_bump_migrated', false ), array( 'no', 'processing' ), true ) ) {
+			$settings['settings']['order-bump-design'] = array(
+				'title'    => __( 'Order Bump', 'cartflows' ),
+				'priority' => 70,
+				'fields'   => ! _is_cartflows_pro() ? array(
+					'order-bump' => array(
+						'type'    => 'pro-notice',
+						'feature' => 'Order Bump',
+					),
+				)
+
+					: array(),
+			);
+		}
 		// End.
 
 		$settings = apply_filters( 'cartflows_react_checkout_design_fields', $settings, $options );

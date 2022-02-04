@@ -106,15 +106,19 @@ class FlowData extends ApiBase {
 		/* Setup steps data */
 		$steps = AdminHelper::prepare_step_data( $flow_id, $meta_options );
 
-		$data = array(
-			'id'            => $flow_id,
-			'title'         => get_the_title( $flow_id ),
-			'slug'          => get_post_field( 'post_name', $flow_id, 'edit' ),
-			'link'          => get_permalink( $flow_id ),
-			'status'        => get_post_status( $flow_id ),
-			'steps'         => $steps,
-			'options'       => $meta_options,
-			'settings_data' => FlowMeta::get_meta_settings( $flow_id ),
+		$data = apply_filters(
+			'cartflows_admin_flow_data',
+			array(
+				'id'            => $flow_id,
+				'title'         => get_the_title( $flow_id ),
+				'slug'          => get_post_field( 'post_name', $flow_id, 'edit' ),
+				'link'          => get_permalink( $flow_id ),
+				'status'        => get_post_status( $flow_id ),
+				'steps'         => $steps,
+				'options'       => $meta_options,
+				'settings_data' => FlowMeta::get_meta_settings( $flow_id ),
+			),
+			$flow_id
 		);
 
 		$response = new \WP_REST_Response( $data );

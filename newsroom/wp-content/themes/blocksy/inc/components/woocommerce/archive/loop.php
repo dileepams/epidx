@@ -9,13 +9,14 @@ if (! function_exists('blocksy_get_products_listing_layout')) {
 if (! function_exists('blocksy_products_layout_attr')) {
 	function blocksy_products_layout_attr() {
 		$shop_structure = blocksy_get_products_listing_layout();
-		$alignment = '';
+		// $alignment = '';
 
-		if ($shop_structure === 'type-1') {
-			$alignment = ' data-alignment="' . get_theme_mod('shop_cards_alignment_1', 'left') . '"';
-		}
+		// if ($shop_structure === 'type-1') {
+		// 	$alignment = ' data-alignment="' . get_theme_mod('shop_cards_alignment_1', 'left') . '"';
+		// }
 
-		return 'data-products="' . $shop_structure . '"' . $alignment;
+		// return 'data-products="' . $shop_structure . '"' . $alignment;
+		return 'data-products="' . $shop_structure . '"';
 	}
 }
 

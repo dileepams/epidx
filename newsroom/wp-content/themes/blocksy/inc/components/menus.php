@@ -230,7 +230,7 @@ if (! function_exists('blocksy_handle_nav_menu_start_el')) {
 				[
 					'class' => $toggle_ghost_class,
 					'aria-label' => __('Expand dropdown menu', 'blocksy'),
-					'aria-expanded' => false
+					'aria-expanded' => 'false'
 				],
 				$toggle_ghost_content
 			);

@@ -53,8 +53,10 @@ class Cartflows_Utils {
 	 */
 	public function current_post_type( $post_type = '' ) {
 
-		if ( '' === $post_type ) {
-			$post_type = get_post_type();
+		global $post;
+
+		if ( '' === $post_type && is_object( $post ) ) {
+			$post_type = $post->post_type;
 		}
 
 		return $post_type;
@@ -217,14 +219,19 @@ class Cartflows_Utils {
 	 */
 	public function get_checkout_id_from_post_data() {
 
+		$checkout_id = false;
+
 		if ( isset( $_POST['_wcf_checkout_id'] ) ) { //phpcs:ignore
 
 			$checkout_id = filter_var( wp_unslash( $_POST['_wcf_checkout_id'] ), FILTER_SANITIZE_NUMBER_INT ); //phpcs:ignore
 
-			return intval( $checkout_id );
+		} elseif ( isset( $_GET['wcf_checkout_id'] ) ) { //phpcs:ignore
+
+			$checkout_id = filter_var( wp_unslash( $_GET['wcf_checkout_id'] ), FILTER_SANITIZE_NUMBER_INT ); //phpcs:ignore
+
 		}
 
-		return false;
+		return $checkout_id;
 	}
 
 	/**
@@ -234,14 +241,19 @@ class Cartflows_Utils {
 	 */
 	public function get_flow_id_from_post_data() {
 
+		$flow_id = false;
+
 		if ( isset( $_POST['_wcf_flow_id'] ) ) { //phpcs:ignore
 
 			$flow_id = filter_var( wp_unslash( $_POST['_wcf_flow_id'] ), FILTER_SANITIZE_NUMBER_INT ); //phpcs:ignore
 
-			return intval( $flow_id );
+		} elseif ( isset( $_GET['wcf_checkout_id'] ) ) { //phpcs:ignore
+
+			$flow_id = wcf()->utils->get_flow_id_from_step_id( intval( $_GET['wcf_checkout_id'] ) ); //phpcs:ignore
+
 		}
 
-		return false;
+		return $flow_id;
 	}
 
 	/**

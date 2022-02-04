@@ -633,6 +633,16 @@ $options = [
 
 				]
 			],
+
+			'dropdown_horizontal_offset' => [
+				'label' => __( 'Horizontal Offset', 'blocksy' ),
+				'type' => 'ct-slider',
+				'value' => 5,
+				'min' => 0,
+				'max' => 20,
+				'divider' => 'top',
+				'setting' => [ 'transport' => 'postMessage' ],
+			],
 		],
 	],
 

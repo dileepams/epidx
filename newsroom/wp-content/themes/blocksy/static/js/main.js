@@ -137,28 +137,6 @@ const initOverlayTrigger = () => {
 	;[
 		...document.querySelectorAll('.ct-header-trigger'),
 		...document.querySelectorAll('.ct-offcanvas-trigger'),
-		...document.querySelectorAll('.ct-header-search'),
-		...document.querySelectorAll('.ct-open-quick-view'),
-		...document.querySelectorAll(
-			'.ct-header-account[href*="account-modal"]'
-		),
-	].map((menuToggle) => {
-		return
-		menuToggle.addEventListener(
-			'mouseover',
-			(event) => {
-				const maybeMatchingContainer = ct_localizations.dynamic_styles_selectors.find(
-					(descriptor) => descriptor.selector === '.ct-panel'
-				)
-
-				loadStyle(maybeMatchingContainer.url).then(() => {})
-			},
-			{ once: true }
-		)
-	})
-	;[
-		...document.querySelectorAll('.ct-header-trigger'),
-		...document.querySelectorAll('.ct-offcanvas-trigger'),
 	].map((menuToggle) => {
 		if (menuToggle && !menuToggle.hasListener) {
 			menuToggle.hasListener = true
@@ -166,11 +144,13 @@ const initOverlayTrigger = () => {
 			menuToggle.addEventListener('click', (event) => {
 				event.preventDefault()
 
-				if (!menuToggle.hash) {
+				if (!menuToggle.dataset.togglePanel && !menuToggle.hash) {
 					return
 				}
 
-				let offcanvas = document.querySelector(menuToggle.hash)
+				let offcanvas = document.querySelector(
+					menuToggle.dataset.togglePanel || menuToggle.hash
+				)
 
 				if (!offcanvas) {
 					return

@@ -355,64 +355,6 @@ class AdminMenu {
 
 		$page_builder = \Cartflows_Helper::get_common_setting( 'default_page_builder' );
 
-		// Fixed bulk action.
-		$active_flows_bulkactions = array(
-			array(
-				'value' => '-1',
-				'label' => __( 'Bulk Action', 'cartflows' ),
-			),
-			array(
-				'value' => 'draft',
-				'label' => __( 'Move to Draft', 'cartflows' ),
-			),
-			array(
-				'value' => 'trash',
-				'label' => __( 'Move to Trash', 'cartflows' ),
-			),
-			array(
-				'value' => 'export',
-				'label' => __( 'Export', 'cartflows' ),
-			),
-			array(
-				'value' => 'delete_permanently',
-				'label' => __( 'Delete Permanently', 'cartflows' ),
-			),
-		);
-
-		$trash_flows_bulkactions = array(
-			array(
-				'value' => '-1',
-				'label' => __( 'Bulk Action', 'cartflows' ),
-			),
-			array(
-				'value' => 'restore',
-				'label' => __( 'Restore', 'cartflows' ),
-			),
-			array(
-				'value' => 'delete_permanently',
-				'label' => __( 'Delete Permanently', 'cartflows' ),
-			),
-		);
-
-		$draft_flows_bulkactions = array(
-			array(
-				'value' => '-1',
-				'label' => __( 'Bulk Action', 'cartflows' ),
-			),
-			array(
-				'value' => 'export',
-				'label' => __( 'Export', 'cartflows' ),
-			),
-			array(
-				'value' => 'trash',
-				'label' => __( 'Move to Trash', 'cartflows' ),
-			),
-			array(
-				'value' => 'delete_permanently',
-				'label' => __( 'Delete Permanently', 'cartflows' ),
-			),
-		);
-
 		$page_builder      = \Cartflows_Helper::get_common_setting( 'default_page_builder' );
 		$page_builder_name = \Cartflows_Helper::get_page_builder_name( $page_builder );
 
@@ -444,9 +386,6 @@ class AdminMenu {
 				'create_product_src'              => $product_src,
 				'cf_font_family'                  => AdminHelper::get_font_family(),
 				'flows_and_steps'                 => \Cartflows_Helper::get_instance()->get_flows_and_steps(),
-				'active_flows_bulkactions'        => $active_flows_bulkactions,
-				'trash_flows_bulkactions'         => $trash_flows_bulkactions,
-				'draft_flows_bulkactions'         => $draft_flows_bulkactions,
 				'woo_currency'                    => function_exists( 'get_woocommerce_currency_symbol' ) ? get_woocommerce_currency_symbol() : '',
 				'template_library_url'            => wcf()->get_site_url(),
 				'image_placeholder'               => esc_url_raw( CARTFLOWS_URL . 'admin-core/assets/images/image-placeholder.png' ),

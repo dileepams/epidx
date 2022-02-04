@@ -299,6 +299,10 @@ class Cartflows_Frontend {
 
 		if ( _is_wcf_thankyou_type() ) {
 
+			if ( ! wcf()->is_woo_active || ! isset( WC()->session ) ) {
+				return;
+			}
+
 			$user_key = WC()->session->get_customer_id();
 
 			if ( isset( $_COOKIE[ CARTFLOWS_ACTIVE_CHECKOUT ] ) ) {
@@ -404,6 +408,7 @@ class Cartflows_Frontend {
 		$control_step   = $wcf_step->get_control_step();
 		$next_step_link = '';
 		$compatibility  = Cartflows_Compatibility::get_instance();
+		$is_checkout    = _is_wcf_checkout_type();
 
 		if ( _is_wcf_landing_type() ) {
 
@@ -425,7 +430,7 @@ class Cartflows_Frontend {
 			'control_step'           => $control_step,
 			'next_step'              => $next_step_link,
 			'page_template'          => $page_template,
-			'is_checkout_page'       => _is_wcf_checkout_type(),
+			'is_checkout_page'       => $is_checkout,
 			/* Remove it after two updates. 1.7.0 added for backward compatibility */
 			'fb_active'              => $fb_active,
 			'wcf_ga_active'          => $ga_active,
@@ -434,6 +439,15 @@ class Cartflows_Frontend {
 			'ga_setting'             => $ga_active,
 			'active_checkout_cookie' => CARTFLOWS_ACTIVE_CHECKOUT,
 		);
+
+		if ( $is_checkout ) {
+			$localize['ajax_url'] = add_query_arg(
+				array(
+					'wcf_checkout_id' => $current_step,
+				),
+				$localize['ajax_url']
+			);
+		}
 
 		$localize = apply_filters( 'global_cartflows_js_localize', $localize );
 

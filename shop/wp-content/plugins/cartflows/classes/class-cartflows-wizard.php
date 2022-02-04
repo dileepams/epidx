@@ -28,12 +28,13 @@ if ( ! class_exists( 'CartFlows_Wizard' ) ) :
 				add_action( 'wp_ajax_page_builder_step_save', array( $this, 'page_builder_step_save' ) );
 				add_action( 'wp_ajax_page_builder_save_option', array( $this, 'save_page_builder_option' ) );
 
+				// For onboarding user in Sendinblue.
+				add_action( 'wp_ajax_wcf_user_onboarding', array( $this, 'add_user_to_mailing_list' ) );
 				/**
 				 * Commented usage tracking option.
 				 * add_action( 'wp_ajax_usage_tracking_option', array( $this, 'save_usage_tracking_option' ) );
 				*/
 
-				add_action( 'admin_head', array( $this, 'add_mautic_form_script' ) );
 				add_action( 'woocommerce_installed', array( $this, 'disable_woo_setup_redirect' ) );
 
 				add_action( 'wp_ajax_wcf_activate_wc_plugins', array( $this, 'activate_wc_plugins' ) );
@@ -642,6 +643,112 @@ if ( ! class_exists( 'CartFlows_Wizard' ) ) :
 		}
 
 		/**
+		 * Add user to the sendingblue mailing list.
+		 *
+		 * @hooked wp_ajax_wcf_user_onboarding
+		 */
+		public function add_user_to_mailing_list() {
+
+			$target_url    = CARTFLOWS_TEMPLATES_URL . 'wp-json/cartflows-server/v1/add-subscriber';
+			$response_body = array();
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+
+				wp_send_json_error(
+					array(
+						'success' => false,
+						'message' => __( 'Sorry, you are not allowed to do this operation.', 'cartflows' ),
+					)
+				);
+			}
+
+			/**
+			 * Nonce verification
+			 */
+			if ( ! check_ajax_referer( 'wcf-user-onboarding', 'security', false ) ) {
+				wp_send_json_error(
+					array(
+						'success' => false,
+						'message' => __( 'Nonce validation failed', 'cartflows' ),
+					)
+				);
+			}
+
+			$email     = isset( $_POST['user_email'] ) ? sanitize_email( wp_unslash( $_POST['user_email'] ) ) : '';
+			$user_name = isset( $_POST['user_fname'] ) ? sanitize_text_field( wp_unslash( $_POST['user_fname'] ) ) : '';
+
+			if ( empty( $email ) ) {
+				wp_send_json_error(
+					array(
+						'success' => false,
+						'message' => __( 'Please enter your email ID.', 'cartflows' ),
+					)
+				);
+			}
+
+			$api_args = array(
+				'timeout' => 90,
+				'body'    => array(
+					'user_email'     => $email,
+					'user_fname'     => $user_name,
+					'source'         => 'cartflows',
+					'add-subscriber' => true,
+				),
+
+			);
+
+			$response = wp_remote_post( $target_url, $api_args );
+
+			$has_errors = $this->is_api_error( $response );
+
+			if ( $has_errors['error'] ) {
+				wp_send_json_error(
+					array(
+						'success' => false,
+						'message' => $has_errors['error_message'],
+					)
+				);
+			}
+
+			$response_body = json_decode( wp_remote_retrieve_body( $response ), true );
+
+			wp_send_json_success(
+				array(
+					'success' => $response_body['success'],
+					'message' => $response_body['message'],
+				)
+			);
+
+		}
+
+		/**
+		 * Check is error in the received response.
+		 *
+		 * @param array $response Received API Response.
+		 * @return array $result Error result.
+		 */
+		public function is_api_error( $response ) {
+
+			$result = array(
+				'error'         => false,
+				'error_message' => __( 'Oops! Something went wrong. Please refresh the page and try again.', 'cartflows' ),
+				'error_code'    => 0,
+			);
+
+			if ( is_wp_error( $response ) ) {
+				$result['error']         = true;
+				$result['error_message'] = $response->get_error_message();
+				$result['error_code']    = $response->get_error_code();
+			} elseif ( ! empty( wp_remote_retrieve_response_code( $response ) ) && ! in_array( wp_remote_retrieve_response_code( $response ), array( 200, 201, 204 ), true ) ) {
+				$result['error']         = true;
+				$result['error_message'] = wp_remote_retrieve_response_message( $response );
+				$result['error_code']    = wp_remote_retrieve_response_code( $response );
+			}
+
+			return $result;
+		}
+
+		/**
 		 * Final step.
 		 */
 		public function ready_step() {
@@ -689,37 +796,34 @@ if ( ! class_exists( 'CartFlows_Wizard' ) ) :
 			?>
 			<h1><?php esc_html_e( 'Exclusive CartFlows Training Course Offer', 'cartflows' ); ?></h1>
 
-			<div id="mauticform_wrapper_cartflowsonboarding" class="mauticform_wrapper">
-				<form autocomplete="false" role="form" method="post" action="https://go.cartflows.com/form/submit?formId=2" id="mauticform_cartflowsonboarding" data-mautic-form="cartflowsonboarding" enctype="multipart/form-data">
-					<div class="mauticform-error" id="mauticform_cartflowsonboarding_error"></div>
-					<div class="mauticform-message" id="mauticform_cartflowsonboarding_message"></div>
-					<div class="mauticform-innerform">
-						<div class="mauticform-page-wrapper mauticform-page-1" data-mautic-form-page="1">
-							<div id="mauticform_cartflowsonboarding_enter_your_email" class="mauticform-row mauticform-email mauticform-field-1">
-								<div class="cartflows-setup-message">
-									<p>
-										<?php esc_html_e( 'We want you to get off to a great start using CartFlows, so we would like to give access to our exclusive training course.', 'cartflows' ); ?>
-										<?php esc_html_e( 'Get access to this course, for free, by entering your email below.', 'cartflows' ); ?>
-									</p>
-									<input id="mauticform_input_cartflowsonboarding_enter_your_email" name="mauticform[enter_your_email]" placeholder="<?php esc_html_e( 'Enter Email address', 'cartflows' ); ?>" value="<?php echo $current_user->user_email; ?>" class="mauticform-input" type="email">
-								</div>
-								<span class="mauticform-errormsg" style="display: none;"></span>
-							</div>
+			<div id="cartflows_onboarding_wrapper" class="cartflows_onboarding_wrapper">
+				<form autocomplete="false" role="form" method="post" action="#" id="cartflows_onboarding_subscriber" enctype="multipart/form-data">					
+					<div class="cartflows-setup-message">
+						<p>
+							<?php esc_html_e( 'We want you to get off to a great start using CartFlows, so we would like to give access to our exclusive training course.', 'cartflows' ); ?>
+							<?php esc_html_e( 'Get access to this course, for free, by entering your email below.', 'cartflows' ); ?>
+						</p>
+						<div class="cartflows-onboarding--fields">
+							<input id="cartflows_onboarding_name" name="cartflows_onboarding_name" placeholder="<?php esc_html_e( 'Enter Your Name', 'cartflows' ); ?>" value="<?php echo $current_user->display_name; ?>" class="input-text" type="text">
+							<input id="cartflows_onboarding_email" name="cartflows_onboarding_email" placeholder="<?php esc_html_e( 'Enter Email address', 'cartflows' ); ?>" value="<?php echo $current_user->user_email; ?>" class="input-text" type="email">
 						</div>
+						<p class="cartflows_onboarding_terms"><?php esc_html_e( 'By clicking "Allow", you agree to receive our newsletters as part of this course.', 'cartflows' ); ?></p>
 					</div>
 
-					<input type="hidden" name="mauticform[formId]" id="mauticform_cartflowsonboarding_id" value="2">
-					<input type="hidden" name="mauticform[return]" id="mauticform_cartflowsonboarding_return" value="">
-					<input type="hidden" name="mauticform[formName]" id="mauticform_cartflowsonboarding_name" value="cartflowsonboarding">
+					<div class="onboarding-error"></div>
+					<div class="onboarding-message"></div>
+
 					<div class="cartflows-setup-actions step">
 						<div class="button-prev-wrap">
 							<a href="<?php echo esc_url( $this->get_prev_step_link() ); ?>" class="button-primary button button-large button-prev" ><?php esc_html_e( '« Previous', 'cartflows' ); ?></a>
 						</div>
 						<div class="button-next-wrap">
 							<a href="<?php echo esc_url_raw( $this->get_next_step_plain_link() ); ?>" class="button button-large button-next"><?php esc_html_e( 'No thanks', 'cartflows' ); ?></a>
-							<button type="submit" name="mauticform[submit]" id="mauticform_input_cartflowsonboarding_submit" value="<?php esc_html_e( 'Allow', 'cartflows' ); ?>" class="mautic-form-submit btn btn-default button-primary button button-large button-next" name="save_step"><?php esc_html_e( 'Allow', 'cartflows' ); ?></button>
+							<button type="submit" name="submit_subscriber" id="submit_subscriber" value="<?php esc_html_e( 'Allow', 'cartflows' ); ?>" class="sendinblue-form-submit btn btn-default button-primary button button-large button-next" name="save_step"><?php esc_html_e( 'Allow', 'cartflows' ); ?></button>
 						</div>
 					</div>
+
+					<?php wp_nonce_field( 'wcf-user-onboarding', 'wcf_user_onboarding_nonce' ); ?>
 				</form>
 			</div>
 			<?php
@@ -744,37 +848,6 @@ if ( ! class_exists( 'CartFlows_Wizard' ) ) :
 			}
 
 			return $vars;
-		}
-
-		/**
-		 * Add JS script for mautic form
-		 */
-		public function add_mautic_form_script() {
-
-			if ( ! isset( $_REQUEST['page'] ) || ( isset( $_REQUEST['page'] ) && 'cartflow-setup' !== $_REQUEST['page'] ) ) { //phpcs:ignore
-				return;
-			}
-			?>
-
-			<script type="text/javascript">
-				/** This section is only needed once per page if manually copying **/
-				if (typeof MauticSDKLoaded == 'undefined') {
-					var MauticSDKLoaded = true;
-					var head            = document.getElementsByTagName('head')[0];
-					var script          = document.createElement('script');
-					script.type         = 'text/javascript';
-					script.src          = 'https://go.cartflows.com/media/js/mautic-form.js';
-					script.onload       = function() {
-						MauticSDK.onLoad();
-					};
-					head.appendChild(script);
-					var MauticDomain = 'https://go.cartflows.com';
-					var MauticLang   = {
-						'submittingMessage': "Please wait..."
-					};
-				}
-			</script>
-			<?php
 		}
 	}
 

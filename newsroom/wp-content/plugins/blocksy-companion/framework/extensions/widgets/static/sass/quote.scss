@@ -24,15 +24,14 @@
 	}
 
 	.ct-quote-author {
-		display: grid;
-		grid-template-columns: 40px 1fr;
-		grid-column-gap: 15px;
+		display: flex;
+		column-gap: 15px;
 		align-items: center;
 		margin-top: 25px;
-		--fontWeight: 500;
+		font-weight: 500;
 
 		figure {
-			max-width: 40px;
+			flex: 0 0 40px;
 			border-radius: 100%;
 		}
 	}

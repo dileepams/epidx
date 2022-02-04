@@ -56,6 +56,7 @@ $menu_content = ob_get_clean();
 
 <nav
 	class="<?php echo esc_attr($class) ?>"
+	role="navigation"
 	<?php echo blocksy_attr_to_html($attr) ?>
 	<?php echo $stretch_output ?>
 	<?php echo blocksy_schema_org_definitions('navigation') ?>>

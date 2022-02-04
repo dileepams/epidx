@@ -97,41 +97,30 @@ class StepData extends ApiBase {
 		$flow_id           = get_post_meta( $step_id, 'wcf-flow-id', true );
 		$edit_step         = get_edit_post_link( $step_id );
 		$view_step         = get_permalink( $step_id );
-		$page_builder      = \Cartflows_Helper::get_common_setting( 'default_page_builder' );
-		$page_builder_edit = $edit_step;
-
-		switch ( $page_builder ) {
-			case 'beaver-builder':
-				$page_builder_edit = strpos( $view_step, '?' ) ? $view_step . '&fl_builder' : $view_step . '?fl_builder';
-				break;
-			case 'elementor':
-				$page_builder_edit = admin_url( 'post.php?post=' . $step_id . '&action=elementor' );
-				break;
-		}
+		$page_builder_edit = AdminHelper::get_page_builder_edit_link( $step_id );
 
 		/* Get Settings */
 		$settings_data = StepMeta::get_meta_settings( $step_id, $step_type );
 
 		/* Prepare data */
-		$data = array(
-			'id'                => $step_id,
-			'flow_title'        => get_the_title( $flow_id ),
-			'title'             => get_the_title( $step_id ),
-			'type'              => $step_type,
-			'tabs'              => isset( $settings_data['tabs'] ) ? $settings_data['tabs'] : '',
-			'settings_data'     => isset( $settings_data['settings'] ) ? $settings_data['settings'] : '',
-			'page_settings'     => isset( $settings_data['page_settings'] ) ? $settings_data['page_settings'] : '',
-			'design_settings'   => isset( $settings_data['design_settings'] ) ? $settings_data['design_settings'] : '',
-			'custom_fields'     => isset( $settings_data['custom_fields'] ) ? $settings_data['custom_fields'] : '',
-
-			'billing_fields'    => isset( $settings_data['custom_fields']['billing_fields'] ) ? $settings_data['custom_fields']['billing_fields'] : '',
-			'shipping_fields'   => isset( $settings_data['custom_fields']['shipping_fields'] ) ? $settings_data['custom_fields']['shipping_fields'] : '',
-
-			'options'           => isset( $meta_options['options'] ) ? $meta_options['options'] : '',
-			'view'              => $view_step,
-			'edit'              => $edit_step,
-			'page_builder_edit' => $page_builder_edit,
-			'slug'              => get_post_field( 'post_name', $step_id, 'edit' ),
+		$data = apply_filters(
+			'cartflows_admin_' . $step_type . '_step_data',
+			array(
+				'id'                => $step_id,
+				'flow_title'        => get_the_title( $flow_id ),
+				'title'             => get_the_title( $step_id ),
+				'type'              => $step_type,
+				'tabs'              => isset( $settings_data['tabs'] ) ? $settings_data['tabs'] : '',
+				'settings_data'     => isset( $settings_data['settings'] ) ? $settings_data['settings'] : '',
+				'page_settings'     => isset( $settings_data['page_settings'] ) ? $settings_data['page_settings'] : '',
+				'design_settings'   => isset( $settings_data['design_settings'] ) ? $settings_data['design_settings'] : '',
+				'options'           => isset( $meta_options['options'] ) ? $meta_options['options'] : '',
+				'view'              => $view_step,
+				'edit'              => $edit_step,
+				'page_builder_edit' => $page_builder_edit,
+				'slug'              => get_post_field( 'post_name', $step_id, 'edit' ),
+			),
+			$step_id
 		);
 
 		$response = new \WP_REST_Response( $data );

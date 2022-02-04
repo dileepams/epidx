@@ -233,6 +233,9 @@ class CommonSettings extends AjaxBase {
 			$new_settings = $this->sanitize_form_inputs( wp_unslash( $_POST['_cartflows_common'] ) ); //phpcs:ignore
 		}
 
+		$common_settings = get_option( '_cartflows_common', false );
+		$new_settings    = wp_parse_args( $new_settings, $common_settings );
+
 		$this->update_admin_settings_option( '_cartflows_common', $new_settings, false );
 	}
 

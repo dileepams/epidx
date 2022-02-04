@@ -557,18 +557,12 @@ class HeaderAdditions {
 	public function retrieve_account_modal() {
 		remove_filter('lostpassword_url', 'wc_lostpassword_url', 10, 1);
 
-		$url = home_url();
-
 		$body = json_decode(file_get_contents('php://input'), true);
 
 		$header_id = null;
 
 		if (isset($_REQUEST['header_id'])) {
 			$header_id = $_REQUEST['header_id'];
-		}
-
-		if ($body && isset($body['current_url'])) {
-			$url = $body['current_url'];
 		}
 
 		$render = new \Blocksy_Header_Builder_Render([
@@ -581,7 +575,7 @@ class HeaderAdditions {
 			['fn' => 'blocksy_render_view'],
 			dirname(__FILE__) . '/header/account-modal.php',
 			[
-				'current_url' => $url,
+				'current_url' => blocksy_current_url(),
 				'header_id' => $header_id,
 				'atts' => $atts
 			]

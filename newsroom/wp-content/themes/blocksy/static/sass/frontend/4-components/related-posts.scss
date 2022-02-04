@@ -19,7 +19,7 @@
 		--fontSize: 16px;
 		margin: 15px 0 0 0;
 		word-break: break-word;
-		--linkInitialColor: var(--heading-color);
+		--linkInitialColor: var(--heading-color, var(--heading-3-color, var(--headings-color)));
 	}
 
 	.entry-meta {

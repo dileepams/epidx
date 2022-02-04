@@ -322,6 +322,24 @@ $options = [
 
 								blocksy_rand_md5() => [
 									'type' => 'ct-condition',
+									'condition' => [ 'sale_badge_value' => 'default' ],
+									'options' => [
+										'sale_badge_default_value' => [
+											'label' => false,
+											'type' => 'text',
+											'design' => 'block',
+											'value' => 'SALE!',
+											'disableRevertButton' => true,
+											'sync' => blocksy_sync_whole_page([
+												'prefix' => 'woo_categories',
+												'loader_selector' => '.onsale'
+											]),
+										],
+									],
+								],
+
+								blocksy_rand_md5() => [
+									'type' => 'ct-condition',
 									'condition' => [ 'sale_badge_value' => 'custom' ],
 									'options' => [
 										'sale_badge_custom_value' => [
@@ -333,6 +351,50 @@ $options = [
 											'sync' => blocksy_sync_whole_page([
 												'prefix' => 'woo_categories',
 												'loader_selector' => '.onsale'
+											]),
+										],
+									],
+								],
+
+								'has_stock_badge' => [
+									'label' => __( 'Show Stock Badge', 'blocksy' ),
+									'type' => 'ct-checkboxes',
+									'design' => 'block',
+									'view' => 'text',
+									'allow_empty' => true,
+									'value' => [
+										'archive' => true,
+										'single' => true,
+									],
+									'divider' => 'top',
+									'choices' => blocksy_ordered_keys([
+										'archive' => __( 'Archive', 'blocksy' ),
+										'single' => __( 'Single', 'blocksy' ),
+									]),
+									'sync' => blocksy_sync_whole_page([
+										'prefix' => 'woo_categories',
+										'loader_selector' => '.out-of-stock-badge'
+									])
+								],
+
+								blocksy_rand_md5() => [
+									'type' => 'ct-condition',
+									'condition' => [
+										'any' => [
+											'has_stock_badge/archive' => true,
+											'has_stock_badge/single' => true,
+										]
+									],
+									'options' => [
+										'stock_badge_value' => [
+											'label' => false,
+											'type' => 'text',
+											'design' => 'block',
+											'value' => __('OUT OF STOCK', 'blocksy'),
+											'disableRevertButton' => true,
+											'sync' => blocksy_sync_whole_page([
+												'prefix' => 'woo_categories',
+												'loader_selector' => '.out-of-stock-badge'
 											]),
 										],
 									],

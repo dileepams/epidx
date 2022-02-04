@@ -2,10 +2,10 @@
 
 $has_username = true;
 $has_password = false;
-if ( function_exists( 'wc_create_new_customer' ) && 'no' !== get_option( 'woocommerce_registration_generate_username' ) ) {
+if ( \Blocksy\Plugin::instance()->account_auth->has_woo_register_flow() && 'no' !== get_option( 'woocommerce_registration_generate_username' ) ) {
     $has_username = false;
 }
-if ( function_exists( 'wc_create_new_customer' ) && 'no' === get_option( 'woocommerce_registration_generate_password' ) ) {
+if ( \Blocksy\Plugin::instance()->account_auth->has_woo_register_flow() && 'no' === get_option( 'woocommerce_registration_generate_password' ) ) {
     $has_password = true;
 }
 ?>

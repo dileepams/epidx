@@ -7,6 +7,7 @@ require get_template_directory() . '/inc/components/woocommerce/common/account.p
 require get_template_directory() . '/inc/components/woocommerce/common/store-notice.php';
 require get_template_directory() . '/inc/components/woocommerce/common/mini-cart.php';
 require get_template_directory() . '/inc/components/woocommerce/common/sale-flash.php';
+require get_template_directory() . '/inc/components/woocommerce/common/stock-badge.php';
 
 require get_template_directory() . '/inc/components/woocommerce/archive/helpers.php';
 require get_template_directory() . '/inc/components/woocommerce/archive/index.php';

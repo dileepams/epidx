@@ -273,6 +273,21 @@ a {
 	padding: 25px;
 }
 
+.cartflows-setup .onboarding-error,
+.cartflows-setup .onboarding-message {
+	text-align: center;
+    margin: 5px 0 0 0;
+    font-size: 14px;
+}
+
+.cartflows-setup .onboarding-error {
+	color: #f16334;
+}
+
+.cartflows-setup .onboarding-message{
+	color:#008000;
+}
+
 .cartflows-setup .cartflows-setup-extra-notice {
 	text-align: center;
 	font-size: 11px;
@@ -321,6 +336,11 @@ a {
 	font-size: 1em;
 	line-height: 1.75em;
 	color: #666;
+}
+
+.cartflows-setup-content p.cartflows_onboarding_terms{
+	margin: 10px 0 0;
+    font-size: 15px;
 }
 
 .cartflows-setup-wizard-content .cartflows-table,
@@ -531,9 +551,18 @@ a {
 	font-size: 14px;
 }
 
+.cartflows-setup .cartflows-setup-message .cartflows-onboarding--fields{
+	display: flex;
+}
+
 .cartflows-setup .cartflows-setup-message input:not( [type='checkbox'] ) {
-	width: 100%;
+	width: 66.66%;
 	height: 45px;
+}
+
+.cartflows-setup .cartflows-setup-message input#cartflows_onboarding_name {
+	margin: 0 0 0 20px ;
+	width: 33.33%;
 }
 
 .wp-picker-active .wp-picker-holder {

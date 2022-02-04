@@ -18,6 +18,8 @@ if (! isset($product)) {
 if ($product->get_type() === 'variable' && ! $blocksy_current_variation) {
 	$default_attributes = $product->get_default_attributes();
 
+	$is_default_variation = false;
+
 	foreach($product->get_available_variations() as $variation_values ) {
 		foreach ($variation_values['attributes'] as $key => $attribute_value) {
 			$attribute_name = str_replace( 'attribute_', '', $key );
@@ -145,7 +147,9 @@ if ($product->is_in_stock()) {
 		woocommerce_show_product_sale_flash();
 	}
 } else {
-	echo '<span class="out-of-stock-badge">' . __('Out of stock', 'blocksy') . '</span>';
+	echo blocksy_get_woo_out_of_stock_badge([
+		'location' => 'single'
+	]);
 }
 
 $maybe_custom_content = null;

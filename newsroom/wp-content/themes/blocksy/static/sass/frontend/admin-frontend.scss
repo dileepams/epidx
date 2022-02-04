@@ -231,6 +231,6 @@ $drop-size: 22px;
 
 // admin bar shift when overlay opens
 [data-panel] #wpadminbar {
-	padding-inline-end: var(--scrollbar-width, 0px);
+	padding-right: var(--scrollbar-width, 0px);
 }
 

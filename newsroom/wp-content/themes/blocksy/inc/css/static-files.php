@@ -280,18 +280,7 @@ class Blocksy_Static_Css_Files {
 				'url' => '/static/bundle/dokan.min.css',
 				'deps' => ['ct-main-styles'],
 				'enabled' => class_exists('WeDevs_Dokan')
-			],
-
-			/*
-			,
-
-			[
-				'id' => 'ct-lazy-load-styles',
-				'url' => '/static/bundle/lazy-load.min.css',
-				'deps' => ['ct-main-styles'],
-				'enabled' => false
-			],
-			 */
+			]
 		];
 	}
 

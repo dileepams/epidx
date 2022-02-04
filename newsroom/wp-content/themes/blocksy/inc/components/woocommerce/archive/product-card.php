@@ -129,7 +129,9 @@ add_action($action_to_hook, function () {
 						woocommerce_show_product_loop_sale_flash();
 					}
 				} else {
-					echo '<span class="out-of-stock-badge">' . __('Out of stock', 'blocksy') . '</span>';
+					echo blocksy_get_woo_out_of_stock_badge([
+						'location' => 'archive'
+					]);
 				}
 
 				$gallery_images = blocksy_product_get_gallery_images(
@@ -237,7 +239,9 @@ add_action($action_to_hook, function () {
 						woocommerce_show_product_loop_sale_flash();
 					}
 				} else {
-					echo '<span class="out-of-stock-badge">' . __('Out of stock', 'blocksy') . '</span>';
+					echo blocksy_get_woo_out_of_stock_badge([
+						'location' => 'archive'
+					]);
 				}
 
 				echo blocksy_output_product_toolbar();

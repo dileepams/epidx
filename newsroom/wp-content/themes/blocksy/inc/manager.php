@@ -145,10 +145,10 @@ class Blocksy_Manager {
 
 			'dynamic_styles' => [
 				'lazy_load' => blocksy_cdn_url(
-					get_template_directory_uri() . '/static/bundle/lazy-load.min.css'
+					get_template_directory_uri() . '/static/bundle/non-critical-styles.min.css'
 				),
 				'search_lazy' => blocksy_cdn_url(
-					get_template_directory_uri() . '/static/bundle/search-lazy.min.css'
+					get_template_directory_uri() . '/static/bundle/non-critical-search-styles.min.css'
 				)
 			],
 

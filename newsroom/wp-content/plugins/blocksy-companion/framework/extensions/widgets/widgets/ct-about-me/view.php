@@ -85,7 +85,7 @@ echo $before_title . wp_kses_post( $title ) . $after_title;
 ?>
 
 
-<section
+<div
 	data-type="<?php echo esc_attr($about_type) ?>"
 	data-alignment="<?php echo esc_attr($alignment) ?>">
 
@@ -134,6 +134,6 @@ echo $before_title . wp_kses_post( $title ) . $after_title;
 			]
 		);
 	?>
-</section>
+</div>
 
 <?php echo wp_kses_post($after_widget); ?>

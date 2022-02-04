@@ -20,7 +20,11 @@
 		width: var(--block-width, var(--container-width));
 		max-width: var(--block-max-width, var(--container-max-width));
 	}
-	
+
+	.elementor-sticky--active {
+		left: 50%;
+		transform: translateX(-50%);
+	}
 }
 
 // section container max width

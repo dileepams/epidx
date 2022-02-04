@@ -119,9 +119,7 @@ aside {
 @include media-breakpoint-up(lg) {
 	[data-vertical-spacing='top:bottom'] {
 		--sidebar-helper-top: calc(var(--content-vertical-spacing) * -1);
-		--sidebar-helper-height: calc(
-			100% + var(--content-vertical-spacing) * 2
-		);
+		--sidebar-helper-height: calc(100% + var(--content-vertical-spacing) * 2);
 	}
 
 	[data-vertical-spacing='top'] {

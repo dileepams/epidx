@@ -1,4 +1,4 @@
-/*! elementor - v3.5.0 - 12-12-2021 */
+/*! elementor - v3.5.3 - 28-12-2021 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -4611,6 +4611,8 @@ _Object$defineProperty(exports, "__esModule", {
 
 exports["default"] = exports.Copy = void 0;
 
+__webpack_require__(/*! core-js/modules/es6.array.find.js */ "../node_modules/core-js/modules/es6.array.find.js");
+
 __webpack_require__(/*! core-js/modules/es6.array.map.js */ "../node_modules/core-js/modules/es6.array.map.js");
 
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/classCallCheck */ "../node_modules/@babel/runtime-corejs2/helpers/classCallCheck.js"));
@@ -4644,7 +4646,8 @@ var Copy = /*#__PURE__*/function (_CommandBase) {
       var _args$storageKey = args.storageKey,
           storageKey = _args$storageKey === void 0 ? 'clipboard' : _args$storageKey,
           _args$containers = args.containers,
-          containers = _args$containers === void 0 ? [args.container] : _args$containers;
+          containers = _args$containers === void 0 ? [args.container] : _args$containers,
+          elements = elementor.getPreviewView().$el.find('.elementor-element');
 
       if (!elementor.selection.isSameType()) {
         elementor.notifications.showToast({
@@ -4657,7 +4660,9 @@ var Copy = /*#__PURE__*/function (_CommandBase) {
         return false;
       }
 
-      elementorCommon.storage.set(storageKey, containers.map(function (container) {
+      elementorCommon.storage.set(storageKey, containers.sort(function (first, second) {
+        return elements.index(first.view.el) - elements.index(second.view.el);
+      }).map(function (container) {
         return container.model.toJSON({
           copyHtmlCache: true
         });
@@ -6006,7 +6011,7 @@ var Paste = /*#__PURE__*/function (_CommandHistory) {
                   columns: 0,
                   // section with no columns.
                   options: {
-                    at: index,
+                    at: ++index,
                     edit: false
                   }
                 });
@@ -6030,7 +6035,7 @@ var Paste = /*#__PURE__*/function (_CommandHistory) {
                   },
                   columns: 1,
                   options: {
-                    at: index
+                    at: ++index
                   }
                 }); // Create the element in the column that just was created.
 
@@ -6146,6 +6151,8 @@ var ResetSettings = /*#__PURE__*/function (_CommandHistory) {
     value: function apply(args) {
       var _args$containers2 = args.containers,
           containers = _args$containers2 === void 0 ? [args.container] : _args$containers2,
+          _args$options = args.options,
+          options = _args$options === void 0 ? {} : _args$options,
           _args$settings = args.settings,
           settings = _args$settings === void 0 ? [] : _args$settings;
       containers.forEach(function (container) {
@@ -6169,6 +6176,7 @@ var ResetSettings = /*#__PURE__*/function (_CommandHistory) {
         });
         $e.run('document/elements/settings', {
           container: container,
+          options: options,
           settings: defaultValues
         });
         container.render();
@@ -6775,10 +6783,18 @@ var Component = /*#__PURE__*/function (_ComponentBase) {
 
       return {
         isValidChild: function isValidChild(childModel, parentModel) {
-          var parentElType = parentModel.get('elType'),
-              draggedElType = childModel.get('elType'),
-              parentIsInner = parentModel.get('isInner'),
-              draggedIsInner = childModel.get('isInner'); // Block's inner-section at inner-section column.
+          if (childModel instanceof Backbone.Model) {
+            childModel = childModel.attributes;
+          }
+
+          if (parentModel instanceof Backbone.Model) {
+            parentModel = parentModel.attributes;
+          }
+
+          var parentElType = parentModel.elType,
+              draggedElType = childModel.elType,
+              parentIsInner = parentModel.isInner,
+              draggedIsInner = childModel.isInner; // Block's inner-section at inner-section column.
 
           if (draggedIsInner && 'section' === draggedElType && parentIsInner && 'column' === parentElType) {
             return false;
@@ -6793,7 +6809,7 @@ var Component = /*#__PURE__*/function (_ComponentBase) {
           }
 
           var childTypes = elementor.helpers.getElementChildType(parentElType);
-          return childTypes && -1 !== childTypes.indexOf(childModel.get('elType'));
+          return childTypes && -1 !== childTypes.indexOf(draggedElType);
         },
         isValidGrandChild: function isValidGrandChild(childModel, targetContainer) {
           var result;
@@ -14296,6 +14312,298 @@ exports["default"] = Component;
 
 /***/ }),
 
+/***/ "../assets/dev/js/editor/elements/collections/elements.js":
+/*!****************************************************************!*\
+  !*** ../assets/dev/js/editor/elements/collections/elements.js ***!
+  \****************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var ElementModel = __webpack_require__(/*! elementor-elements/models/element */ "../assets/dev/js/editor/elements/models/element.js");
+
+var ElementsCollection = Backbone.Collection.extend({
+  add: function add(models, options, isCorrectSet) {
+    if ((!options || !options.silent) && !isCorrectSet) {
+      throw 'Call Error: Adding model to element collection is allowed only by the dedicated addChildModel() method.';
+    }
+
+    return Backbone.Collection.prototype.add.call(this, models, options);
+  },
+  model: function model(attrs, options) {
+    var ModelClass = Backbone.Model;
+
+    if (attrs.elType) {
+      ModelClass = elementor.hooks.applyFilters('element/model', ElementModel, attrs);
+    }
+
+    return new ModelClass(attrs, options);
+  },
+  clone: function clone() {
+    var tempCollection = Backbone.Collection.prototype.clone.apply(this, arguments),
+        newCollection = new ElementsCollection();
+    tempCollection.forEach(function (model) {
+      newCollection.add(model.clone(), null, true);
+    });
+    return newCollection;
+  }
+});
+ElementsCollection.prototype.sync = ElementsCollection.prototype.fetch = ElementsCollection.prototype.save = _.noop;
+module.exports = ElementsCollection;
+
+/***/ }),
+
+/***/ "../assets/dev/js/editor/elements/models/column-settings.js":
+/*!******************************************************************!*\
+  !*** ../assets/dev/js/editor/elements/models/column-settings.js ***!
+  \******************************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+module.exports = elementorModules.editor.elements.models.BaseSettings.extend({
+  defaults: {
+    _column_size: 100
+  }
+});
+
+/***/ }),
+
+/***/ "../assets/dev/js/editor/elements/models/element.js":
+/*!**********************************************************!*\
+  !*** ../assets/dev/js/editor/elements/models/element.js ***!
+  \**********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime-corejs2/helpers/interopRequireDefault */ "../node_modules/@babel/runtime-corejs2/helpers/interopRequireDefault.js");
+
+__webpack_require__(/*! core-js/modules/es6.regexp.split.js */ "../node_modules/core-js/modules/es6.regexp.split.js");
+
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/typeof */ "../node_modules/@babel/runtime-corejs2/helpers/typeof.js"));
+
+var ColumnSettingsModel = __webpack_require__(/*! elementor-elements/models/column-settings */ "../assets/dev/js/editor/elements/models/column-settings.js"),
+    ElementModel;
+
+ElementModel = Backbone.Model.extend({
+  defaults: {
+    id: '',
+    elType: '',
+    isInner: false,
+    settings: {},
+    defaultEditSettings: {
+      defaultEditRoute: 'content'
+    }
+  },
+  remoteRender: false,
+  _htmlCache: null,
+  _jqueryXhr: null,
+  renderOnLeave: false,
+  initialize: function initialize(options) {
+    var elType = this.get('elType'),
+        elements = this.get('elements');
+
+    if (undefined !== elements) {
+      var ElementsCollection = __webpack_require__(/*! elementor-elements/collections/elements */ "../assets/dev/js/editor/elements/collections/elements.js");
+
+      this.set('elements', new ElementsCollection(elements));
+    }
+
+    if ('widget' === elType) {
+      this.remoteRender = true;
+      this.setHtmlCache(options.htmlCache || '');
+    } // No need this variable anymore
+
+
+    delete options.htmlCache; // Make call to remote server as throttle function
+
+    this.renderRemoteServer = _.throttle(this.renderRemoteServer, 1000);
+    this.initSettings();
+    this.initEditSettings();
+    this.on({
+      destroy: this.onDestroy,
+      'editor:close': this.onCloseEditor
+    });
+  },
+  initSettings: function initSettings() {
+    var elType = this.get('elType'),
+        settings = this.get('settings'),
+        settingModels = {
+      column: ColumnSettingsModel
+    },
+        SettingsModel = settingModels[elType] || elementorModules.editor.elements.models.BaseSettings;
+
+    if (jQuery.isEmptyObject(settings)) {
+      settings = elementorCommon.helpers.cloneObject(settings);
+    }
+
+    if ('widget' === elType) {
+      settings.widgetType = this.get('widgetType');
+    }
+
+    settings.elType = elType;
+    settings.isInner = this.get('isInner');
+    settings = new SettingsModel(settings, {
+      controls: elementor.getElementControls(this)
+    });
+    this.set('settings', settings);
+    elementorFrontend.config.elements.data[this.cid] = settings;
+  },
+  initEditSettings: function initEditSettings() {
+    var editSettings = new Backbone.Model(this.get('defaultEditSettings'));
+    this.set('editSettings', editSettings);
+    elementorFrontend.config.elements.editSettings[this.cid] = editSettings;
+  },
+  setSetting: function setSetting(key, value) {
+    var settings = this.get('settings');
+
+    if ('object' !== (0, _typeof2.default)(key)) {
+      var keyParts = key.split('.'),
+          isRepeaterKey = 3 === keyParts.length;
+      key = keyParts[0];
+
+      if (isRepeaterKey) {
+        settings = settings.get(key).models[keyParts[1]];
+        key = keyParts[2];
+      }
+    }
+
+    settings.setExternalChange(key, value);
+  },
+  getSetting: function getSetting(key) {
+    var keyParts = key.split('.'),
+        isRepeaterKey = 3 === keyParts.length,
+        settings = this.get('settings');
+    key = keyParts[0];
+    var value = settings.get(key);
+
+    if (undefined === value) {
+      return '';
+    }
+
+    if (isRepeaterKey) {
+      value = value.models[keyParts[1]].get(keyParts[2]);
+    }
+
+    return value;
+  },
+  setHtmlCache: function setHtmlCache(htmlCache) {
+    this._htmlCache = htmlCache;
+  },
+  getHtmlCache: function getHtmlCache() {
+    return this._htmlCache;
+  },
+  getDefaultTitle: function getDefaultTitle() {
+    return elementor.getElementData(this).title;
+  },
+  getTitle: function getTitle() {
+    var title = this.getSetting('_title');
+
+    if (!title) {
+      title = this.getDefaultTitle();
+    }
+
+    return title;
+  },
+  getIcon: function getIcon() {
+    return elementor.getElementData(this).icon;
+  },
+  createRemoteRenderRequest: function createRemoteRenderRequest() {
+    var data = this.toJSON();
+    return elementorCommon.ajax.addRequest('render_widget', {
+      unique_id: this.cid,
+      data: {
+        data: data
+      },
+      success: this.onRemoteGetHtml.bind(this)
+    }, true).jqXhr;
+  },
+  renderRemoteServer: function renderRemoteServer() {
+    if (!this.remoteRender) {
+      return;
+    }
+
+    this.renderOnLeave = false;
+    this.trigger('before:remote:render');
+
+    if (this.isRemoteRequestActive()) {
+      this._jqueryXhr.abort();
+    }
+
+    this._jqueryXhr = this.createRemoteRenderRequest();
+  },
+  isRemoteRequestActive: function isRemoteRequestActive() {
+    return this._jqueryXhr && 4 !== this._jqueryXhr.readyState;
+  },
+  onRemoteGetHtml: function onRemoteGetHtml(data) {
+    this.setHtmlCache(data.render);
+    this.trigger('remote:render');
+  },
+  clone: function clone() {
+    var newModel = new this.constructor(elementorCommon.helpers.cloneObject(this.attributes));
+    newModel.set('id', elementorCommon.helpers.getUniqueId());
+    newModel.setHtmlCache(this.getHtmlCache());
+    var elements = this.get('elements');
+
+    if (!_.isEmpty(elements)) {
+      newModel.set('elements', elements.clone());
+    }
+
+    return newModel;
+  },
+  toJSON: function toJSON(options) {
+    options = options || {}; // Call parent's toJSON method
+
+    var data = Backbone.Model.prototype.toJSON.call(this);
+
+    _.each(data, function (attribute, key) {
+      if (attribute && attribute.toJSON) {
+        data[key] = attribute.toJSON(options);
+      }
+    });
+
+    if (options.copyHtmlCache) {
+      data.htmlCache = this.getHtmlCache();
+    } else {
+      delete data.htmlCache;
+    }
+
+    if (options.remove) {
+      options.remove.forEach(function (key) {
+        return delete data[key];
+      });
+    }
+
+    return data;
+  },
+  onCloseEditor: function onCloseEditor() {
+    if (this.renderOnLeave) {
+      this.renderRemoteServer();
+    }
+  },
+  onDestroy: function onDestroy() {
+    // Clean the memory for all use instances
+    var settings = this.get('settings'),
+        elements = this.get('elements');
+
+    if (undefined !== elements) {
+      _.each(_.clone(elements.models), function (model) {
+        model.destroy();
+      });
+    }
+
+    settings.destroy();
+  }
+});
+ElementModel.prototype.sync = ElementModel.prototype.fetch = ElementModel.prototype.save = _.noop;
+module.exports = ElementModel;
+
+/***/ }),
+
 /***/ "../assets/dev/js/editor/elements/views/base.js":
 /*!******************************************************!*\
   !*** ../assets/dev/js/editor/elements/views/base.js ***!
@@ -17303,6 +17611,8 @@ var _keys = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs
 
 var _assign = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/assign */ "../node_modules/@babel/runtime-corejs2/core-js/object/assign.js"));
 
+var _element = _interopRequireDefault(__webpack_require__(/*! elementor-elements/models/element */ "../assets/dev/js/editor/elements/models/element.js"));
+
 module.exports = Marionette.CompositeView.extend({
   templateHelpers: function templateHelpers() {
     return {
@@ -17382,7 +17692,9 @@ module.exports = Marionette.CompositeView.extend({
     if (options.edit && elementor.documents.getCurrent().history.getActive()) {
       // Ensure container is created. TODO: Open editor via UI hook after `document/elements/create`.
       newView.getContainer();
-      newModel.trigger('request:edit');
+      newModel.trigger('request:edit', {
+        scrollIntoView: options.scrollIntoView
+      });
     }
 
     return newView;
@@ -17393,26 +17705,26 @@ module.exports = Marionette.CompositeView.extend({
   },
   createElementFromModel: function createElementFromModel(model) {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    var container = this.getContainer();
 
     if (model instanceof Backbone.Model) {
       model = model.toJSON();
-    }
-
-    model = (0, _assign.default)(model, model.custom);
-
-    if ('section' === model.elType) {
-      model.isInner = true;
     }
 
     if (elementor.helpers.maybeDisableWidget(model.widgetType)) {
       return;
     }
 
+    model = (0, _assign.default)(model, model.custom); // Check whether the container cannot contain a section, in which case we should use an inner-section.
+
+    if ('section' === model.elType) {
+      model.isInner = true;
+    }
+
     var historyId = $e.internal('document/history/start-log', {
       type: this.getHistoryType(options.event),
       title: elementor.helpers.getModelLabel(model)
     });
-    var container = this.getContainer();
 
     if (options.shouldWrap) {
       var containerExperiment = elementorCommon.config.experimentalFeatures.container;

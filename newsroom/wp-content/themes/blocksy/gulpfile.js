@@ -208,9 +208,9 @@ var options = {
 		},
 
 		{
-			input: 'static/sass/frontend/5-modules/widgets/search-lazy.scss',
+			input: 'static/sass/frontend/5-modules/widgets/non-critical-search-styles.scss',
 			output: 'static/bundle',
-			filename: 'search-lazy.min',
+			filename: 'non-critical-search-styles.min',
 			header: buildProcess.headerFor(false, data),
 		},
 
@@ -327,9 +327,9 @@ var options = {
 		},
 
 		{
-			input: 'static/sass/frontend/lazy-load.scss',
+			input: 'static/sass/frontend/non-critical-styles.scss',
 			output: 'static/bundle',
-			filename: 'lazy-load.min',
+			filename: 'non-critical-styles.min',
 			header: buildProcess.headerFor(false, data),
 		},
 

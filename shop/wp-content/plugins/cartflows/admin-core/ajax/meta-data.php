@@ -142,7 +142,7 @@ class MetaData extends AjaxBase {
 				array(
 					'value'          => $product_object->get_id(),
 					'label'          => $formatted_name,
-					'original_price' => AdminHelper::get_product_original_price( $product_object ),
+					'original_price' => \Cartflows_Helper::get_product_original_price( $product_object ),
 				)
 			);
 		}
@@ -213,6 +213,8 @@ class MetaData extends AjaxBase {
 
 		wp_send_json( $coupons_found );
 	}
+
+
 
 	/**
 	 * Function to sanitize the product type data attribute.

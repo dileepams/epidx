@@ -265,6 +265,7 @@ const mouseenterHandler = ({ target }) => {
 		target.parentNode.classList.contains('menu') &&
 		target.className.indexOf('ct-mega-menu') > -1 &&
 		target.className.indexOf('ct-mega-menu-custom-width') === -1 &&
+		window.wp &&
 		wp &&
 		wp.customize &&
 		wp.customize('active_theme')

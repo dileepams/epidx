@@ -26,17 +26,10 @@ class GlobalSettings {
 		$origin = get_site_url();
 
 		$settings = array(
-			'general'        => array(
+			'general'         => array(
 				'title'  => __( 'General ', 'cartflows' ),
 				'fields' => array(
-					'global_checkout' => array(
-						'type'  => 'select',
-						'name'  => '_cartflows_common[global_checkout]',
-						'label' => __( 'Global Checkout', 'cartflows' ),
-						/* translators: %1$s: link html start, %2$s: link html end*/
-						'desc'  => sprintf( __( 'Be sure not to add any product in above selected Global Checkout step. %1$sLearn More >>%2$s.', 'cartflows' ), '<a href="https://cartflows.com/docs/global-checkout/" target="_blank">', '</a>' ),
-					),
-					'page_builder'    => array(
+					'page_builder'  => array(
 						'type'    => 'select',
 						'name'    => '_cartflows_common[default_page_builder]',
 						'label'   => __( 'Show Ready Templates for', 'cartflows' ),
@@ -67,14 +60,32 @@ class GlobalSettings {
 						),
 
 					),
-					'search_engine'   => array(
+					'search_engine' => array(
 						'type'  => 'checkbox',
 						'name'  => '_cartflows_common[disallow_indexing]',
 						'label' => __( 'Disallow search engine from indexing flows.', 'cartflows' ),
 					),
 				),
 			),
-			'permalink'      => array(
+			'global-checkout' => array(
+				'title'  => __( 'Global Checkout', 'cartflows' ),
+				'fields' => array(
+					'global_checkout'          => array(
+						'type'  => 'select',
+						'name'  => '_cartflows_common[global_checkout]',
+						'label' => __( 'Global Checkout', 'cartflows' ),
+						'desc'  => __( 'Be sure not to add any product in above selected Global Checkout step.', 'cartflows' ),
+					),
+					'override_global_checkout' => array(
+						'type'  => 'checkbox',
+						'name'  => '_cartflows_common[override_global_checkout]',
+						'label' => __( 'Override Global Checkout', 'cartflows' ),
+						/* translators: %1$1s: link html start, %2$12: link html end*/
+						'desc'  => sprintf( __( 'For more information about the Global Checkout settings please %1$sClick here%2$s.', 'cartflows' ), '<a href="https://cartflows.com/docs/global-checkout/" target="_blank">', '</a>' ),
+					),
+				),
+			),
+			'permalink'       => array(
 				'title'  => __( 'Permalinks', 'cartflows' ),
 				'fields' => array(
 					'perma-structure' => array(
@@ -126,7 +137,7 @@ class GlobalSettings {
 					),
 				),
 			),
-			'facebook-pixel' => array(
+			'facebook-pixel'  => array(
 				'title'  => __( 'FaceBook Pixel', 'cartflows' ),
 				'fields' => array(
 					'enable-fb-pixel'               => array(
@@ -240,7 +251,7 @@ class GlobalSettings {
 					),
 				),
 			),
-			'ga-analytics'   => array(
+			'ga-analytics'    => array(
 				'title'  => __( 'Google Analytics', 'cartflows' ),
 				'fields' => array(
 					'enable-ga-analytics'          => array(
@@ -369,7 +380,7 @@ class GlobalSettings {
 					),
 				),
 			),
-			'other-settings' => array(
+			'other-settings'  => array(
 				'title'  => __( 'Other', 'cartflows' ),
 				'fields' => array(
 					'delete_data' => array(

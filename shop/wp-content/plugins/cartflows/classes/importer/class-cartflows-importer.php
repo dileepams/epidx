@@ -256,34 +256,36 @@ if ( ! class_exists( 'CartFlows_Importer' ) ) :
 
 					self::get_instance()->set_step_to_flow( $flow_id, $new_step_id, $step['title'], $step_slug );
 
-					if ( isset( $step['post_content'] ) && ! empty( $step['post_content'] ) ) {
+					if ( apply_filters( 'cartflows_enable_imported_content_processing', true ) ) {
+						if ( isset( $step['post_content'] ) && ! empty( $step['post_content'] ) ) {
 
-						// Download and replace images.
-						$content = $this->get_content( $step['post_content'] );
+							// Download and replace images.
+							$content = $this->get_content( $step['post_content'] );
 
-						// Update post content.
-						wp_update_post(
-							array(
-								'ID'           => $new_step_id,
-								'post_content' => $content,
-							)
-						);
-					}
-
-					// Elementor Data.
-					if ( ( 'elementor' === $default_page_builder ) && class_exists( '\Elementor\Plugin' ) ) {
-						// Add "elementor" in import [queue].
-						// @todo Remove required `allow_url_fopen` support.
-						if ( ini_get( 'allow_url_fopen' ) && isset( $step['meta']['_elementor_data'] ) ) {
-							$obj = new \Elementor\TemplateLibrary\CartFlows_Importer_Elementor();
-							$obj->import_single_template( $new_step_id );
+							// Update post content.
+							wp_update_post(
+								array(
+									'ID'           => $new_step_id,
+									'post_content' => $content,
+								)
+							);
 						}
-					}
 
-					// Beaver Builder.
-					if ( ( 'beaver-builder' === $default_page_builder ) && class_exists( 'FLBuilder' ) ) {
-						if ( isset( $step['meta']['_fl_builder_data'] ) ) {
-							CartFlows_Importer_Beaver_Builder::get_instance()->import_single_post( $new_step_id );
+						// Elementor Data.
+						if ( ( 'elementor' === $default_page_builder ) && class_exists( '\Elementor\Plugin' ) ) {
+							// Add "elementor" in import [queue].
+							// @todo Remove required `allow_url_fopen` support.
+							if ( ini_get( 'allow_url_fopen' ) && isset( $step['meta']['_elementor_data'] ) ) {
+								$obj = new \Elementor\TemplateLibrary\CartFlows_Importer_Elementor();
+								$obj->import_single_template( $new_step_id );
+							}
+						}
+
+						// Beaver Builder.
+						if ( ( 'beaver-builder' === $default_page_builder ) && class_exists( 'FLBuilder' ) ) {
+							if ( isset( $step['meta']['_fl_builder_data'] ) ) {
+								CartFlows_Importer_Beaver_Builder::get_instance()->import_single_post( $new_step_id );
+							}
 						}
 					}
 				}

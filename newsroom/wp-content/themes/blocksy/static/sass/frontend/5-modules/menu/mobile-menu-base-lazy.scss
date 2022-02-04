@@ -22,22 +22,34 @@
 		}
 	}
 
-	// hover & active state
-	li > .ct-sub-menu-parent:hover {
-		> a,
+	.ct-sub-menu-parent:hover,
+	.current-menu-item > .ct-sub-menu-parent {
+
+		.ct-menu-link,
 		.ct-toggle-dopdown-mobile {
-			color: var(--linkHoverColor);
-			--icon-color: var(--icon-hover-color, var(--linkHoverColor));
+			color: inherit;
 		}
 	}
 
-	li.current-menu-item > .ct-sub-menu-parent {
-		> a,
-	 	.ct-toggle-dopdown-mobile {
-			color: var(--linkActiveColor, var(--linkHoverColor));
-			--icon-color: var(--icon-active-color, var(--icon-hover-color, var(--linkActiveColor, var(--linkHoverColor))));
-		}
-	}
+	// hover & active state
+	// li > .ct-sub-menu-parent:hover {
+	// 	> a,
+	// 	.ct-toggle-dopdown-mobile {
+	// 		color: var(--linkHoverColor);
+	// 		--icon-color: var(--icon-hover-color, var(--linkHoverColor));
+	// 	}
+	// }
+
+	// li.current-menu-item > .ct-sub-menu-parent {
+	// 	> a,
+	//  	.ct-toggle-dopdown-mobile {
+	// 		color: var(--linkActiveColor, var(--linkHoverColor));
+	// 		--icon-color: var(--icon-active-color, var(--icon-hover-color, var(--linkActiveColor, var(--linkHoverColor))));
+	// 	}
+	// }
+
+
+
 
 	[class*="children"] > ul li a:hover,
 	[class*="children"] > ul li.dropdown-active > .ct-sub-menu-parent > a {
@@ -54,8 +66,7 @@
 
 		--toggle-button-size: 25px;
 		--toggle-button-margin-end: -5px;
-		--icon-color: currentColor;
-		// --icon-transition: transform 0.15s linear, color 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+		--icon-color: var(--linkInitialColor);
 	}
 
 	// toggle animation
@@ -75,7 +86,7 @@
 		.ct-toggle-dopdown-mobile {
 			--toggle-button-margin-end: 0;
 			--toggle-button-radius: 3px;
-			// --toggle-button-border-width: 1px;
+			--toggle-button-border-width: 1px;
 			--toggle-button-border-color: currentColor;
 		}
 

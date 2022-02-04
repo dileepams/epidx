@@ -3,7 +3,7 @@ Contributors: sujaypawar, wpcrafter
 Tags: woocommerce, funnel builder, sales funnels, elementor, beaver builder
 Requires at least: 5.4
 Tested up to: 5.8.1
-Stable tag: 1.7.2
+Stable tag: 1.8.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -126,7 +126,16 @@ Glad you asked! Most normal users have less than 3 funnels on a single website, 
 
 == Changelog ==
 
-= Version 1.7.2 - Tuesday, 14th December 2021 =
+= Version 1.8.0 - Tuesday, 28th December 2021 =
+* New: Introduced Canvas 1.0 for a better overview of the flow.
+* New: Introduced a new option to override the global checkout page.
+* New: Added compatibility of "Dynamic Offers" aka "Rule Engine" for conditional redirects.
+* New: Added compatibility of the Dynamic Order Bumps.
+* Improvement: Hard deprecated the "cartflows_allow_persistace" filter, use "cartflows_allow_persistence" instead.
+* Improvement: Fixed deprecated notices for Elementor.
+* Fix: Fatal error while editing the elementor saved template if the checkout shortcode is present.
+
+= Version 1.7.2 - Tuesday, 14th December 2021 = 
 * Improvement: Starter templates compatibility added. 
 
 = Version 1.7.1 - Monday, 20th September 2021 =

@@ -29,6 +29,7 @@ class Plugin
     public  $demo = null ;
     public  $dynamic_css = null ;
     public  $header = null ;
+    public  $account_auth = null ;
     private  $is_blocksy = '__NOT_SET__' ;
     private  $desired_blocksy_version = '1.7.18' ;
     /**
@@ -66,7 +67,7 @@ class Plugin
         $this->theme_integration = new ThemeIntegration();
         $this->demo = new DemoInstall();
         $this->dynamic_css = new DynamicCss();
-        new AccountAuth();
+        $this->account_auth = new AccountAuth();
         new CustomizerOptionsManager();
     }
     

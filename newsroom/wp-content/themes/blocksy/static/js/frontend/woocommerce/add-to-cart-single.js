@@ -7,7 +7,7 @@ function singleProductAddToCart(wrapper) {
 
 	var form = wrapper.closest('form')
 	var button = form.find('.button')
-	var formUrl = form.attr('action')
+	var formUrl = $(form)[0].action
 	var formMethod = form.attr('method')
 
 	if (typeof formMethod === 'undefined' || formMethod == '') {

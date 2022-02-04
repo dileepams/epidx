@@ -1,4 +1,4 @@
-/*! elementor - v3.5.0 - 12-12-2021 */
+/*! elementor - v3.5.3 - 28-12-2021 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -2513,6 +2513,72 @@ function isAsyncThunkAction() {
 
 /***/ }),
 
+/***/ "../assets/dev/js/editor/utils/files-upload-handler.js":
+/*!*************************************************************!*\
+  !*** ../assets/dev/js/editor/utils/files-upload-handler.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+/* provided dependency */ var __ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n")["__"];
+
+
+var _Object$defineProperty = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/define-property */ "../node_modules/@babel/runtime-corejs2/core-js/object/define-property.js");
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime-corejs2/helpers/interopRequireDefault */ "../node_modules/@babel/runtime-corejs2/helpers/interopRequireDefault.js");
+
+_Object$defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports["default"] = void 0;
+
+__webpack_require__(/*! core-js/modules/es7.array.includes.js */ "../node_modules/core-js/modules/es7.array.includes.js");
+
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/classCallCheck */ "../node_modules/@babel/runtime-corejs2/helpers/classCallCheck.js"));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/createClass */ "../node_modules/@babel/runtime-corejs2/helpers/createClass.js"));
+
+var FilesUploadHandler = /*#__PURE__*/function () {
+  function FilesUploadHandler() {
+    (0, _classCallCheck2.default)(this, FilesUploadHandler);
+  }
+
+  (0, _createClass2.default)(FilesUploadHandler, null, [{
+    key: "isUploadEnabled",
+    value: function isUploadEnabled(mediaType) {
+      var unfilteredFilesTypes = ['svg', 'application/json'];
+
+      if (!unfilteredFilesTypes.includes(mediaType)) {
+        return true;
+      }
+
+      return elementor.config.filesUpload.unfilteredFiles;
+    }
+  }, {
+    key: "setUploadTypeCaller",
+    value: function setUploadTypeCaller(frame) {
+      frame.uploader.uploader.param('uploadTypeCaller', 'elementor-wp-media-upload');
+    }
+  }, {
+    key: "getUnfilteredFilesNotEnabledDialog",
+    value: function getUnfilteredFilesNotEnabledDialog(callback) {
+      var onConfirm = function onConfirm() {
+        elementorCommon.ajax.addRequest('enable_unfiltered_files_upload', {}, true);
+        elementor.config.filesUpload.unfilteredFiles = true;
+        callback();
+      };
+
+      return elementor.helpers.getSimpleDialog('e-enable-unfiltered-files-dialog', __('Enable Unfiltered File Uploads', 'elementor'), __('Before you enable unfiltered files upload, note that this kind of files include a security risk. Elementor does run a process to remove possible malicious code, but there is still risk involved when using such files.', 'elementor'), __('Enable', 'elementor'), onConfirm);
+    }
+  }]);
+  return FilesUploadHandler;
+}();
+
+exports["default"] = FilesUploadHandler;
+
+/***/ }),
+
 /***/ "../assets/dev/js/editor/utils/is-instanceof.js":
 /*!******************************************************!*\
   !*** ../assets/dev/js/editor/utils/is-instanceof.js ***!
@@ -2913,6 +2979,8 @@ var _createSuper2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtim
 
 var _commandData = _interopRequireDefault(__webpack_require__(/*! elementor-api/modules/command-data */ "../core/common/assets/js/api/modules/command-data.js"));
 
+var _filesUploadHandler = _interopRequireDefault(__webpack_require__(/*! elementor-editor/utils/files-upload-handler */ "../assets/dev/js/editor/utils/files-upload-handler.js"));
+
 var Media = /*#__PURE__*/function (_CommandData) {
   (0, _inherits2.default)(Media, _CommandData);
 
@@ -2945,6 +3013,9 @@ var Media = /*#__PURE__*/function (_CommandData) {
       args.headers = {
         'Content-Disposition': "attachment; filename=".concat(this.file.name),
         'Content-Type': this.file.type
+      };
+      args.query = {
+        uploadTypeCaller: 'elementor-wp-media-upload'
       };
       args.data = this.file;
 
@@ -2979,28 +3050,30 @@ var Media = /*#__PURE__*/function (_CommandData) {
                 this.file = this.args.file;
 
                 if (!(this.file.size > (0, _parseInt2.default)(window._wpPluploadSettings.defaults.filters.max_file_size, 10))) {
-                  _context.next = 5;
+                  _context.next = 3;
                   break;
                 }
 
                 throw new Error(__('The file exceeds the maximum upload size for this site.', 'elementor'));
 
-              case 5:
-                if (window._wpPluploadSettings.defaults.filters.mime_types[0].extensions.split(',').includes(this.file.name.split('.').pop())) {
-                  _context.next = 7;
+              case 3:
+                if (!(!window._wpPluploadSettings.defaults.filters.mime_types[0].extensions.split(',').includes(this.file.name.split('.').pop()) && !elementor.config.filesUpload.unfilteredFiles)) {
+                  _context.next = 6;
                   break;
                 }
 
-                throw new Error(__('Sorry, this file type is not permitted for security reasons.', 'elementor'));
+                _filesUploadHandler.default.getUnfilteredFilesNotEnabledDialog(function () {}).show();
 
-              case 7:
-                _context.next = 9;
+                return _context.abrupt("return");
+
+              case 6:
+                _context.next = 8;
                 return (0, _get2.default)((0, _getPrototypeOf2.default)(Media.prototype), "run", this).call(this);
 
-              case 9:
+              case 8:
                 return _context.abrupt("return", _context.sent);
 
-              case 10:
+              case 9:
               case "end":
                 return _context.stop();
             }

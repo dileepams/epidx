@@ -26,6 +26,15 @@
 	}
 }
 
+// first drop-down
+.menu > [data-submenu='right'] > .sub-menu {
+	left: 0;
+}
+
+.menu > [data-submenu='left'] > .sub-menu {
+	right: 0;
+}
+
 [data-submenu] .menu-item:not([data-submenu]) {
 	--top: 0;
 	--dropdown-position: fixed;
@@ -37,7 +46,7 @@
 	margin-top: 0;
 
 	&:before {
-		width: 5px;
+		width: var(--dropdown-horizontal-offset, 5px);
 		height: 100%;
 		transform: initial;
 	}
@@ -45,11 +54,11 @@
 
 .animated-submenu [data-submenu='right'] {
 	> ul {
-		right: -5px;
+		right: calc(var(--dropdown-horizontal-offset, 5px) * -1);
 		margin-right: -100%;
 
 		&:before {
-			left: -5px;
+			left: calc(var(--dropdown-horizontal-offset, 5px) * -1);
 			right: initial;
 		}
 	}
@@ -57,12 +66,12 @@
 
 .animated-submenu [data-submenu='left'] {
 	> ul {
-		left: -5px;
+		left: calc(var(--dropdown-horizontal-offset, 5px) * -1);
 		margin-left: -100%;
 
 		&:before {
 			left: initial;
-			right: -5px;
+			right: calc(var(--dropdown-horizontal-offset, 5px) * -1);
 		}
 	}
 }
@@ -70,7 +79,6 @@
 // dropdown toggle
 .ct-toggle-dropdown-desktop {
 	--icon-size: 8px;
-	--icon-color: currentColor;
 	--toggle-button-size: 18px;
 	--toggle-button-margin-end: -5px;
 	--toggle-button-margin-start: var(--dropdown-toggle-margin-start, 0.2em);
@@ -90,7 +98,6 @@
 	pointer-events: none;
 	flex: 0 0 var(--toggle-button-size, 18px);
 	right: var(--toggle-ghost-inset-end, calc(var(--menu-items-spacing, 25px) / 2 + 13px));
-	// inset-inline-end: var(--toggle-ghost-inset-end, calc(var(--menu-items-spacing, 25px) / 2 + 13px));
 
 	--toggle-button-size: 18px;
 	--toggle-button-margin-end: -18px;

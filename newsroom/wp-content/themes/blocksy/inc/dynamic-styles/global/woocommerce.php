@@ -4,6 +4,69 @@ if (! function_exists('is_woocommerce')) {
 	return;
 }
 
+$shop_cards_type = get_theme_mod('shop_cards_type', 'type-1');
+
+if ($shop_cards_type === 'type-1') {
+	$shop_cards_alignment_1 = get_theme_mod(
+		'shop_cards_alignment_1',
+		'CT_CSS_SKIP_RULE'
+	);
+
+	$text_shop_cards_alignment_1 = $shop_cards_alignment_1;
+
+	if (
+		$text_shop_cards_alignment_1 !== 'CT_CSS_SKIP_RULE'
+		&&
+		is_array($text_shop_cards_alignment_1)
+		&&
+		isset($text_shop_cards_alignment_1['desktop'])
+	) {
+		if ($text_shop_cards_alignment_1['desktop'] === 'flex-start') {
+			$text_shop_cards_alignment_1['desktop'] = 'left';
+		}
+
+		if ($text_shop_cards_alignment_1['desktop'] === 'flex-end') {
+			$text_shop_cards_alignment_1['desktop'] = 'right';
+		}
+
+		if ($text_shop_cards_alignment_1['tablet'] === 'flex-start') {
+			$text_shop_cards_alignment_1['tablet'] = 'left';
+		}
+
+		if ($text_shop_cards_alignment_1['tablet'] === 'flex-end') {
+			$text_shop_cards_alignment_1['tablet'] = 'right';
+		}
+
+		if ($text_shop_cards_alignment_1['mobile'] === 'flex-start') {
+			$text_shop_cards_alignment_1['mobile'] = 'left';
+		}
+
+		if ($text_shop_cards_alignment_1['mobile'] === 'flex-end') {
+			$text_shop_cards_alignment_1['mobile'] = 'right';
+		}
+	}
+
+	blocksy_output_responsive([
+		'css' => $css,
+		'tablet_css' => $tablet_css,
+		'mobile_css' => $mobile_css,
+		'selector' => '[data-products="type-1"] .product',
+		'variableName' => 'horizontal-alignment',
+		'value' => $shop_cards_alignment_1,
+		'unit' => '',
+	]);
+
+	blocksy_output_responsive([
+		'css' => $css,
+		'tablet_css' => $tablet_css,
+		'mobile_css' => $mobile_css,
+		'selector' => '[data-products="type-1"] .product',
+		'variableName' => 'text-horizontal-alignment',
+		'value' => $text_shop_cards_alignment_1,
+		'unit' => '',
+	]);
+}
+
 $shop_columns_gap = get_theme_mod('shopCardsGap', 30);
 
 if ($shop_columns_gap !== 30) {
@@ -405,7 +468,7 @@ if (get_theme_mod('woocommerce_quickview_enabled', 'yes') === 'yes') {
 }
 
 
-if (get_theme_mod('shop_cards_type', 'type-1') === 'type-1') {
+if ($shop_cards_type === 'type-1') {
 	blocksy_output_colors([
 		'value' => get_theme_mod('cardProductButton1Text'),
 		'default' => [
@@ -430,7 +493,7 @@ if (get_theme_mod('shop_cards_type', 'type-1') === 'type-1') {
 	]);
 }
 
-if (get_theme_mod('shop_cards_type', 'type-1') === 'type-2') {
+if ($shop_cards_type === 'type-2') {
 	blocksy_output_colors([
 		'value' => get_theme_mod('cardProductButton2Text'),
 		'default' => [

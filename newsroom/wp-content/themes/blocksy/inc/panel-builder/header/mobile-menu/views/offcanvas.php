@@ -81,7 +81,10 @@ if (strpos($menu_output, 'sub-menu')) {
 
 ?>
 
-<nav class="<?php echo $class ?>" <?php echo blocksy_attr_to_html($attr) ?>>
+<nav 
+	class="<?php echo $class ?>" 
+	role="navigation"
+	<?php echo blocksy_attr_to_html($attr) ?>>
 	<?php echo $menu_output ?>
 </nav>
 

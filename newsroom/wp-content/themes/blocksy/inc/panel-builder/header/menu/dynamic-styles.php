@@ -720,6 +720,22 @@ if (isset($has_sticky_header) && $has_sticky_header) {
 	// }
 }
 
+// Dropdowns horizontal spacing
+$dropdown_horizontal_offset = blocksy_akg( 'dropdown_horizontal_offset', $atts, 5 );
+
+if ($dropdown_horizontal_offset !== 5) {
+	$css->put(
+		blocksy_assemble_selector(
+			blocksy_mutate_selector([
+				'selector' => $root_selector,
+				'operation' => 'suffix',
+				'to_add' => '.sub-menu'
+			])
+		),
+		'--dropdown-horizontal-offset: ' . $dropdown_horizontal_offset . 'px'
+	);
+}
+
 
 // Dropdown box width
 $dropdownMenuWidth = blocksy_akg( 'dropdownMenuWidth', $atts, 200 );

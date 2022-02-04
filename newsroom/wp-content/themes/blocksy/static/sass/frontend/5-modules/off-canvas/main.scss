@@ -8,7 +8,7 @@ body:not(.ct-loading) {
 }
 
 body[data-panel] {
-	padding-inline-end: var(--scrollbar-width, 0px);
+	padding-right: var(--scrollbar-width, 0px);
 }
 
 .ct-panel {

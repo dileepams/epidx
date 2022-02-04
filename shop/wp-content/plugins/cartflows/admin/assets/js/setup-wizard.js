@@ -37,8 +37,8 @@
 			);
 			$( document ).on(
 				'click',
-				'.mautic-form-submit',
-				CartFlowsWizard._onMauticSubmit
+				'.sendinblue-form-submit',
+				CartFlowsWizard._onSendinblueSubmit
 			);
 			$( document ).on(
 				'change',
@@ -99,17 +99,18 @@
 				} );
 		},
 
-		_onMauticSubmit: function ( event ) {
+		_onSendinblueSubmit: function ( event ) {
 			event.preventDefault();
 			event.stopPropagation();
 
-			var form = $( this ).closest( 'form' );
-			var email_field = form.find(
-				'#mauticform_input_cartflowsonboarding_enter_your_email'
-			);
-			var submit_button = $( this );
-
-			var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,14})$/;
+			var form 			= $( this ).closest( 'form' ),
+				name_field 		= form.find( '#cartflows_onboarding_name').val() ? form.find( '#cartflows_onboarding_name').val() : '',
+				email_field 	= form.find( '#cartflows_onboarding_email'),
+				submit_button 	= $( this ),
+				nonce 			= form.find('#wcf_user_onboarding_nonce').val(),
+				error_field		= form.find('.onboarding-error'),
+				success_field	= form.find('.onboarding-message'),
+				reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,14})$/;
 
 			if ( reg.test( email_field.val() ) == false ) {
 				email_field.addClass( 'wcf-error' );
@@ -119,22 +120,36 @@
 			}
 
 			submit_button.attr( 'disabled', 'disabled' );
-
+			
 			$.ajax( {
 				type: 'POST',
-				url: form.attr( 'action' ),
-				data: form.serialize(),
-				// async: false,
-				headers: { 'X-Requested-With': 'XMLHttpRequest' },
-				success: function () {
-					// callback code here
-					console.log( 'in success' );
-					var redirect_link =
-						$( '.wcf-redirect-link' ).data( 'redirect-link' ) || '';
-					window.location = redirect_link;
+				url: ajaxurl,
+				method: 'POST',
+				data: {
+					action: 'wcf_user_onboarding',
+					user_email: email_field.val(),
+					user_fname : name_field,
+					security: nonce,
 				},
-				error: function () {
+				// async: false,
+				success: function (response) {
+					console.log( 'in success' );
+
+					if( response.data.success ){
+						console.log( response.data.message );
+						var redirect_link =	$( '.wcf-redirect-link' ).data( 'redirect-link' ) || '';
+						window.location = redirect_link;
+					}else{
+						console.log( response.data.message );
+						error_field.text( response.data.message );
+						submit_button.removeAttr( 'disabled' );
+						return false;
+					}
+					
+				},
+				error: function (response) {
 					console.log( 'in error' );
+					console.log( response );
 				},
 			} );
 
