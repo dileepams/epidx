@@ -76,7 +76,7 @@ final class BlockTypesController {
 	 */
 	public function add_data_attributes( $content, $block ) {
 		$block_name      = $block['blockName'];
-		$block_namespace = strtok( $block_name, '/' );
+		$block_namespace = strtok( $block_name ?? '', '/' );
 
 		/**
 		 * Filters the list of allowed block namespaces.
@@ -185,12 +185,13 @@ final class BlockTypesController {
 		if ( Package::feature()->is_experimental_build() ) {
 			$block_types[] = 'SingleProduct';
 			$block_types[] = 'MiniCart';
+			$block_types[] = 'MiniCartContents';
 		}
 
 		/**
 		 * This disables specific blocks in Widget Areas by not registering them.
 		 */
-		if ( in_array( $pagenow, [ 'widgets.php', 'themes.php', 'customize.php' ], true ) ) {
+		if ( in_array( $pagenow, [ 'widgets.php', 'themes.php', 'customize.php' ], true ) && ( empty( $_GET['page'] ) || 'gutenberg-edit-site' !== $_GET['page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 			$block_types = array_diff(
 				$block_types,
 				[

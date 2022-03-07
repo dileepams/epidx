@@ -1,4 +1,4 @@
-/*! elementor - v3.5.3 - 28-12-2021 */
+/*! elementor - v3.5.6 - 28-02-2022 */
 "use strict";
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["frontend"],{
 
@@ -1820,7 +1820,7 @@ class Swiper {
     } // The Swiper will overlap the column width when applying custom margin values on the column.
 
 
-    container.closest('.elementor-widget-wrap').addClass('e-swiper-container');
+    jQuery(container).closest('.elementor-widget-wrap').addClass('e-swiper-container');
     return new Promise(resolve => {
       if (!elementorFrontend.config.experimentalFeatures.e_optimized_assets_loading) {
         return resolve(this.createSwiperInstance(container, this.config));
@@ -1916,11 +1916,13 @@ class _default extends elementorModules.ViewModule {
       lightbox: async settings => {
         const lightbox = await elementorFrontend.utils.lightbox;
 
-        if (settings.id) {
-          lightbox.openSlideshow(settings.id, settings.url);
+        if (settings.slideshow) {
+          // Handle slideshow display
+          lightbox.openSlideshow(settings.slideshow, settings.url);
         } else {
-          if (settings.html) {
-            delete settings.html;
+          // If the settings has an ID - the lightbox target content is an image - the ID is an attachment ID.
+          if (settings.id) {
+            settings.type = 'image';
           }
 
           lightbox.showModal(settings);
@@ -1963,8 +1965,15 @@ class _default extends elementorModules.ViewModule {
   }
 
   runHashAction() {
-    if (location.hash) {
-      this.runAction(location.hash);
+    if (!location.hash) {
+      return;
+    } // Only if an element with this action hash exists on the page do we allow running the action.
+
+
+    const elementWithHash = document.querySelector(`[e-action-hash="${location.hash}"], a[href*="${location.hash}"]`);
+
+    if (elementWithHash) {
+      this.runAction(elementWithHash.getAttribute('e-action-hash'));
     }
   }
 

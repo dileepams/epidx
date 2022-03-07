@@ -1,4 +1,4 @@
-/*! elementor - v3.5.3 - 28-12-2021 */
+/*! elementor - v3.5.6 - 28-02-2022 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -18466,6 +18466,8 @@ _Object$defineProperty2(exports, "__esModule", {
 
 exports["default"] = void 0;
 
+var _values = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/values */ "../node_modules/@babel/runtime-corejs2/core-js/object/values.js"));
+
 var _isArray = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/array/is-array */ "../node_modules/@babel/runtime-corejs2/core-js/array/is-array.js"));
 
 var _keys = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "../node_modules/@babel/runtime-corejs2/core-js/object/keys.js"));
@@ -18475,6 +18477,12 @@ var _entries = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-cor
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/define-property */ "../node_modules/@babel/runtime-corejs2/core-js/object/define-property.js"));
 
 __webpack_require__(/*! core-js/modules/es6.array.find.js */ "../node_modules/core-js/modules/es6.array.find.js");
+
+__webpack_require__(/*! core-js/modules/es6.array.filter.js */ "../node_modules/core-js/modules/es6.array.filter.js");
+
+__webpack_require__(/*! core-js/modules/es6.string.includes.js */ "../node_modules/core-js/modules/es6.string.includes.js");
+
+__webpack_require__(/*! core-js/modules/es7.array.includes.js */ "../node_modules/core-js/modules/es7.array.includes.js");
 
 __webpack_require__(/*! core-js/modules/es6.regexp.replace.js */ "../node_modules/core-js/modules/es6.regexp.replace.js");
 
@@ -19828,13 +19836,13 @@ var EditorBase = /*#__PURE__*/function (_Marionette$Applicati) {
         withDesktop: true
       }),
           newControlsStack = {},
-          secondDesktopChild = devices[devices.indexOf('desktop') + 1]; // Set the desktop to be the fist device, so desktop will the the parent of all devices.
+          secondDesktopChild = devices[devices.indexOf('desktop') + 1]; // Set the desktop to be the first device, so desktop will the the parent of all devices.
 
       devices.unshift(devices.splice(devices.indexOf('desktop'), 1)[0]);
       jQuery.each(controls, function (controlName, controlConfig) {
-        var _controlConfig$popove;
+        var _controlConfig$respon, _controlConfig$popove;
 
-        var responsiveControlName; // Handle repeater controls.
+        var responsiveControlName, controlDevices; // Handle repeater controls.
 
         if ('object' === (0, _typeof2.default)(controlConfig.fields)) {
           controlConfig.fields = _this11.generateResponsiveControls(controlConfig.fields);
@@ -19844,6 +19852,19 @@ var EditorBase = /*#__PURE__*/function (_Marionette$Applicati) {
         if (!controlConfig.is_responsive) {
           newControlsStack[controlName] = controlConfig;
           return;
+        }
+
+        if ((_controlConfig$respon = controlConfig.responsive) !== null && _controlConfig$respon !== void 0 && _controlConfig$respon.devices) {
+          // Because of an `array_intersect` that happens on the PHP side, the devices array can become an object.
+          if ('object' === (0, _typeof2.default)(controlConfig.responsive.devices)) {
+            controlConfig.responsive.devices = (0, _values.default)(controlConfig.responsive.devices);
+          } // Filter the devices list according to the control's passed devices list.
+
+
+          controlDevices = devices.filter(function (device) {
+            return controlConfig.responsive.devices.includes(device);
+          });
+          delete controlConfig.responsive.devices;
         }
 
         var popoverEndProperty = (_controlConfig$popove = controlConfig.popover) === null || _controlConfig$popove === void 0 ? void 0 : _controlConfig$popove.end; // Since the `popoverEndProperty` variable now holds the value, we want to prevent this property from
@@ -19868,9 +19889,11 @@ var EditorBase = /*#__PURE__*/function (_Marionette$Applicati) {
         if (multipleDefaultValue) {
           controlConfig.default = multipleDefaultValue;
           deleteControlDefault = false;
-        }
+        } // If the control passed its own 'devices' array, run through that. Otherwise, use the default devices list.
 
-        devices.forEach(function (device, index) {
+
+        var devicesArrayToDuplicate = controlDevices || devices;
+        devicesArrayToDuplicate.forEach(function (device, index) {
           var _controlArgs$popover;
 
           var controlArgs = elementorCommon.helpers.cloneObject(controlConfig);
@@ -19934,14 +19957,14 @@ var EditorBase = /*#__PURE__*/function (_Marionette$Applicati) {
           // the popover.
 
 
-          if (index === devices.length - 1 && popoverEndProperty) {
+          if (index === devicesArrayToDuplicate.length - 1 && popoverEndProperty) {
             controlArgs.popover = {
               end: true
             };
           } // For each new responsive control, delete the responsive defaults
 
 
-          devices.forEach(function (breakpoint) {
+          devicesArrayToDuplicate.forEach(function (breakpoint) {
             delete controlArgs[breakpoint + '_default'];
           });
           delete controlArgs.is_responsive;
@@ -26391,7 +26414,8 @@ PanelElementsLayoutView = Marionette.LayoutView.extend({
         icon: widget.icon,
         widgetType: widget.widget_type,
         custom: widget.custom,
-        editable: widget.editable
+        editable: widget.editable,
+        hideOnSearch: widget.hide_on_search
       });
     });
 
@@ -26732,14 +26756,6 @@ module.exports = Marionette.ItemView.extend({
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime-corejs2/helpers/interopRequireDefault */ "../node_modules/@babel/runtime-corejs2/helpers/interopRequireDefault.js");
-
-var _keys = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "../node_modules/@babel/runtime-corejs2/core-js/object/keys.js"));
-
-__webpack_require__(/*! core-js/modules/es6.string.includes.js */ "../node_modules/core-js/modules/es6.string.includes.js");
-
-__webpack_require__(/*! core-js/modules/es7.array.includes.js */ "../node_modules/core-js/modules/es7.array.includes.js");
-
 var PanelElementsElementsView;
 PanelElementsElementsView = Marionette.CollectionView.extend({
   childView: __webpack_require__(/*! elementor-panel/pages/elements/views/element */ "../assets/dev/js/editor/regions/panel/pages/elements/views/element.js"),
@@ -26753,18 +26769,10 @@ PanelElementsElementsView = Marionette.CollectionView.extend({
 
     if (!filterValue) {
       return true;
-    }
-
-    if (elementorCommon.config.experimentalFeatures['e_hidden_wordpress_widgets'] && childModel.get('categories').includes('wordpress')) {
-      return false;
-    } // Remove widgets from search results by 'widgets categories'.
+    } // Prevent from wordpress widgets to show in search result.
 
 
-    var showInSearchResult = (0, _keys.default)(elementor.documents.getCurrent().config.panel.elements_categories).some(function (categoryName) {
-      return childModel.get('categories').includes(categoryName);
-    });
-
-    if (!showInSearchResult) {
+    if (childModel.get('hideOnSearch')) {
       return false;
     }
 
@@ -31898,8 +31906,6 @@ var _keys = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs
 
 var _assign = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/assign */ "../node_modules/@babel/runtime-corejs2/core-js/object/assign.js"));
 
-var _element = _interopRequireDefault(__webpack_require__(/*! elementor-elements/models/element */ "../assets/dev/js/editor/elements/models/element.js"));
-
 module.exports = Marionette.CompositeView.extend({
   templateHelpers: function templateHelpers() {
     return {
@@ -33990,7 +33996,8 @@ var UiStateBase = /*#__PURE__*/function () {
 
   }, {
     key: "onChange",
-    value: function onChange(oldValue, newValue) {// Override this method if needed.
+    value: function onChange(oldValue, newValue) {// eslint-disable-line no-unused-vars
+      // Override this method if needed.
     }
     /**
      * Retrieve an array of scopes that the state will be applied to.
@@ -37662,6 +37669,7 @@ var BaseGlobalsUpdate = /*#__PURE__*/function (_$e$modules$hookData$) {
   }, {
     key: "applyModel",
     value: function applyModel(model, id, value) {
+      // eslint-disable-line no-unused-vars
       elementorModules.ForceMethodImplementation();
     }
   }, {
@@ -38927,7 +38935,6 @@ var KitSaveRouteHistory = /*#__PURE__*/function (_BaseOpenClose) {
     key: "getConditions",
     value: function getConditions() {
       var args = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var result = arguments.length > 1 ? arguments[1] : undefined;
       return args.route;
     }
   }, {
@@ -40033,7 +40040,7 @@ var Apply = /*#__PURE__*/function (_CommandBase) {
      * @param {object} args
      */
     function validateArgs(args) {
-      this.requireArgumentType('value', 'string');
+      this.requireArgumentType('value', 'string', args);
     }
     /**
      * Execute the color apply command.
@@ -40289,11 +40296,9 @@ var ExitPreview = /*#__PURE__*/function (_CommandBase) {
     /**
      * Initialize the command.
      *
-     * @param {object} args
-     *
      * @returns {void}
      */
-    function apply(args) {
+    function apply() {
       var initialColor = this.component.currentPicker.initialColor;
 
       if (null === initialColor) {
@@ -40716,7 +40721,6 @@ var ShowSwatches = /*#__PURE__*/function (_CommandBase) {
 
       (0, _entries.default)(this.colors).map(function (_ref2) {
         var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
-            control = _ref3[0],
             value = _ref3[1];
 
         var swatch = document.createElement('div');
@@ -42713,7 +42717,7 @@ var HistoryManager = /*#__PURE__*/function () {
     }
   }, {
     key: "getActive",
-    value: function getActive(value) {
+    value: function getActive() {
       return this.active;
     }
   }, {

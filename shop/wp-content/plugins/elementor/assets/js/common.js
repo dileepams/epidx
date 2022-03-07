@@ -1,4 +1,4 @@
-/*! elementor - v3.5.3 - 28-12-2021 */
+/*! elementor - v3.5.6 - 28-02-2022 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -2994,7 +2994,6 @@ var Media = /*#__PURE__*/function (_CommandData) {
   (0, _createClass2.default)(Media, [{
     key: "validateArgs",
     value: function validateArgs() {
-      var args = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       this.requireArgumentInstance('file', File);
     }
   }, {
@@ -7272,18 +7271,23 @@ var Store = /*#__PURE__*/function () {
      *
      * @param {string|null} sliceId - Slice ID to get.
      *
-     * @return {Slice|Object}
+     * @return {Slice}
      */
 
   }, {
     key: "get",
-    value: function get() {
-      var sliceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    value: function get(sliceId) {
+      return this.slices[sliceId];
+    }
+    /**
+     * Get all slices.
+     *
+     * @return {Object}
+     */
 
-      if (sliceId) {
-        return this.slices[sliceId];
-      }
-
+  }, {
+    key: "getAllSlices",
+    value: function getAllSlices() {
       return this.slices;
     }
     /**
@@ -7295,7 +7299,7 @@ var Store = /*#__PURE__*/function () {
   }, {
     key: "getAll",
     value: function getAll() {
-      return (0, _keys.default)(this.slices);
+      return (0, _keys.default)(this.slices).sort();
     }
     /**
      * Return the current reducers.
@@ -10588,9 +10592,9 @@ var Debug = function Debug() {
     self.addError({
       type: error.name,
       message: error.message,
-      url: originalEvent.filename,
-      line: originalEvent.lineno,
-      column: originalEvent.colno
+      url: event.originalEvent.filename,
+      line: event.originalEvent.lineno,
+      column: event.originalEvent.colno
     });
   };
 

@@ -74,6 +74,10 @@ class Install {
 			'wc_admin_update_290_delete_default_homepage_layout_option',
 			'wc_admin_update_290_db_version',
 		),
+		'3.0.0'  => array(
+			'wc_admin_update_300_update_is_read_from_last_read',
+			'wc_admin_update_300_db_version',
+		),
 	);
 
 	/**
@@ -311,6 +315,7 @@ class Install {
 			layout varchar(20) DEFAULT '' NOT NULL,
 			image varchar(200) NULL DEFAULT NULL,
 			is_deleted boolean DEFAULT 0 NOT NULL,
+			is_read boolean DEFAULT 0 NOT NULL,
 			icon varchar(200) NOT NULL default 'info',
 			PRIMARY KEY (note_id)
 		) $collate;
@@ -538,6 +543,16 @@ class Install {
 			'wc-admin-home-screen-feedback',
 			'wc-admin-effortless-payments-by-mollie',
 			'wc-admin-google-ads-and-marketing',
+			'wc-admin-marketing-intro',
+			'wc-admin-draw-attention',
+			'wc-admin-need-some-inspiration',
+			'wc-admin-choose-niche',
+			'wc-admin-start-dropshipping-business',
+			'wc-admin-filter-by-product-variations-in-reports',
+			'wc-admin-learn-more-about-variable-products',
+			'wc-admin-getting-started-ecommerce-webinar',
+			'wc-admin-navigation-feedback',
+			'wc-admin-navigation-feedback-follow-up',
 		);
 
 		$additional_obsolete_notes_names = apply_filters(

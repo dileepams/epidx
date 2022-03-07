@@ -1,4 +1,4 @@
-/*! elementor - v3.5.3 - 28-12-2021 */
+/*! elementor - v3.5.6 - 28-02-2022 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -617,11 +617,7 @@ function ConnectionButton() {
       return;
     }
 
-    jQuery(buttonRef.current).elementorConnect({
-      UTM: function UTM() {
-        return '&utm_source=admin-top-bar&utm_medium=wp-dash&utm_campaign=admin-top-bar&source=generic';
-      }
-    });
+    jQuery(buttonRef.current).elementorConnect();
   }, []);
 
   var tooltipText = __('Connect your account to get access to Elementor\'s Template Library & more.', 'elementor'),

@@ -1,4 +1,4 @@
-/*! elementor - v3.5.3 - 28-12-2021 */
+/*! elementor - v3.5.6 - 28-02-2022 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -8146,9 +8146,7 @@ function ExportProcess() {
     type: "export"
   }, /*#__PURE__*/_react.default.createElement(_fileProcess.default, {
     errorType: errorType,
-    onDialogApprove: function onDialogApprove() {
-      return window.open('https://elementor.com/help/export-kit?utm_source=import-export&utm_medium=wp-dash&utm_campaign=learn', '_blank');
-    },
+    onDialogApprove: onDialogDismiss,
     onDialogDismiss: onDialogDismiss
   }));
 }
@@ -8472,7 +8470,7 @@ var _layout = _interopRequireDefault(__webpack_require__(/*! ../../../templates/
 
 var _pageHeader = _interopRequireDefault(__webpack_require__(/*! ../../../ui/page-header/page-header */ "../core/app/modules/import-export/assets/js/ui/page-header/page-header.js"));
 
-var _importFailedDialog = _interopRequireDefault(__webpack_require__(/*! ../../../shared/import-failed-dialog/import-failed-dialog */ "../core/app/modules/import-export/assets/js/shared/import-failed-dialog/import-failed-dialog.js"));
+var _processFailedDialog = _interopRequireDefault(__webpack_require__(/*! ../../../shared/process-failed-dialog/process-failed-dialog */ "../core/app/modules/import-export/assets/js/shared/process-failed-dialog/process-failed-dialog.js"));
 
 var _inlineLink = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/molecules/inline-link */ "../core/app/assets/js/ui/molecules/inline-link.js"));
 
@@ -8589,7 +8587,7 @@ function ImportKit() {
       return setErrorType('general');
     },
     isLoading: isLoading
-  }), errorType && /*#__PURE__*/_react.default.createElement(_importFailedDialog.default, {
+  }), errorType && /*#__PURE__*/_react.default.createElement(_processFailedDialog.default, {
     errorType: errorType,
     onApprove: resetImportProcess
   })));
@@ -8777,6 +8775,7 @@ function ImportProcess() {
     type: "import"
   }, /*#__PURE__*/_react.default.createElement("section", null, /*#__PURE__*/_react.default.createElement(_fileProcess.default, {
     errorType: errorType,
+    onDialogApprove: onCancelProcess,
     onDialogDismiss: onCancelProcess
   }), /*#__PURE__*/_react.default.createElement(_unfilteredFilesDialog.default, {
     show: showUnfilteredFilesDialog,
@@ -9195,7 +9194,7 @@ var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
 
 var _utils = __webpack_require__(/*! elementor-app/utils/utils.js */ "../core/app/assets/js/utils/utils.js");
 
-var _importFailedDialog = _interopRequireDefault(__webpack_require__(/*! ../import-failed-dialog/import-failed-dialog */ "../core/app/modules/import-export/assets/js/shared/import-failed-dialog/import-failed-dialog.js"));
+var _processFailedDialog = _interopRequireDefault(__webpack_require__(/*! ../process-failed-dialog/process-failed-dialog */ "../core/app/modules/import-export/assets/js/shared/process-failed-dialog/process-failed-dialog.js"));
 
 var _wizardStep = _interopRequireDefault(__webpack_require__(/*! ../../ui/wizard-step/wizard-step */ "../core/app/modules/import-export/assets/js/ui/wizard-step/wizard-step.js"));
 
@@ -9205,7 +9204,7 @@ function FileProcess(props) {
     icon: "eicon-loading eicon-animation-spin",
     heading: __('Setting up your kit...', 'elementor'),
     description: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('This usually takes a few moments.', 'elementor'), /*#__PURE__*/_react.default.createElement("br", null), __("Don't close this window until the process is finished.", 'elementor'))
-  }, !!props.errorType && /*#__PURE__*/_react.default.createElement(_importFailedDialog.default, {
+  }, !!props.errorType && /*#__PURE__*/_react.default.createElement(_processFailedDialog.default, {
     onApprove: props.onDialogApprove,
     onDismiss: props.onDialogDismiss,
     errorType: props.errorType
@@ -9220,104 +9219,6 @@ FileProcess.propTypes = {
 };
 FileProcess.defaultProps = {
   className: ''
-};
-
-/***/ }),
-
-/***/ "../core/app/modules/import-export/assets/js/shared/import-failed-dialog/import-failed-dialog.js":
-/*!*******************************************************************************************************!*\
-  !*** ../core/app/modules/import-export/assets/js/shared/import-failed-dialog/import-failed-dialog.js ***!
-  \*******************************************************************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-/* provided dependency */ var __ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n")["__"];
-/* provided dependency */ var PropTypes = __webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js");
-
-
-var _Object$defineProperty = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/define-property */ "../node_modules/@babel/runtime-corejs2/core-js/object/define-property.js");
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime-corejs2/helpers/interopRequireDefault */ "../node_modules/@babel/runtime-corejs2/helpers/interopRequireDefault.js");
-
-_Object$defineProperty(exports, "__esModule", {
-  value: true
-});
-
-exports["default"] = ImportFailedDialog;
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
-
-var _router = __webpack_require__(/*! @reach/router */ "../node_modules/@reach/router/es/index.js");
-
-var _dialog = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/dialog/dialog */ "../core/app/assets/js/ui/dialog/dialog.js"));
-
-var _useQueryParams = _interopRequireDefault(__webpack_require__(/*! elementor-app/hooks/use-query-params */ "../core/app/assets/js/hooks/use-query-params.js"));
-
-var _useAction = _interopRequireDefault(__webpack_require__(/*! elementor-app/hooks/use-action */ "../core/app/assets/js/hooks/use-action.js"));
-
-var messagesContent = {
-  general: {
-    text: __('Nothing to worry about, just try again. If the problem continues, head over to the Help Center.', 'elementor'),
-    approveButton: 'Try Again'
-  },
-  'zip-archive-module-not-installed': {
-    text: __('Install a PHP zip on your server or contact your site host.', 'elementor')
-  },
-  'manifest-error': {
-    text: __('There is an error with the manifest file. Try importing again with a new kit file.', 'elementor')
-  },
-  'no-write-permissions': {
-    text: __('Elementor is not authorized to read or write from this file. Contact your site host.', 'elementor')
-  }
-};
-
-function ImportFailedDialog(props) {
-  var action = (0, _useAction.default)(),
-      navigate = (0, _router.useNavigate)(),
-      _useQueryParams$getAl = (0, _useQueryParams.default)().getAll(),
-      referrer = _useQueryParams$getAl.referrer,
-      errorType = messagesContent[props.errorType] ? props.errorType : 'general',
-      _messagesContent$erro = messagesContent[errorType],
-      title = _messagesContent$erro.title,
-      text = _messagesContent$erro.text,
-      approveButton = _messagesContent$erro.approveButton,
-      dismissButton = _messagesContent$erro.dismissButton,
-      onApprove = function onApprove() {
-    if ('general' === errorType && props.onApprove) {
-      props.onApprove();
-    } else {
-      window.open('https://elementor.com/help/how-to-fix-common-errors-with-import-export/', '_blank');
-    }
-  },
-      onDismiss = function onDismiss() {
-    if ('general' === errorType && props.onDismiss) {
-      props.onDismiss();
-    } else if ('kit-library' === referrer) {
-      navigate('/kit-library');
-    } else {
-      action.backToDashboard();
-    }
-  };
-
-  return /*#__PURE__*/_react.default.createElement(_dialog.default, {
-    title: title || __('Something went wrong.', 'elementor'),
-    text: text,
-    approveButtonColor: "link",
-    approveButtonText: approveButton || __('Learn More', 'elementor'),
-    approveButtonOnClick: onApprove,
-    dismissButtonText: dismissButton || __('Close', 'elementor'),
-    dismissButtonOnClick: onDismiss,
-    onClose: onDismiss
-  });
-}
-
-ImportFailedDialog.propTypes = {
-  onApprove: PropTypes.func,
-  onDismiss: PropTypes.func,
-  errorType: PropTypes.string
-};
-ImportFailedDialog.defaultProps = {
-  errorType: 'general'
 };
 
 /***/ }),
@@ -10111,6 +10012,116 @@ function KitData(props) {
 
 KitData.propTypes = {
   data: PropTypes.object
+};
+
+/***/ }),
+
+/***/ "../core/app/modules/import-export/assets/js/shared/process-failed-dialog/process-failed-dialog.js":
+/*!*********************************************************************************************************!*\
+  !*** ../core/app/modules/import-export/assets/js/shared/process-failed-dialog/process-failed-dialog.js ***!
+  \*********************************************************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+/* provided dependency */ var __ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n")["__"];
+/* provided dependency */ var PropTypes = __webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js");
+
+
+var _Object$defineProperty = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/define-property */ "../node_modules/@babel/runtime-corejs2/core-js/object/define-property.js");
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime-corejs2/helpers/interopRequireDefault */ "../node_modules/@babel/runtime-corejs2/helpers/interopRequireDefault.js");
+
+_Object$defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports["default"] = ProcessFailedDialog;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _router = __webpack_require__(/*! @reach/router */ "../node_modules/@reach/router/es/index.js");
+
+var _dialog = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/dialog/dialog */ "../core/app/assets/js/ui/dialog/dialog.js"));
+
+var _useQueryParams = _interopRequireDefault(__webpack_require__(/*! elementor-app/hooks/use-query-params */ "../core/app/assets/js/hooks/use-query-params.js"));
+
+var _useAction = _interopRequireDefault(__webpack_require__(/*! elementor-app/hooks/use-action */ "../core/app/assets/js/hooks/use-action.js"));
+
+var messagesContent = {
+  general: {
+    text: __('Nothing to worry about, just try again. If the problem continues, head over to the Help Center.', 'elementor')
+  },
+  'zip-archive-module-not-installed': {
+    text: __('Install a PHP zip on your server or contact your site host.', 'elementor')
+  },
+  'manifest-error': {
+    text: __('There is an error with the manifest file. Try importing again with a new kit file.', 'elementor')
+  },
+  'no-write-permissions': {
+    text: __('Elementor is not authorized to read or write from this file. Contact your site host.', 'elementor')
+  }
+},
+    dialogTitle = __('Something went wrong.', 'elementor'),
+    tryAgainText = __('Try Again', 'elementor');
+
+function ProcessFailedDialog(_ref) {
+  var errorType = _ref.errorType,
+      onApprove = _ref.onApprove,
+      onDismiss = _ref.onDismiss,
+      approveButton = _ref.approveButton,
+      dismissButton = _ref.dismissButton;
+
+  var action = (0, _useAction.default)(),
+      navigate = (0, _router.useNavigate)(),
+      _useQueryParams$getAl = (0, _useQueryParams.default)().getAll(),
+      referrer = _useQueryParams$getAl.referrer,
+      error = 'string' === typeof errorType && messagesContent[errorType] ? errorType : 'general',
+      text = messagesContent[error].text,
+      isTryAgainAction = 'general' === error && onApprove,
+      handleOnApprove = function handleOnApprove() {
+    /*
+    * When the errorType is general, there should be an option to trigger the onApprove function.
+    * All other error messages should open the learn-more link.
+    */
+    if (isTryAgainAction) {
+      onApprove();
+    } else {
+      window.open('https://elementor.com/help/how-to-fix-common-errors-with-import-export/', '_blank');
+    }
+  },
+      handleOnDismiss = function handleOnDismiss() {
+    if ('general' === error && onDismiss) {
+      onDismiss();
+    } else if ('kit-library' === referrer) {
+      navigate('/kit-library');
+    } else {
+      action.backToDashboard();
+    }
+  };
+
+  return /*#__PURE__*/_react.default.createElement(_dialog.default, {
+    title: dialogTitle,
+    text: text,
+    approveButtonColor: "link",
+    approveButtonText: isTryAgainAction ? tryAgainText : approveButton,
+    approveButtonOnClick: handleOnApprove,
+    dismissButtonText: dismissButton,
+    dismissButtonOnClick: handleOnDismiss,
+    onClose: handleOnDismiss
+  });
+}
+
+ProcessFailedDialog.propTypes = {
+  onApprove: PropTypes.func,
+  onDismiss: PropTypes.func,
+  errorType: PropTypes.string,
+  approveButton: PropTypes.string,
+  dismissButton: PropTypes.string
+};
+ProcessFailedDialog.defaultProps = {
+  errorType: 'general',
+  approveButton: __('Learn More', 'elementor'),
+  dismissButton: __('Close', 'elementor')
 };
 
 /***/ }),

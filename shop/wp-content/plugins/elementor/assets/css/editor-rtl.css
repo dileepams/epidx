@@ -1,4 +1,4 @@
-/*! elementor - v3.5.3 - 28-12-2021 */
+/*! elementor - v3.5.6 - 28-02-2022 */
 @charset "UTF-8";
 .elementor-control-unit-1 {
   width: 27px; }
@@ -3086,15 +3086,15 @@ a.elementor-responsive-switcher {
 
 .elementor-control-type-textarea .elementor-control-dynamic-switcher,
 .elementor-control-type-code .elementor-control-dynamic-switcher {
-  -webkit-border-radius: 0px 3px;
-          border-radius: 0px 3px; }
+  -webkit-border-radius: 0 3px;
+          border-radius: 0 3px; }
 
 .elementor-control-type-textarea:not(.elementor-control-dynamic-value) .elementor-control-dynamic-switcher,
 .elementor-control-type-code:not(.elementor-control-dynamic-value) .elementor-control-dynamic-switcher {
   position: absolute;
   top: 0;
   z-index: 1;
-  left: 0; }
+  right: 0; }
 
 .elementor-control-type-textarea .elementor-control-input-wrapper,
 .elementor-control-type-code .elementor-control-input-wrapper {
